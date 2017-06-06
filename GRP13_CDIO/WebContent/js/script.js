@@ -8,10 +8,6 @@ $(document).ready(function() {
 		$("#login").hide();
 		$("#usradmin").show();
 		return false;
-//		$('#btn').remove();
-//		$("#login").load("Brugeradministrations-side.html");
-
-
 
 	});
 

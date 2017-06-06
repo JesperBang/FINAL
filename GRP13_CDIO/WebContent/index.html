@@ -3,7 +3,7 @@
 <head>
 
 <!-- Basics -->
-<meta charset="ISO-8859-1">
+
 
 <title>Login</title>
 
@@ -11,9 +11,9 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 <link rel="stylesheet" type="text/css" href="css/popupcss.css">
+
 <!-- jQuery -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Script -->
 <script type="text/javascript" src="js/script.js"></script>
@@ -26,8 +26,7 @@
 <!-- Main HTML -->
 <body>
 
-	<!-- Begin Page Content -->
-	<div id="login">
+
 		<!-- Login page called form -->
 		<div class="form" id="login">
 			<form>
@@ -50,23 +49,27 @@
 				</div>
 
 			</form>
+			
 		</div>
-	</div>
-
+	
 	<!-- Menu page -->
 	<div id="usradmin" style="display: none">
-
-		<ul>
-			<!-- Menu "Btns" -->
-			<li><a id="usradminmenu" href="#Brugeradministration">Brugeradministration</a></li>
-			<li><a id="createusermenu" href="#OpretNyBruger">Opret ny bruger</a></li>
-			<li><a id="logoutmenu" href="#LogUd">Log ud</a></li>
-			<li id="Forfattere" style="float: right"><a href="#Forfattere">Forfattere</a></li>
-		</ul>
+	
+		<!-- div for fixing menu bar glitch -->
+		<div id="usrmenu">
+			<ul>
+				<!-- Menu "Btns" -->
+				<li><a id="usradminmenu" href="#Brugeradministration">Brugeradministration</a></li>
+				<li><a id="createusermenu" href="#OpretNyBruger">Opret ny bruger</a></li>
+				<li><a id="logoutmenu" href="#LogUd">Log ud</a></li>
+				<li id="Forfattere" style="float: right"><a href="#Forfattere">Forfattere</a></li>
+			</ul>
+		</div>
+		
 		<!-- popop -->
 		<div id="popupID" class="popup" style="display:none" >
-  			<span class="popuptext" id="myPopup">
-  				<img src="img/popup.png" style="width:70%;height:70%;">
+  			<span class="popuptext" id="myPopup" >
+  				<img src="img/popup.png" class="popfor" alt="forfattere">
  			 </span>
 		</div>
 
@@ -83,39 +86,62 @@
 
 		<!-- Create user page -->
 		<div id="createuser" style="display: none">
-			<h2>Create User:</h2>
+   					
 			
 			<!-- Usr Creation Form -->
 			<div class="CreateUserForm">
+				<h2>Create User Form</h2>
+
 			<form id="CreateUserForm">
 			
+			
 				<!-- User input -->
-    			<input type="number" name="userId" placeholder="User Id - 11-99">
-    			<input type="text" name="firstname" placeholder="Firstname - max 30 char">
-		    	<input type="text" name="lastname" placeholder="Lastname - max 30 char">
-    			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890">
-    			<input type="password" name="password" placeholder="Password - max 8 char">
+				<div id="CUContainer">
+    			<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:20%">
+    			<input type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-zA-Z]*">
+		    	<input type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*">
+    			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" >
+    			<input type="password" name="password" placeholder="Password" maxlength="8" >
     			
     			<!-- Roles -->
-    			Admin:
+    			<b>Roles</b><br>
+    			Admin
     			<input type="checkbox" name="roles[]" value="Admin">
-    			Pharmacist:
+    			Pharmacist
     			<input type="checkbox" name="roles[]" value="Pharmacist">
-    			Foreman:
+    			Foreman
     			<input type="checkbox" name="roles[]" value="Foreman">
-    			Operatoer:
+    			Operatoer
     			<input type="checkbox" name="roles[]" value="Operator">
+    			</div>	
     				
     			<!-- Create User Btn -->
     			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
-    				<input class="cubtn" type="submit" id="CreateUserButton" value="Create user">
+    				<input class="cubtn" type="submit"  value="Create user">
     			</div>
-    			
 			</form>
 			</div>
 	
 		</div>
 
 	</div>
-
+	
+	<!-- Validation icon -->
+	<div class="valid">
+	  	<p>
+	  		<!-- HTML Validation -->
+    		<a href="http://validator.w3.org/check?uri=referer">
+    		<img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"></a>
+ 			
+ 			<!-- CSS Validation -->
+    		<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    		
+       		<img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!" />
+    		</a>
+		</p>
+	</div>
+	
 </body>
+

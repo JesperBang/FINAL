@@ -4,7 +4,12 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+}
+
+/* Fix menu glitch */
+#usrmenu {
+	background-color: #4CAF50;
+	height: 46px;
 }
 
 li {
@@ -20,7 +25,7 @@ li a {
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+    background-color: #008000;
 }
 
 .active {
@@ -50,6 +55,7 @@ th {
     position: relative;
 }
 
+
 /* Add a hover effect for button */
 input[type=text]:hover {
     opacity: 0.8;
@@ -67,7 +73,6 @@ input[type=submit] {
     position: center;
 }
 
-
 /* Centering login form */
 div.CreateUserForm
 {
@@ -75,11 +80,28 @@ div.CreateUserForm
     text-align: center;
 }
 
-CreateUserForm
+#CreateUserForm
 {
     display: inline-block;
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
+	width: 22%;
+}
+
+#CUContainer{
+	padding: 16px;
+    position: relative;
+}
+
+
+
+/* Creating space between checkboxes to seperate them more */
+input[type=checkbox]{
+	margin-right: 3%;
+}
+
+/* CSS for HTML and CSS validation */
+div.valid
+{
+	display: block;
+    text-align: center;
+    margin-top: 2%;
 }
