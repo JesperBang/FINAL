@@ -1,0 +1,85 @@
+@CHARSET "ISO-8859-1";
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+table {
+	border: 1px solid black;
+	width:100%;
+}
+
+th, td {
+	text-align:left;
+	padding:8px;
+}
+
+tr:nth-child(even){
+	background-color:#f2f2f2;
+}
+
+th {
+	background-color: #333;
+	color: white;
+	font-family:"Times New Roman";
+}
+.CUcontainer {
+    padding: 16px;
+    position: relative;
+}
+
+/* Add a hover effect for button */
+input[type=text]:hover {
+    opacity: 0.8;
+}
+
+/* Set a style for all button */
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    position: center;
+}
+
+
+/* Centering login form */
+div.CreateUserForm
+{
+    display: block;
+    text-align: center;
+}
+
+CreateUserForm
+{
+    display: inline-block;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}

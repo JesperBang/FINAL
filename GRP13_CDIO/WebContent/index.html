@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<head>
+
+<!-- Basics -->
+<meta charset="ISO-8859-1">
+
+<title>Login</title>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/admin.css">
+<link rel="stylesheet" type="text/css" href="css/popupcss.css">
+<!-- jQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Script -->
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/useradmin.js"></script>
+<script type="text/javascript" src="js/jquery.serialize-object.js"></script>
+
+
+</head>
+
+<!-- Main HTML -->
+<body>
+
+	<!-- Begin Page Content -->
+	<div id="login">
+		<!-- Login page called form -->
+		<div class="form" id="login">
+			<form>
+
+				<!-- DTU Image Container -->
+				<div class="imgcontainer">
+					<img src="img/DTUlogoSmall.png" alt="DTUimage" class="dtuimg">
+				</div>
+
+				<!-- Login fields -->
+				<div class="container">
+					<label><b>Username</b></label> <input type="text"
+						placeholder="Enter Username" name="uname" id="uname"> <label><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="psw">
+				</div>
+
+				<!-- Container for login btn -->
+				<div id="btn" class="container" style="background-color: #f1f1f1">
+					<button class="loginbtn">Login</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+	<!-- Menu page -->
+	<div id="usradmin" style="display: none">
+
+		<ul>
+			<!-- Menu "Btns" -->
+			<li><a id="usradminmenu" href="#Brugeradministration">Brugeradministration</a></li>
+			<li><a id="createusermenu" href="#OpretNyBruger">Opret ny bruger</a></li>
+			<li><a id="logoutmenu" href="#LogUd">Log ud</a></li>
+			<li id="Forfattere" style="float: right"><a href="#Forfattere">Forfattere</a></li>
+		</ul>
+		<!-- popop -->
+		<div id="popupID" class="popup" style="display:none" >
+  			<span class="popuptext" id="myPopup">
+  				<img src="img/popup.png" style="width:70%;height:70%;">
+ 			 </span>
+		</div>
+
+		<!-- Table for user admin -->
+		<div id="table" style="display: none">
+			<h2>Brugere:</h2>
+
+			<table id="usertable">
+			
+			</table>
+
+
+		</div>
+
+		<!-- Create user page -->
+		<div id="createuser" style="display: none">
+			<h2>Create User:</h2>
+			
+			<!-- Usr Creation Form -->
+			<div class="CreateUserForm">
+			<form id="CreateUserForm">
+			
+				<!-- User input -->
+    			<input type="number" name="userId" placeholder="User Id - 11-99">
+    			<input type="text" name="firstname" placeholder="Firstname - max 30 char">
+		    	<input type="text" name="lastname" placeholder="Lastname - max 30 char">
+    			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890">
+    			<input type="password" name="password" placeholder="Password - max 8 char">
+    			
+    			<!-- Roles -->
+    			Admin:
+    			<input type="checkbox" name="roles[]" value="Admin">
+    			Pharmacist:
+    			<input type="checkbox" name="roles[]" value="Pharmacist">
+    			Foreman:
+    			<input type="checkbox" name="roles[]" value="Foreman">
+    			Operatoer:
+    			<input type="checkbox" name="roles[]" value="Operator">
+    				
+    			<!-- Create User Btn -->
+    			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
+    				<input class="cubtn" type="submit" id="CreateUserButton" value="Create user">
+    			</div>
+    			
+			</form>
+			</div>
+	
+		</div>
+
+	</div>
+
+</body>

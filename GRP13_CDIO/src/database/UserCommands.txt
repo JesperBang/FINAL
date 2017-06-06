@@ -1,0 +1,4 @@
+select * from showUser where UserID = ?;
+select * from showUser2;
+call add_user(?,?,?,?,?);
+call add_userroles(?,?);
