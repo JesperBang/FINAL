@@ -27,6 +27,7 @@ Button {
     position: center;
 }
 
+
 /* Add a hover effect for buttons */
 Button:hover {
     opacity: 0.8;

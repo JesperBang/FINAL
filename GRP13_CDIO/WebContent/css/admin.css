@@ -83,7 +83,7 @@ div.CreateUserForm
 #CreateUserForm
 {
     display: inline-block;
-	width: 22%;
+	width: 32%;
 }
 
 #CUContainer{
@@ -91,11 +91,9 @@ div.CreateUserForm
     position: relative;
 }
 
-
-
 /* Creating space between checkboxes to seperate them more */
 input[type=checkbox]{
-	margin-right: 3%;
+	margin-right: 4%;
 }
 
 /* CSS for HTML and CSS validation */

@@ -32,7 +32,7 @@
 			<form>
 
 				<!-- DTU Image Container -->
-				<div class="imgcontainer">
+				<div class="imgcontainer" style="max-width:500px;">
 					<img src="img/DTUlogoSmall.png" alt="DTUimage" class="dtuimg">
 				</div>
 
@@ -59,9 +59,14 @@
 		<div id="usrmenu">
 			<ul>
 				<!-- Menu "Btns" -->
-				<li><a id="usradminmenu" href="#Brugeradministration">Brugeradministration</a></li>
+				<li><a id="usradminmenu" href="#Brugeradministration">Bruger Administration</a></li>
 				<li><a id="createusermenu" href="#OpretNyBruger">Opret ny bruger</a></li>
-				<li><a id="logoutmenu" href="#LogUd">Log ud</a></li>
+				<li><a id="Raavareadmin" href="#RaavareAdministration">Raavare Administration</a>
+				<li><a id="Receptadmin" href="#ReceptAdministration">Recept Administration</a>
+				<li><a id="Raavarebatchadmin" href="#RaavarebatchAdministration">Raavarebatch Administration</a>
+				<li><a id="Produktbatchadmin" href="#ProduktbatchAdministration">Produktbatch Administration</a>
+				<li><a id="Afvejning" href="#Afvejning">Afvejning</a>
+				<li><a id="logoutmenu" href="#">Log ud</a></li>
 				<li id="Forfattere" style="float: right"><a href="#Forfattere">Forfattere</a></li>
 			</ul>
 		</div>
@@ -97,7 +102,7 @@
 			
 				<!-- User input -->
 				<div id="CUContainer">
-    			<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:20%">
+    			<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:50%">
     			<input type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-zA-Z]*">
 		    	<input type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*">
     			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" >

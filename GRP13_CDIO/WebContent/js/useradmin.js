@@ -29,7 +29,7 @@ $(document).ready(function() {
 		
 		//ajax request
 		$.ajax({
-		url: "http://localhost:8080/webProject/rest2/service/users",
+		url: "http://localhost:8080/GRP13_CDIO/rest2/service/users",
 		method: "GET",
 		
 		//success function
@@ -49,20 +49,24 @@ $(document).ready(function() {
 					$('<th>').text("User ID"),
 					$('<th>').text("First Name"),
 					$('<th>').text("Last Name"),
-					$('<th>').text("CPR"),
+					$('<th>').text("Initials"),
+					$('<th>').text("SSN"),
 					$('<th>').text("Password"),
+					$('<th>').text("Status"),
 					$('<th>').text("Roles")
 			).appendTo("#usertable");
 			
 			//Loop through users and append them to the table in html
 			$.each(allUsers, function(i, item) {
 				$('<tr>').append(
-						$('<td>').text(item.userId),
-						$('<td>').text(item.firstname),
-						$('<td>').text(item.lastname),
+						$('<td>').text(item.opr_id),
+						$('<td>').text(item.opr_fornavn),
+						$('<td>').text(item.opr_efternavn),
+						$('<td>').text(item.ini),
 						$('<td>').text(item.cpr),
 						$('<td>').text(item.password),
-						$('<td>').text(item.roles)
+						$('<td>').text(item.aktiv),
+						$('<td>').text(item.rollenavn)
 				).appendTo('#usertable');
 			});
 			
@@ -95,7 +99,7 @@ $(document).ready(function() {
 			console.log(data);
 			debugger;
 			$.ajax({
-				url: "http://localhost:8080/webProject/rest2/service/create/user",
+				url: "http://localhost:8080/GRP13_CDIO/rest2/service/create/user",
 				data: JSON.stringify(data),
 				contentType: "application/json",
 				method: 'POST',

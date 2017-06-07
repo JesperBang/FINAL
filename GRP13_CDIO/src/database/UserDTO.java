@@ -18,31 +18,34 @@ public class UserDTO implements Serializable
 	 */
 	private static final long serialVersionUID = -7272979590540794430L;
 	/** Operatoer-identifikationsnummer (opr_id) i omraadet 1-99999999. Vaelges af brugerne */
-	public int userId;                     
+	public int opr_id;                     
 	/** Operatoernavn (opr_navn) min. 2 max. 20 karakterer */
-	String firstname; 
+	String opr_fornavn; 
 	/** Operatoernavn (opr_navn) min. 2 max. 20 karakterer */
-	String lastname;     
+	String opr_efternavn;     
 	
 	String ini;
 	/** Operatoer cpr-nr 10 karakterer */
 	String cpr;                 
 	/** Operatoer password min. 7 max. 8 karakterer */
 	String password; 
-	List<String> roles;
 	
 	int aktiv;
+	
+	List<String> rollenavn;
+	
+
 
 	public UserDTO(){
-		roles = new ArrayList<String>();
+		rollenavn = new ArrayList<String>();
 	}
     
-    public int getUserId() { return userId; }
-	public void setUserId(int UserId) { this.userId = UserId; }
-	public String getFirstname() { return firstname; }
-	public void setFirstname(String Firstname) { this.firstname = Firstname; }
-	public String getLastname() { return lastname; }
-	public void setLastname(String Lastname) { this.lastname = Lastname; }
+    public int getUserId() { return opr_id; }
+	public void setUserId(int UserId) { this.opr_id = UserId; }
+	public String getFirstname() { return opr_fornavn; }
+	public void setFirstname(String Firstname) { this.opr_fornavn = Firstname; }
+	public String getLastname() { return opr_efternavn; }
+	public void setLastname(String Lastname) { this.opr_efternavn = Lastname; }
 	public String getCPR() { return cpr; }
 	public void setCPR(String CPR) { this.cpr = CPR; }
 	public String getPassword() { return password; }
@@ -64,14 +67,14 @@ public class UserDTO implements Serializable
 	}
 
 	public List<String> getRoles() {
-			return roles;
+			return rollenavn;
 		}
 
 		public void setRoles(List<String> roles) {
-			this.roles = roles;
+			this.rollenavn = roles;
 		}
 		public void addRole(String role){
-			roles.add(role);
+			rollenavn.add(role);
 		}
-	public String toString() { return "\n" + userId + "\t" + firstname + "\t" + lastname + "\t" + cpr + "\t" + password + "\t" + roles; }
+	public String toString() { return "\n" + opr_id + "\t" + opr_fornavn + "\t" + opr_efternavn + "\t" + cpr + "\t" + password + "\t" + rollenavn; }
 }
