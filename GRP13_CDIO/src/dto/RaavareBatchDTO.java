@@ -1,7 +1,13 @@
 package dto;
 
-public class RaavareBatchDTO {
+import java.io.Serializable;
+
+public class RaavareBatchDTO implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4076581254869242509L;
 	/** raavare batch id i området 1-99999999. Vælges af brugerne */  
 	int rbId;                     
 	public int getRbId() {

@@ -1,8 +1,14 @@
 package dto;
 
-public class RaavareDTO {
+import java.io.Serializable;
+
+public class RaavareDTO implements Serializable {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3616698865321072048L;
 	/** raavare id i området 1-99999999 vælges af brugerne */
 	int raavareId; 
 	
