@@ -1,7 +1,5 @@
 package database;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,28 +9,28 @@ import java.util.List;
 public class MySQLUserDAO implements UserDAO {
 	private Connector connector = new Connector();
 	@Override
-	public UserDTO getUser(int UserId) throws DALException {
+	public UserDTO getUser(int opr_id) throws DALException {
 		ResultSet rs = null;
 		try { //Files.readAllLines(Paths.get("/UserCommands.txt")).get(0)
-			PreparedStatement stmt = connector.getConnection().prepareStatement("select * from showUser where UserID = ?;");
-			stmt.setInt(1, UserId);
+			PreparedStatement stmt = connector.getConnection().prepareStatement("select * from getoperatoer where opr_id = ?;");
+			stmt.setInt(1, opr_id);
 			rs = stmt.executeQuery();
 		} catch (Exception e) {
 			throw new DALException(e.getMessage()); 
 		}
 	    try {
-	    	if (!rs.first()) throw new DALException("User " + UserId + " findes ikke");
+	    	if (!rs.first()) throw new DALException("User " + opr_id + " findes ikke");
 	    	UserDTO user = new UserDTO ();
-	    	user.setUserId(rs.getInt("UserID"));
-			user.setFirstname(rs.getString("Firstname"));
-			user.setLastname(rs.getString("Lastname"));
-			user.setCPR(rs.getString("CPR"));
-			user.setPassword(rs.getString("Password"));
-			user.addRole(rs.getString("Rolename"));
+	    	user.setUserId(rs.getInt("opr_id"));
+			user.setFirstname(rs.getString("opr_fornavn"));
+			user.setLastname(rs.getString("opr_efternavn"));
+			user.setCPR(rs.getString("cpr"));
+			user.setPassword(rs.getString("password"));
+			user.addRole(rs.getString("rollenavn"));
 	    	List<String> roles = new ArrayList<>();
 	    	for (int i = 1; i < 5; i++) {
 				rs.absolute(i);
-				roles.add(rs.getString("Rolename"));
+				roles.add(rs.getString("rollenavn"));
 				if (rs.isLast()){
 					break;
 				}

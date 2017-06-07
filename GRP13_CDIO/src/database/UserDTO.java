@@ -23,11 +23,15 @@ public class UserDTO implements Serializable
 	String firstname; 
 	/** Operatoernavn (opr_navn) min. 2 max. 20 karakterer */
 	String lastname;     
+	
+	String ini;
 	/** Operatoer cpr-nr 10 karakterer */
 	String cpr;                 
 	/** Operatoer password min. 7 max. 8 karakterer */
 	String password; 
 	List<String> roles;
+	
+	int aktiv;
 
 	public UserDTO(){
 		roles = new ArrayList<String>();
@@ -43,7 +47,23 @@ public class UserDTO implements Serializable
 	public void setCPR(String CPR) { this.cpr = CPR; }
 	public String getPassword() { return password; }
 	public void setPassword(String Password) { this.password = Password; }
-	   public List<String> getRoles() {
+	   public String getIni() {
+		return ini;
+	}
+
+	public void setIni(String ini) {
+		this.ini = ini;
+	}
+
+	public int getAktiv() {
+		return aktiv;
+	}
+
+	public void setAktiv(int aktiv) {
+		this.aktiv = aktiv;
+	}
+
+	public List<String> getRoles() {
 			return roles;
 		}
 
