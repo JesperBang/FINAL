@@ -38,6 +38,7 @@ public class UserDTO implements Serializable
 
 	public UserDTO(){
 		rollenavn = new ArrayList<String>();
+		aktiv = 1;
 	}
     
     public int getUserId() { return opr_id; }
@@ -76,5 +77,5 @@ public class UserDTO implements Serializable
 		public void addRole(String role){
 			rollenavn.add(role);
 		}
-	public String toString() { return "\n" + opr_id + "\t" + opr_fornavn + "\t" + opr_efternavn + "\t" + cpr + "\t" + password + "\t" + rollenavn; }
+	public String toString() { return "\n" + opr_id + "\t" + opr_fornavn + "\t" + opr_efternavn + "\t" + cpr + "\t" + password + "\t" + rollenavn + "\t" + aktiv; }
 }

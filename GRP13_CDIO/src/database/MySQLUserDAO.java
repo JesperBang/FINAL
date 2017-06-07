@@ -87,12 +87,13 @@ public class MySQLUserDAO implements UserDAO {
 	public void createOperatoer(UserDTO user) throws DALException {
 
 		try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(2)
-			PreparedStatement stmt = connector.getConnection().prepareStatement("call add_user(?,?,?,?,?);");
+			PreparedStatement stmt = connector.getConnection().prepareStatement("call add_operatoer(?,?,?,?,?,?);");
 			stmt.setInt(1, user.getUserId());
 			stmt.setString(2, user.getFirstname());
 			stmt.setString(3, user.getLastname());
-			stmt.setString(4, user.getCPR());
-			stmt.setString(5, user.getPassword());
+			stmt.setString(4, user.getIni());
+			stmt.setString(5, user.getCPR());
+			stmt.setString(6, user.getPassword());
 			stmt.executeQuery();
 		} catch (Exception e) {
 			throw new DALException(e.getMessage());
@@ -102,16 +103,16 @@ public class MySQLUserDAO implements UserDAO {
 				PreparedStatement stmt = connector.getConnection().prepareStatement("call add_userroles(?,?);");
 				List<String> roles = user.getRoles();
 				switch(roles.get(i)){
-				case "Admin":
+				case "Administrator":
 					stmt.setInt(1, 1);
 					break;
-				case "Pharmacist":
+				case "Farmaceut":
 					stmt.setInt(1, 2);
 					break;
-				case "Foreman":
+				case "Værkfører":
 					stmt.setInt(1, 3);
 					break;
-				case "Operator":
+				case "Laborant":
 					stmt.setInt(1, 4);
 					break;
 				}

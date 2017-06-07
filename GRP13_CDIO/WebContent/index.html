@@ -102,23 +102,26 @@
 			
 				<!-- User input -->
 				<div id="CUContainer">
-    			<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:50%">
-    			<input type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-zA-Z]*">
-		    	<input type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*">
-    			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" >
-    			<input type="password" name="password" placeholder="Password" maxlength="8" >
+    			<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" required>
+    			<input type="text" name="ini" placeholder="Initials" maxlength="3" pattern="[A-Z]*" style="width:40%" required>
+    			<input type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-z A-Z]*" required>
+		    	<input type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*" required>
+    			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" required>
+    			<input type="password" name="password" placeholder="Password" maxlength="8" required>
     			
     			<!-- Roles -->
     			<b>Roles</b><br>
+    			<div class="checkbox-group">
     			Admin
-    			<input type="checkbox" name="roles[]" value="Admin">
+    			<input type="checkbox" name="roles[]" value="Administrator">
     			Pharmacist
-    			<input type="checkbox" name="roles[]" value="Pharmacist">
+    			<input type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="Foreman">
+    			<input type="checkbox" name="roles[]" value="Værkfører">
     			Operatoer
-    			<input type="checkbox" name="roles[]" value="Operator">
-    			</div>	
+    			<input type="checkbox" name="roles[]" value="Laborant" checked>
+    			
+    			</div>	</div>
     				
     			<!-- Create User Btn -->
     			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			

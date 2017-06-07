@@ -35,7 +35,7 @@ $(document).ready(function() {
 		//success function
 		success: function(data){
 			allUsers = data;
-			
+			console.log(data);
 			//Parse JSON from ajax request to html table
 			//ini vars for table row
 			var tr;
@@ -52,21 +52,21 @@ $(document).ready(function() {
 					$('<th>').text("Initials"),
 					$('<th>').text("SSN"),
 					$('<th>').text("Password"),
-					$('<th>').text("Status"),
-					$('<th>').text("Roles")
+					$('<th>').text("Roles"),
+					$('<th>').text("Status")
 			).appendTo("#usertable");
 			
 			//Loop through users and append them to the table in html
 			$.each(allUsers, function(i, item) {
 				$('<tr>').append(
 						$('<td>').text(item.opr_id),
-						$('<td>').text(item.opr_fornavn),
-						$('<td>').text(item.opr_efternavn),
+						$('<td>').text(item.firstname),
+						$('<td>').text(item.lastname),
 						$('<td>').text(item.ini),
 						$('<td>').text(item.cpr),
 						$('<td>').text(item.password),
-						$('<td>').text(item.aktiv),
-						$('<td>').text(item.rollenavn)
+						$('<td>').text(item.roles),
+						$('<td>').text(item.aktiv)
 				).appendTo('#usertable');
 			});
 			
@@ -89,10 +89,10 @@ $(document).ready(function() {
 	
 	
 		//Create User Submit Button
-		$("#CreateUserForm").submit( function() {
-		
+		$("#CreateUserForm").submit( function() {               
+   
 			event.preventDefault();
-			//validation?
+			
 			
 			var data = $('#CreateUserForm').serializeObject();
 
@@ -121,7 +121,7 @@ $(document).ready(function() {
 					console.log(resp)
 				}
 			});
-
+		   
 			return false;
 
 	});
