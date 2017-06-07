@@ -48,7 +48,7 @@ public class MySQLUserDAO implements UserDAO {
 		List<UserDTO> list = new ArrayList<UserDTO>();
 		ResultSet rs;
 		try { //Files.readAllLines(Paths.get("/UserCommands.txt")).get(1)
-			rs = connector.doQuery("select * from showUser2;");
+			rs = connector.doQuery("select * from getoperatoer;");
 		} catch (Exception e) {
 			throw new DALException(e.getMessage());
 		}
@@ -59,21 +59,23 @@ public class MySQLUserDAO implements UserDAO {
 			while (rs.next()) 
 			{
 				
-				if (last == rs.getInt("UserID")){
-					user.addRole(rs.getString("Rolename"));
+				if (last == rs.getInt("opr_id")){
+					user.addRole(rs.getString("rollenavn"));
 				} else {
 					if (last != 0){
 						list.add(user);
 						user = new UserDTO();
 					}
-					user.setUserId(rs.getInt("UserID"));
-					user.setFirstname(rs.getString("Firstname"));
-					user.setLastname(rs.getString("Lastname"));
-					user.setCPR(rs.getString("CPR"));
-					user.setPassword(rs.getString("Password"));
-					user.addRole(rs.getString("Rolename"));
+					user.setUserId(rs.getInt("opr_id"));
+					user.setFirstname(rs.getString("opr_fornavn"));
+					user.setLastname(rs.getString("opr_efternavn"));
+					user.setIni(rs.getString("ini"));
+					user.setCPR(rs.getString("cpr"));
+					user.setPassword(rs.getString("password"));
+					user.setAktiv(rs.getInt("aktiv"));
+					user.addRole(rs.getString("rollenavn"));
 				}
-				last = rs.getInt("UserID");
+				last = rs.getInt("opr_id");
 			}
 			list.add(user);
 		}
