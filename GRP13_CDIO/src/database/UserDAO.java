@@ -6,4 +6,5 @@ public interface UserDAO {
 	UserDTO getUser(int UserId) throws DALException;
 	List<UserDTO> getUserList() throws DALException;
 	void createOperatoer(UserDTO opr) throws DALException;
+	void updateOperatoer(UserDTO opr) throws DALException;
 }
