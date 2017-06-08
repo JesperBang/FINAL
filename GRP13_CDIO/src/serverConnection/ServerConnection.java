@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import database.MySQLUserDAO;
+import dao.MySQLUserDAO;
 import database.UserDTO;
 
 
