@@ -151,16 +151,16 @@ public class MySQLUserDAO implements UserDAO {
 				PreparedStatement stmt = connector.getConnection().prepareStatement("call add_userroles(?,?);");
 				List<String> roles = user.getRoles();
 				switch(roles.get(i)){
-				case "Admin":
+				case "Administrator":
 					stmt.setInt(1, 1);
 					break;
-				case "Pharmacist":
+				case "Farmaceut":
 					stmt.setInt(1, 2);
 					break;
-				case "Foreman":
+				case "Værkfører":
 					stmt.setInt(1, 3);
 					break;
-				case "Operator":
+				case "Laborant":
 					stmt.setInt(1, 4);
 					break;
 				}
