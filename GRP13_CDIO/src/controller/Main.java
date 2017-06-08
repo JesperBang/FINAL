@@ -27,9 +27,8 @@ public class Main {
 		
 		ISocketController socketHandler = new SocketController();
 		IWeightInterfaceController weightController = new WeightInterfaceControllerGUI();
-		//Injecting socket and uiController into mainController - Replace with improved versions...
+		//Injecting socket and uiController into mainController 
 		IMainController mainCtrl = new MainController(socketHandler, weightController);
-		//.init and .start could be merged
 		mainCtrl.start();
 		
 	}

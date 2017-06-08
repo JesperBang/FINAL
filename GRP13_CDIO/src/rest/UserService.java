@@ -16,7 +16,7 @@ import database.DALException;
 import database.UserDAO;
 import database.UserDTO;
 
-@Path("/service")
+@Path("/userservice")
 public class UserService {
 	
 	UserDAO users = new MySQLUserDAO();
@@ -60,6 +60,19 @@ public class UserService {
 		System.out.println(user);
 		try {
 			users.createOperatoer(user);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
+	@Path("/update/user")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public boolean updateUser(UserDTO user){
+		try {
+			users.updateOperatoer(user);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
