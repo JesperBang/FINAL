@@ -1,6 +1,5 @@
 package rest;
 
-
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -11,60 +10,57 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import dao.MySQLUserDAO;
 import database.DALException;
-import database.UserDAO;
-import database.UserDTO;
-
-@Path("/userservice")
-public class UserService {
+import dao.IReceptDAO;
+import dao.MySQLReceptDAO;
+import dto.ReceptDTO;
+@Path("/receptservice")
+public class ReceptService {
+IReceptDAO recepts = new MySQLReceptDAO();
 	
-	UserDAO users = new MySQLUserDAO();
-	
-	@Path("/users")
+	@Path("/recept")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<UserDTO> ShowUsers() {
-//		String Users = "all users";
-		List<UserDTO> allUsers = null;
+	public List<ReceptDTO> ShowRecepts() {
+		List<ReceptDTO> allRecept = null;
 		try {
-			allUsers = users.getUserList();
+			allRecept = recepts.getReceptList();
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(allUsers.toString());
-		return allUsers;
+		return allRecept;
 	}
 
-	@Path("/user/{id}")
+	@Path("/recept/{id}")
 	@GET
 	@Produces("application/json")
-	public UserDTO findUserOnId(@PathParam("id") Integer id) {
+	public ReceptDTO findReceptOnId(@PathParam("id") Integer id) {
 		
-		UserDTO user = null;
+		ReceptDTO recept = null;
 		try {
-			user = users.getUser(id);
+			recept = recepts.getRecept(id);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return user;
+		return recept;
 	}
 	
-	@Path("/create/user")
+	@Path("/create/recept")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	 public boolean createUser(UserDTO user) {
-		System.out.println(user);
+	 public boolean createRecepts(ReceptDTO recept) {
+		System.out.println("Hej");
+
+		System.out.println(recept);
 		try {
-			users.createOperatoer(user);
+			recepts.createRecept(recept);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return true;
 	}
 
