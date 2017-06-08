@@ -20,6 +20,9 @@ $(document).ready(function() {
 		return false;
 	});
 
+	document.getElementById("VisRaavareSM").addEventListener("click",function() {
+		Testdiv.show();
+	});
 	// Load users on useradmin page
 	document.getElementById("usradminmenu").addEventListener("click",function() {
 		
@@ -29,7 +32,7 @@ $(document).ready(function() {
 		
 		//ajax request
 		$.ajax({
-		url: "http://localhost:8080/GRP13_CDIO/rest2/service/users",
+		url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/users",
 		method: "GET",
 		
 		//success function
@@ -99,7 +102,7 @@ $(document).ready(function() {
 			console.log(data);
 			debugger;
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/service/create/user",
+				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/create/user",
 				data: JSON.stringify(data),
 				contentType: "application/json",
 				method: 'POST',
