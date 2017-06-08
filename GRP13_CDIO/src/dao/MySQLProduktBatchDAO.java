@@ -51,15 +51,18 @@ public class MySQLProduktBatchDAO implements IProduktBatchDAO {
 		}
 		try
 		{
-			ProduktBatchDTO produkt = new ProduktBatchDTO();
+			ProduktBatchDTO produkt;
 			while (rs.next()) 
 			{
+				produkt = new ProduktBatchDTO();
 				produkt.setPbId(rs.getInt("pb_id"));
 				produkt.setStatus(rs.getInt("status"));
 				produkt.setReceptId(rs.getInt("recept_id"));
+				
+				list.add(produkt);
 			}
 				
-			list.add(produkt);
+			
 		}
 		catch (SQLException e) { throw new DALException(e); }
 		return list;

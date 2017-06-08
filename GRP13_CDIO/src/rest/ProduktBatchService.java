@@ -14,11 +14,11 @@ import dao.IProduktBatchDAO;
 import dao.MySQLProduktBatchDAO;
 import database.DALException;
 import dto.ProduktBatchDTO;
-
+@Path("/produktbatchservice")
 public class ProduktBatchService {
 IProduktBatchDAO pb = new MySQLProduktBatchDAO();
 	
-	@Path("/produktbatch")
+	@Path("/produktbatches")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<ProduktBatchDTO> ShowProduktbatches() {
