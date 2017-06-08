@@ -125,5 +125,52 @@ public class MySQLUserDAO implements UserDAO {
 		}
 
 	}
+	public void updateOperatoer(UserDTO user) throws DALException{
+
+		try { 
+			PreparedStatement stmt = connector.getConnection().prepareStatement("call delete_roles(?);");
+			stmt.setInt(1, user.getUserId());
+			stmt.executeQuery();
+		} catch (Exception e) {
+			throw new DALException(e.getMessage());
+		}
+		try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(2)
+			PreparedStatement stmt = connector.getConnection().prepareStatement("call update_operatoer1(?,?,?,?,?,?);");
+			stmt.setInt(1, user.getUserId());
+			stmt.setString(2, user.getFirstname());
+			stmt.setString(3, user.getLastname());
+			stmt.setString(4, user.getIni());
+			stmt.setString(5, user.getCPR());
+			stmt.setString(6, user.getPassword());
+			stmt.executeQuery();
+		} catch (Exception e) {
+			throw new DALException(e.getMessage());
+		}
+		for (int i = 0; i < user.getRoles().size(); i++) {
+			try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(3)
+				PreparedStatement stmt = connector.getConnection().prepareStatement("call add_userroles(?,?);");
+				List<String> roles = user.getRoles();
+				switch(roles.get(i)){
+				case "Admin":
+					stmt.setInt(1, 1);
+					break;
+				case "Pharmacist":
+					stmt.setInt(1, 2);
+					break;
+				case "Foreman":
+					stmt.setInt(1, 3);
+					break;
+				case "Operator":
+					stmt.setInt(1, 4);
+					break;
+				}
+				
+				stmt.setInt(2, user.getUserId());
+				stmt.executeQuery();
+			} catch (Exception e) {
+				throw new DALException(e.getMessage());
+			}
+		}
+	}
 
 }
