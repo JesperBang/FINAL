@@ -9,7 +9,7 @@ import java.util.List;
 import database.Connector;
 import database.DALException;
 import dto.ProduktBatchDTO;
-import dto.ReceptDTO;
+
 
 public class MySQLProduktBatchDAO implements IProduktBatchDAO {
 

@@ -56,13 +56,17 @@
 	<!-- Menu page -->
 	<div id="usradmin" style="display: none">
 	
+
+		
 		<!-- div for fixing menu bar glitch -->
-		<nav>
 		<div id="usrmenu">
 			<ul class="mm">
 			
-				<!-- Menu "Btns" -->
+			<!-- Menu "Btns" -->	
+				
+				<!-- User Admin -->
 				<li><a id="usradminmm" href="#Brugeradministration">Bruger Administration</a>
+					
 					<!-- Sub Menu of usradminmenu -->
 					<ul id="smid" class="sm">
 						<li><a id="usradminmenu" href="#">Vis brugere</a></li>
@@ -70,6 +74,8 @@
                 		<li><a id="updateusermenu" href="#">Opdater brugere</a></li>
          		    </ul>
          		    
+         		    
+         		<!-- Raavare Admin -->
 				<li><a id="Raavareadmin" href="#RaavareAdministration">Raavare Administration</a>
 					
 					<!-- Sub Menu of Raavareadmin -->
@@ -79,17 +85,22 @@
                 		<li><a id="RetRaavareSM" href="#">Ret Raavare</a></li>
          		    </ul>
          		   
+         		   
+         		<!-- Recept Admin -->
 				<li><a id="Receptadmin" href="#ReceptAdministration">Recept Administration</a>
-				
 				
 					<!-- Sub Menu of Receptadmin -->
 					<ul id="smid" class="sm">
-						<li><a id="VisReceptSM" href="#" title="#">Vis Recept</a></li>
-                		<li><a id="OpretReceptSM" href="#" title="#">Opret Recept</a></li>
-                		
+						<li><a id="VisReceptSM" href="#">Vis Recept</a></li>
+                		<li><a id="OpretReceptSM" href="#">Opret Recept</a></li>
          		    </ul>
          		    
+         		 
+         		<!-- Raavare Batch Admin -->
 				<li><a id="Raavarebatchadmin" href="#RaavarebatchAdministration">Raavarebatch Administration</a>
+				
+				
+				<!-- Produkt Batch Admin -->
 				<li><a id="Produktbatchadmin" href="#ProduktbatchAdministration">Produktbatch Administration</a>
 				
 					<!-- Sub Menu of Produktbatchadmin -->
@@ -98,16 +109,24 @@
                 		<li><a id="OPB" href="#">Opret Produktbatch</a></li>
                 		<li><a id="UPB" href="#">Opdater Produktbatch</a></li>
          		    </ul>
-				
-				<li><a id="Afvejning" href="#Afvejning">Afvejning</a>
+
+
+				<!-- Logout -->
 				<li><a id="logoutmenu" href="#">Log ud</a></li>
+				
+				
+				<!-- Author -->
 				<li id="Forfattere" style="float: right"><a href="#Forfattere">Forfattere</a></li>
 			</ul>
 		</div>
-		</nav>
+		
+		
+		<!-- Show Raavare -->
 		<div id="Testdiv" style="display:none;">
 			TEST ETST ETFDSGHGGGGGGGGGGGGGGG
 		</div>
+		
+		
 		<!-- popop -->
 		<div id="popupID" class="popup" style="display:none" >
   			<span class="popuptext" id="myPopup" >
@@ -184,21 +203,24 @@
 		</div>
 
 	</div>
+	
+	
 	<!-- Update user page -->
 		<div id="updateuser" style="display: none">
    					
-			
+   					
 			<!-- Usr update Form -->
-			<div class="CreateUserForm">
+			<div class="UpdateUserForm">
 				<h2>Update User Form</h2>
 
-			<form id="CreateUserForm">
+			<form id="UpdateUserForm">
 			
 			
 				<!-- User input -->
-				<div id="CUContainer">
+				<div id="UUContainer">
 				
 				<div style="width:100%">
+				<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" readonly>
     			<input type="text" name="ini" placeholder="Initials" maxlength="3" pattern="[A-Z]*" style="width:40%" required>
     			</div>
     			
@@ -223,8 +245,8 @@
     			
     				
     			<!-- Create User Btn -->
-    			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
-    				<input class="cubtn" type="submit"  value="Update user">
+    			<div id="UUbtn" class="UUcontainer" style="background-color: #f1f1f1">			
+    				<input class="uubtn" type="submit"  value="Update user">
     			</div>
 			</form>
 			</div>
@@ -261,4 +283,3 @@
 	</div>
 	
 </body>
-
