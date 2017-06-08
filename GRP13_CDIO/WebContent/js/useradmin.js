@@ -19,9 +19,9 @@ $(document).ready(function() {
 		$("#usradmin").hide();
 		return false;
 	});
-
+	
 	document.getElementById("VisRaavareSM").addEventListener("click",function() {
-		Testdiv.show();
+		$("#Testdiv").show();
 	});
 	// Load users on useradmin page
 	document.getElementById("usradminmenu").addEventListener("click",function() {
