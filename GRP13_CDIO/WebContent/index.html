@@ -19,6 +19,7 @@
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/useradmin.js"></script>
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
+<script type="text/javascript" src="js/raavare.js"></script>
 
 
 </head>
@@ -66,15 +67,20 @@
 					
 					<!-- Sub Menu of Raavareadmin -->
 					<ul class="sm">
-						<li><a href="#" title="#">Vis Raavare</a></li>
-                		<li><a href="#" title="#">Opret Raavare</a></li>
-                		<li><a href="#" title="#">Ret Raavare</a></li>
+						<li><a id="SRV" href="#VisRaavare">Vis Raavare</a></li>
+                		<li><a id="ORV" href="#OpretRaavare">Opret Raavare</a></li>
+                		<li><a id="RRV" href="#RetRaavare">Ret Raavare</a></li>
          		   </ul>
          		   
-				<li><a id="Receptadmin" href="#ReceptAdministration">Recept Administration</a>
+				<li><a id="Receptadmin" href="#ReceptAdministration">Recept Administration</a></li>
 				<li><a id="Raavarebatchadmin" href="#RaavarebatchAdministration">Raavarebatch Administration</a>
-				<li><a id="Produktbatchadmin" href="#ProduktbatchAdministration">Produktbatch Administration</a>
-				<li><a id="Afvejning" href="#Afvejning">Afvejning</a>
+				     <!-- raavarebatch admninistrations submenu -->
+				      <ul class="rba">
+				      <li> <a id="RBO" href="#OpretRaavarebatch"> Opret Raavarebatch</a></li>
+				      <li> <a id="RBV" href="#VisRaavarebatch"> Vis Raavarebatches </a></li>
+				      </ul>
+				<li><a id="Produktbatchadmin" href="#ProduktbatchAdministration">Produktbatch Administration</a></li>
+				<li><a id="Afvejning" href="#Afvejning">Afvejning</a></li>
 				<li><a id="logoutmenu" href="#">Log ud</a></li>
 				<li id="Forfattere" style="float: right"><a href="#Forfattere">Forfattere</a></li>
 			</ul>
@@ -131,7 +137,7 @@
     			Pharmacist
     			<input type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="Værkfører">
+    			<input type="checkbox" name="roles[]" value="Vï¿½rkfï¿½rer">
     			Operatoer
     			<input type="checkbox" name="roles[]" value="Laborant" checked>
     			
@@ -147,7 +153,57 @@
 		</div>
 
 	</div>
-	
+	<!-- Raavareadministration side -->
+<div id="createraavare" style="display: none">
+<form>
+<input type="number" name="RaavareNo" placeholder="Indtast nr">
+<input type="text" name="RaavareNavn" placeholder="Indtast raavarenavn">
+<input type="text" name="leverandoer" placeholder="Indtast leverandoer">
+<input type="button" value="submit">  
+</form>
+ 
+</div>
+
+<div id="modifyraavare" style="display: none">
+<form>
+<input type="number" name="oldRaavareNo" placeholder="Old RaavareNo">
+<input type="number" name="newRaavareNo" placeholder="New RaavareNo">
+
+<input type="text" name="oldRaavareNavn" placeholder="Old Raavarenavn">
+<input type="text" name="newRaavareNavn" placeholder="New Raavarenavn">
+
+<input type="text" name="oldLeverandoer" placeholder="Old Leverandoer">
+<input type="text" name="newLeverandoer" placeholder="New leverandoer">
+<input type="button" value="submit">
+
+</form>
+</div>
+
+
+<div id="ShowRaavare" style="display: none">
+<form>
+<input type="number" name="RaavareNo" placeholder="Type RaavareNo">
+<input type="text" name="Raavarenavn" placeholder="Type raavarenavn">
+<input type="text" name="leverandoer" placeholder="Type leverandoer">
+<input type="button" value="submit">
+
+</form>
+</div>
+
+<div id="ShowRaavarebatch" style="display: none">
+<form>
+<input type="text" name="raavarebatch" placeholder="Enter Raavarebatch Name">
+<input type="number" name="RBno" placeholder="Enter Raavarebatch No.">
+</form>
+</div>
+
+<div id="CreateRaavarebatch" style="display: none">
+<form>
+<input type="number" name="RBno" placeholder="Enter Raavarebatch No.">
+<input type="number" name="Amount" placeholder="Enter amount of Raavare for batch">
+<input type="button" value="Submit batch to database">
+</form>
+</div>	
 	<!-- Validation icon -->
 	<div class="valid">
 	  	<p>
