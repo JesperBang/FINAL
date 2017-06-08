@@ -11,7 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import dao.MySQLUserDAO;
+import database.MySQLUserDAO;
 import database.DALException;
 import database.UserDAO;
 import database.UserDTO;
