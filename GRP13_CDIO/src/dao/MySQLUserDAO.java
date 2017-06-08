@@ -1,10 +1,15 @@
-package database;
+package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import database.Connector;
+import database.DALException;
+import database.UserDAO;
+import database.UserDTO;
 
 public class MySQLUserDAO implements UserDAO {
 	private Connector connector = new Connector();
@@ -87,13 +92,12 @@ public class MySQLUserDAO implements UserDAO {
 	public void createOperatoer(UserDTO user) throws DALException {
 
 		try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(2)
-			PreparedStatement stmt = connector.getConnection().prepareStatement("call add_operatoer(?,?,?,?,?,?);");
+			PreparedStatement stmt = connector.getConnection().prepareStatement("call add_user(?,?,?,?,?);");
 			stmt.setInt(1, user.getUserId());
 			stmt.setString(2, user.getFirstname());
 			stmt.setString(3, user.getLastname());
-			stmt.setString(4, user.getIni());
-			stmt.setString(5, user.getCPR());
-			stmt.setString(6, user.getPassword());
+			stmt.setString(4, user.getCPR());
+			stmt.setString(5, user.getPassword());
 			stmt.executeQuery();
 		} catch (Exception e) {
 			throw new DALException(e.getMessage());
@@ -103,16 +107,16 @@ public class MySQLUserDAO implements UserDAO {
 				PreparedStatement stmt = connector.getConnection().prepareStatement("call add_userroles(?,?);");
 				List<String> roles = user.getRoles();
 				switch(roles.get(i)){
-				case "Administrator":
+				case "Admin":
 					stmt.setInt(1, 1);
 					break;
-				case "Farmaceut":
+				case "Pharmacist":
 					stmt.setInt(1, 2);
 					break;
-				case "Værkfører":
+				case "Foreman":
 					stmt.setInt(1, 3);
 					break;
-				case "Laborant":
+				case "Operator":
 					stmt.setInt(1, 4);
 					break;
 				}

@@ -51,7 +51,7 @@ th {
 	font-family:"Times New Roman";
 }
 .CUcontainer {
-    padding: 16px;
+    padding: 1%;
     position: relative;
 }
 
@@ -103,3 +103,28 @@ div.valid
     text-align: center;
     margin-top: 2%;
 }
+
+/* More nav bar styling including dropdown menus */
+.sm {
+  list-style: none;
+  position: absolute;
+  visibility: hidden;
+  background-color: #4CAF50;
+}
+
+.mm > li > a {
+  display: inline-block;
+}
+
+.sm a {
+  display: block;
+  padding: 8px;
+}
+
+.mm > li > a:hover + .sm,
+.sm:hover {
+  visibility: visible;
+}
+
+
+
