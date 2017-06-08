@@ -32,7 +32,7 @@
 			<form>
 
 				<!-- DTU Image Container -->
-				<div class="imgcontainer" style="max-width:500px;">
+				<div class="imgcontainer" >
 					<img src="img/DTUlogoSmall.png" alt="DTUimage" class="dtuimg">
 				</div>
 
@@ -56,12 +56,21 @@
 	<div id="usradmin" style="display: none">
 	
 		<!-- div for fixing menu bar glitch -->
+		<nav>
 		<div id="usrmenu">
-			<ul>
+			<ul class="mm">
 				<!-- Menu "Btns" -->
 				<li><a id="usradminmenu" href="#Brugeradministration">Bruger Administration</a></li>
 				<li><a id="createusermenu" href="#OpretNyBruger">Opret ny bruger</a></li>
 				<li><a id="Raavareadmin" href="#RaavareAdministration">Raavare Administration</a>
+					
+					<!-- Sub Menu of Raavareadmin -->
+					<ul class="sm">
+						<li><a href="#" title="#">Vis Raavare</a></li>
+                		<li><a href="#" title="#">Opret Raavare</a></li>
+                		<li><a href="#" title="#">Ret Raavare</a></li>
+         		   </ul>
+         		   
 				<li><a id="Receptadmin" href="#ReceptAdministration">Recept Administration</a>
 				<li><a id="Raavarebatchadmin" href="#RaavarebatchAdministration">Raavarebatch Administration</a>
 				<li><a id="Produktbatchadmin" href="#ProduktbatchAdministration">Produktbatch Administration</a>
@@ -70,6 +79,7 @@
 				<li id="Forfattere" style="float: right"><a href="#Forfattere">Forfattere</a></li>
 			</ul>
 		</div>
+		</nav>
 		
 		<!-- popop -->
 		<div id="popupID" class="popup" style="display:none" >
@@ -102,8 +112,12 @@
 			
 				<!-- User input -->
 				<div id="CUContainer">
+				
+				<div style="width:100%">
     			<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" required>
     			<input type="text" name="ini" placeholder="Initials" maxlength="3" pattern="[A-Z]*" style="width:40%" required>
+    			</div>
+    			
     			<input type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-z A-Z]*" required>
 		    	<input type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*" required>
     			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" required>
