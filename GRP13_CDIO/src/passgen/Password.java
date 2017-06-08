@@ -6,7 +6,7 @@ public class Password {
 	public String generatePassword(){
 		int antalTal = (int) (Math.random() * 2) + 2;
 		int antalStoreBog = (int) (Math.random() * 2) + 2;
-		int antalSmåBog = 8- antalTal - antalStoreBog;
+		int antalSmÃ¥Bog = 8- antalTal - antalStoreBog;
 		
 		String[] SB = new String[antalStoreBog];
 		
@@ -15,11 +15,11 @@ public class Password {
 			char a = StoreB.charAt((int) (Math.random() * 27));
 			SB[i] ="" + a; 
 		}
-		String[] SmB = new String[antalSmåBog];
+		String[] SmB = new String[antalSmÃ¥Bog];
 		
 		for(int i = 0; i < SmB.length; i++){
-			String SmåB = "abcdefghijklmnopqrstuvwxyz";
-			char b = SmåB.charAt((int) (Math.random() * 27));
+			String SmÃ¥B = "abcdefghijklmnopqrstuvwxyz";
+			char b = SmÃ¥B.charAt((int) (Math.random() * 27));
 			SmB[i] = "" + b;
 		}
 		String[] Tal = new String[antalTal];
