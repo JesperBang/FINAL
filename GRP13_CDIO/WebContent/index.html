@@ -18,6 +18,7 @@
 <!-- Script -->
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/useradmin.js"></script>
+<script type="text/javascript" src="js/produktbatchadmin.js"></script>
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 
 
@@ -73,6 +74,14 @@
          		   
 				<li><a id="Receptadmin" href="#ReceptAdministration">Recept Administration</a>
 				
+				
+					<!-- Sub Menu of Receptadmin -->
+					<ul id="smid" class="sm">
+						<li><a id="VisReceptSM" href="#" title="#">Vis Recept</a></li>
+                		<li><a id="OpretReceptSM" href="#" title="#">Opret Recept</a></li>
+                		
+         		    </ul>
+         		    
 				<li><a id="Raavarebatchadmin" href="#RaavarebatchAdministration">Raavarebatch Administration</a>
 				<li><a id="Produktbatchadmin" href="#ProduktbatchAdministration">Produktbatch Administration</a>
 				
@@ -104,6 +113,16 @@
 			<h2>Brugere:</h2>
 
 			<table id="usertable">
+			
+			</table>
+
+
+		</div>
+		<!-- Table for product admin -->
+		<div id="pbtable" style="display: none">
+			<h2>Produktbatches:</h2>
+
+			<table id="produktbatchtable">
 			
 			</table>
 
@@ -158,6 +177,18 @@
 		</div>
 
 	</div>
+	
+	<!-- Table for prescription admin -->
+		<div id="table" style="display: none">
+			<h2>Vis Recepter:</h2>
+
+			<table id="pretable">
+			
+			</table>
+
+
+		</div>
+	
 	
 	<!-- Validation icon -->
 	<div class="valid">

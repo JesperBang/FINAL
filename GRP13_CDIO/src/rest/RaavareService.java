@@ -10,53 +10,53 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import dao.IProduktBatchDAO;
-import dao.MySQLProduktBatchDAO;
+import dao.IRaavareDAO;
+import dao.MySQLRaavareDAO;
 import database.DALException;
-import dto.ProduktBatchDTO;
-@Path("/produktbatchservice")
-public class ProduktBatchService {
-IProduktBatchDAO pb = new MySQLProduktBatchDAO();
+import dto.RaavareDTO;
+@Path("/raavareservice")
+public class RaavareService {
+IRaavareDAO raavare = new MySQLRaavareDAO();
 	
-	@Path("/produktbatches")
+	@Path("/raavare")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<ProduktBatchDTO> ShowProduktbatches() {
-		List<ProduktBatchDTO> allProduktbatches = null;
+	public List<RaavareDTO> ShowRaavare() {
+		List<RaavareDTO> allRaavare = null;
 		try {
-			allProduktbatches = pb.getProduktBatchList();
+			allRaavare = raavare.getRaavareList();
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return allProduktbatches;
+		return allRaavare;
 	}
 
-	@Path("/produktbatch/{id}")
+	@Path("/raavare/{id}")
 	@GET
 	@Produces("application/json")
-	public ProduktBatchDTO findProduktBatchOnId(@PathParam("id") Integer id) {
+	public RaavareDTO findRaavareOnId(@PathParam("id") Integer id) {
 		
-		ProduktBatchDTO produktbatch = null;
+		RaavareDTO raavarer = null;
 		try {
-			produktbatch = pb.getProduktBatch(id);
+			raavarer = raavare.getRaavare(id);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return produktbatch;
+		return raavarer;
 	}
 	
-	@Path("/create/produktbatch")
+	@Path("/create/raavare")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	 public boolean createProduktBatch(ProduktBatchDTO produktbatch) {
+	 public boolean createRaavarer(RaavareDTO raavarer) {
 		System.out.println("Hej");
 
-		System.out.println(produktbatch);
+		System.out.println(raavare);
 		try {
-			pb.createProduktBatch(produktbatch);
+			raavare.createRaavare(raavarer);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

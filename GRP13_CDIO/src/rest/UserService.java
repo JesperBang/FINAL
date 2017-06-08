@@ -67,6 +67,19 @@ public class UserService {
 		
 		return true;
 	}
+	@Path("/update/user")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public boolean updateUser(UserDTO user){
+		try {
+			users.updateOperatoer(user);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
 
 
 }
