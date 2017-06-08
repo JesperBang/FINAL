@@ -72,6 +72,14 @@
          		    </ul>
          		   
 				<li><a id="Receptadmin" href="#ReceptAdministration">Recept Administration</a>
+				
+					<!-- Sub Menu of Receptadmin -->
+					<ul id="smid" class="sm">
+						<li><a id="VisReceptSM" href="#" title="#">Vis Recept</a></li>
+                		<li><a id="OpretReceptSM" href="#" title="#">Opret Recept</a></li>
+                		
+         		    </ul>
+         		    
 				<li><a id="Raavarebatchadmin" href="#RaavarebatchAdministration">Raavarebatch Administration</a>
 				<li><a id="Produktbatchadmin" href="#ProduktbatchAdministration">Produktbatch Administration</a>
 				<li><a id="Afvejning" href="#Afvejning">Afvejning</a>
@@ -138,7 +146,7 @@
     			Pharmacist
     			<input type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="Værkfører">
+    			<input type="checkbox" name="roles[]" value="Vï¿½rkfï¿½rer">
     			Operatoer
     			<input type="checkbox" name="roles[]" value="Laborant" checked>
     			
@@ -154,6 +162,18 @@
 		</div>
 
 	</div>
+	
+	<!-- Table for prescription admin -->
+		<div id="table" style="display: none">
+			<h2>Vis Recepter:</h2>
+
+			<table id="usertable">
+			
+			</table>
+
+
+		</div>
+	
 	
 	<!-- Validation icon -->
 	<div class="valid">
