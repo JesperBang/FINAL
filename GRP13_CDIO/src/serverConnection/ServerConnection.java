@@ -6,15 +6,25 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import dao.MySQLUserDAO;
+import database.UserDTO;
 
-public class ServerConnection{
+
+public class ServerConnection implements Runnable{
+	
+	int portNumber;
+	MySQLUserDAO userDAO = new MySQLUserDAO();
+	
+	public ServerConnection(int port){
+		portNumber = port;
+	}
   
-    public static void main(String args[]){
+	public void run() {
     	String hostName = "127.0.0.1";
-    	int portNumber = Integer.parseInt("8000");
     	Socket sock;
     	PrintWriter out = null;
     	BufferedReader in = null;
+    	
     	
     	//Connects a socket to the weight
     	try {
@@ -41,13 +51,20 @@ public class ServerConnection{
 				
 				fromServer = in.readLine();
 				System.out.println("server: " + fromServer);
-				if(fromServer.split(" ")[2].equals("12")){
-					out.println("P111 Anders And?");
+				
+				try {
+				UserDTO user = userDAO.getUser(Integer.parseInt(fromServer.split(" ")[2]));
+				if(user.getFirstname().length()>0){
+					
+					out.println("P111 "+user.getFirstname() +" " + user.getLastname()+"?");
 					fromServer = in.readLine();
 					fromServer = in.readLine();
 					break;
 				} else{
 					out.println("RM20 8 Prøv_igen");
+				}
+				} catch (Exception e) {
+					
 				}
 			}
 			
