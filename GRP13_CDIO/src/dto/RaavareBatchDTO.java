@@ -19,7 +19,6 @@ public class RaavareBatchDTO implements Serializable{
 		this.rbId = rbId;
 	}
 	
-	
 	/** raavare id i området 1-99999999 vælges af brugerne */
 	int raavareId;          
 	public int getRaavareId() {
@@ -31,19 +30,6 @@ public class RaavareBatchDTO implements Serializable{
 	
 	/** mængde på lager */
 	double maengde;
-
-	public int getRbId() {
-		return rbId;
-	}
-	public void setRbId(int rbId) {
-		this.rbId = rbId;
-	}
-	public int getRaavareId() {
-		return raavareId;
-	}
-	public void setRaavareId(int raavareId) {
-		this.raavareId = raavareId;
-	}
 
 	public double getMaengde() {
 		return maengde;
