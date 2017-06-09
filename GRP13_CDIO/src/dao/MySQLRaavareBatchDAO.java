@@ -52,15 +52,18 @@ public class MySQLRaavareBatchDAO implements IRaavareBatchDAO {
 		}
 		try
 		{
-			RaavareBatchDTO raavarebatch = new RaavareBatchDTO();
+			RaavareBatchDTO raavarebatch;
 
-			raavarebatch.setRbId(rs.getInt("RbId"));
-			raavarebatch.setRaavareId(rs.getInt("raavareId"));
+			while(rs.next()){
+			raavarebatch = new RaavareBatchDTO();
+			raavarebatch.setRbId(rs.getInt("rb_id"));
+			raavarebatch.setRaavareId(rs.getInt("raavare_id"));
 			raavarebatch.setMaengde(rs.getDouble("maengde"));
 
 
 
 			list.add(raavarebatch);
+			}
 		}
 		catch (SQLException e) { throw new DALException(e); }
 		return list;

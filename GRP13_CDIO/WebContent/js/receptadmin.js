@@ -69,7 +69,7 @@ $(document).ready(function() {
 		var data = $('#CreatePrescription').serializeObject();
 
 		console.log(data);
-		debugger;
+		
 		$.ajax({
 			url: "http://localhost:8080/GRP13_CDIO/rest2/receptservice/create/recept",
 			data: JSON.stringify(data),
