@@ -52,9 +52,7 @@ IRaavareBatchDAO raavarebatch = new MySQLRaavareBatchDAO();
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	 public boolean createRaavareBatches(RaavareBatchDTO raavareBatches) {
-		System.out.println("Hej");
-
-		System.out.println(raavareBatches);
+		
 		try {
 			raavarebatch.createRaavareBatch(raavareBatches);
 		} catch (DALException e) {

@@ -5,11 +5,10 @@
 $(document).ready(function() {
 
 
-	var allPrescriptions;
+	var allRaavareBatches;
 	
-	document.getElementById("OpretReceptSM").addEventListener("click",function() {
+	document.getElementById("OpretRaavarebatchSM").addEventListener("click",function() {
 		$("#table").hide();
-
 		$("#createuser").hide();
 		$("#createuser").hide();
 		$("#createprescript").hide();
@@ -20,62 +19,58 @@ $(document).ready(function() {
 		$("#pbtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
-		$("#createprescript").show();
+		$("#createRB").show();
 		return false;
 		
 	});
 
-	// Load prescriptions on Vis Recepter page
-	document.getElementById("VisReceptSM").addEventListener("click",function() {
+	// Load prescriptions on Vis Raavarebatch page
+	document.getElementById("VisRaavarebatchSM").addEventListener("click",function() {
 
 		//visuals
-
 		$("#table").hide();
 		$("#createuser").hide();
 		$("#createuser").hide();
 		$("#createprescript").hide();
+		$("#receptable").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
 		$("#rtable").hide();
 		$("#pbtable").hide();
-		$("#createprescript").hide();
-
 		$("#createRB").hide();
-		$("#RBtable").hide();
-
-		$("#receptable").show();
+		$("#RBtable").show();
 
 		//ajax request
 		$.ajax({
-			url: "http://localhost:8080/GRP13_CDIO/rest2/receptservice/recept",
+			url: "http://localhost:8080/GRP13_CDIO/rest2/raavarebatchservice/raavarebatch",
 			method: "GET",
 
 			//success function
 			success: function(data){
-				allPrescriptions = data;
+				allRaavareBatches = data;
 				console.log(data);
 				//Parse JSON from ajax request to html table
 				//ini vars for table row
 				var tr;
 
 				//clearing old table rows and table heads
-				$("#recepttable tr").remove();
-				$("#recepttable th").remove();
+				$("#raavarebatchtable tr").remove();
+				$("#raavarebatchtable th").remove();
 
 				//Append table row with descriptions
 				$('<tr>').append(
-						$('<th>').text("Recept ID"),
-						$('<th>').text("Navn"),
-						$('<th>').text("Receptkomponenter")
-				).appendTo("#recepttable");
+						$('<th>').text("Raavarebatch ID"),
+						$('<th>').text("Raavare ID"),
+						$('<th>').text("Maengde")
+				).appendTo("#raavarebatchtable");
 
 				//Loop through prescriptions and append them to the table in html
-				$.each(allPrescriptions, function(i, item) {
+				$.each(allRaavareBatches, function(i, item) {
 					$('<tr>').append(
-							$('<td>').text(item.receptId),
-							$('<td>').text(item.receptNavn),
-							$('<td>').text(item.receptId)
-					).appendTo('#recepttable');
+							$('<td>').text(item.rbId),
+							$('<td>').text(item.raavareId),
+							$('<td>').text(item.maengde)
+					).appendTo('#raavarebatchtable');
 				});
 
 			}
@@ -84,21 +79,18 @@ $(document).ready(function() {
 	});
 	
 	
-
-	//Create Prescription Button
-	$("#CreatePrescription").submit( function() {               
+	//Create Raavarebatch Button
+	$("#CreateRaavarebatch").submit( function() {               
 
 		event.preventDefault();
 
 
-		var data = $('#CreatePrescription').serializeObject();
+		var data = $('#CreateRaavarebatch').serializeObject();
 
 		console.log(data);
-
-		debugger;
-
+		
 		$.ajax({
-			url: "http://localhost:8080/GRP13_CDIO/rest2/receptservice/create/recept",
+			url: "http://localhost:8080/GRP13_CDIO/rest2/raavarebatchservice/create/raavarebatch",
 			data: JSON.stringify(data),
 			contentType: "application/json",
 			method: 'POST',
@@ -106,12 +98,12 @@ $(document).ready(function() {
 				console.log(data);
 				console.log('This is the Success method')
 				console.log(resp)
-				document.getElementById("CreatePrescription").reset();
-				console.log("CPForm has been cleared")
+				document.getElementById("CreateRaavarebatch").reset();
+				console.log("RBForm has been cleared")
 
 				//Goes back to menu
 				$('#usradmin').show();
-				$('#receptable').hide();
+				$('#RBtable').hide();
 
 			},
 			error: function(resp){

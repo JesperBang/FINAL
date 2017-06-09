@@ -7,6 +7,14 @@ $(document).ready(function() {
 	document.getElementById("createusermenu").addEventListener("click",function() {
 		$("#table").hide();
 		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#pbtable").hide();
+		$("#rtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
 		$("#createuser").show();
 		
 		return false;
@@ -14,13 +22,32 @@ $(document).ready(function() {
 	document.getElementById("updateusermenu").addEventListener("click",function() {
 		$("#table").hide();
 		$("#createuser").hide();
+		$("#createuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#rtable").hide();
+		$("#pbtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
 		$("#updateuser").show();
+		
 		return false;
 	});
 	//Load logout
 	document.getElementById("logoutmenu").addEventListener("click",function() {
 		$("#table").hide();
 		$("#createuser").hide();
+		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#pbtable").hide();
+		$("#rtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
 		alert("Du er nu logget ud.");
 		$("#login").show();
 		$("#usradmin").hide();
