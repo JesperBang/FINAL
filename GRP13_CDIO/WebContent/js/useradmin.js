@@ -47,9 +47,9 @@ $(document).ready(function() {
 		$("#rtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#usradmin").hide();
 		alert("Du er nu logget ud.");
 		$("#login").show();
-		$("#usradmin").hide();
 		return false;
 	});
 	
@@ -60,9 +60,19 @@ $(document).ready(function() {
 	document.getElementById("usradminmenu").addEventListener("click",function() {
 		
 		//visuals
-		$("#table").show();
 		$("#createuser").hide();
 		$("#updateuser").hide();
+		$("#createuser").hide();
+		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#pbtable").hide();
+		$("#rtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
+		$("#table").show();
 		
 		//ajax request
 		$.ajax({

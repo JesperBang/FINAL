@@ -9,9 +9,8 @@ $(document).ready(function() {
 	
 	document.getElementById("OpretReceptSM").addEventListener("click",function() {
 		$("#table").hide();
-
 		$("#createuser").hide();
-		$("#createuser").hide();
+		$("#updateuser").hide();
 		$("#createprescript").hide();
 		$("#receptable").hide();
 		$("#updateraavare").hide();
@@ -39,10 +38,8 @@ $(document).ready(function() {
 		$("#rtable").hide();
 		$("#pbtable").hide();
 		$("#createprescript").hide();
-
 		$("#createRB").hide();
 		$("#RBtable").hide();
-
 		$("#receptable").show();
 
 		//ajax request
