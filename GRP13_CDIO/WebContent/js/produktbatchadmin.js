@@ -6,6 +6,14 @@ $(document).ready(function() {
 	var allProduktbatches;
 //ajax request
 	document.getElementById("VPB").addEventListener("click",function() {
+		$("#table").hide();
+		$("#createuser").hide();
+		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#rtable").hide();
 		$("#pbtable").show();
 		$.ajax({
 		url: "http://localhost:8080/GRP13_CDIO/rest2/produktbatchservice/produktbatches",

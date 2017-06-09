@@ -9,6 +9,14 @@ $(document).ready(function() {
 	
 	document.getElementById("OpretReceptSM").addEventListener("click",function() {
 		$("#table").hide();
+		$("#createuser").hide();
+		$("#createuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#rtable").hide();
+		$("#pbtable").hide();
 		$("#createprescript").show();
 		return false;
 		
@@ -18,6 +26,15 @@ $(document).ready(function() {
 	document.getElementById("VisReceptSM").addEventListener("click",function() {
 
 		//visuals
+		$("#table").hide();
+		$("#createuser").hide();
+		$("#createuser").hide();
+		$("#createprescript").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#rtable").hide();
+		$("#pbtable").hide();
+		$("#createprescript").hide();
 		$("#receptable").show();
 
 		//ajax request
