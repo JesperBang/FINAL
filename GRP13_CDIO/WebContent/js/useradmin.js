@@ -6,10 +6,16 @@ $(document).ready(function() {
 	//Load User table on request
 	document.getElementById("createusermenu").addEventListener("click",function() {
 		$("#table").hide();
+		$("#updateuser").hide();
 		$("#createuser").show();
 		return false;
 	});
-	
+	document.getElementById("updateusermenu").addEventListener("click",function() {
+		$("#table").hide();
+		$("#createuser").hide();
+		$("#updateuser").show();
+		return false;
+	});
 	//Load logout
 	document.getElementById("logoutmenu").addEventListener("click",function() {
 		$("#table").hide();
@@ -19,9 +25,9 @@ $(document).ready(function() {
 		$("#usradmin").hide();
 		return false;
 	});
-
+	
 	document.getElementById("VisRaavareSM").addEventListener("click",function() {
-		Testdiv.show();
+		$("#Testdiv").show();
 	});
 	// Load users on useradmin page
 	document.getElementById("usradminmenu").addEventListener("click",function() {
@@ -29,6 +35,7 @@ $(document).ready(function() {
 		//visuals
 		$("#table").show();
 		$("#createuser").hide();
+		$("#updateuser").hide();
 		
 		//ajax request
 		$.ajax({

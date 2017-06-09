@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 	var allProduktbatches;
 //ajax request
-	document.getElementById("Produktbatchadmin").addEventListener("click",function() {
+	document.getElementById("VPB").addEventListener("click",function() {
 		$("#pbtable").show();
 		$.ajax({
 		url: "http://localhost:8080/GRP13_CDIO/rest2/produktbatchservice/produktbatches",

@@ -3,7 +3,6 @@ package dao;
 import java.util.List;
 
 import database.DALException;
-import dto.RaavareBatchDTO;
 import dto.ReceptDTO;
 
 public interface IReceptDAO {
