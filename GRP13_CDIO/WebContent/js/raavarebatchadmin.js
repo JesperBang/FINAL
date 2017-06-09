@@ -88,7 +88,7 @@ $(document).ready(function() {
 		var data = $('#CreateRaavarebatch').serializeObject();
 
 		console.log(data);
-		debugger;
+		
 		$.ajax({
 			url: "http://localhost:8080/GRP13_CDIO/rest2/raavarebatchservice/create/raavarebatch",
 			data: JSON.stringify(data),
