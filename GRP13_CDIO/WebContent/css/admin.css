@@ -50,7 +50,8 @@ th {
 	color: white;
 	font-family:"Times New Roman";
 }
-.CUcontainer {
+.CUcontainer, .CPcontainer
+{
     padding: 1%;
     position: relative;
 }
@@ -74,19 +75,20 @@ input[type=submit] {
 }
 
 /* Centering login form */
-div.CreateUserForm
+div.CreateUserForm, div.CreatePrescription
 {
     display: block;
     text-align: center;
 }
 
-#CreateUserForm
+#CreateUserForm, CreatePrescription
 {
     display: inline-block;
 	width: 32%;
 }
 
-#CUContainer{
+#CUContainer, #CPContainer
+{
 	padding: 16px;
     position: relative;
 }
