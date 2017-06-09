@@ -51,6 +51,7 @@ th {
 	font-family:"Times New Roman";
 }
 
+
 .CUcontainer, .UUcontainer, .CPcontainer, .RBcontainer 
 
 {
@@ -78,7 +79,9 @@ input[type=submit] {
 
 /* Centering login form */
 
-div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavarebatch
+
+div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavarebatch, CreateRaavareForm
+
 
 {
     display: block;
@@ -86,7 +89,8 @@ div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavar
 }
 
 
-#CreateUserForm, #UpdateUserForm, #CreatePrescription, #CreateRaavarebatch
+
+#CreateUserForm, #UpdateUserForm, #CreatePrescription, #CreateRaavarebatch, #CreateRaavareForm
 
 {
     display: inline-block;
@@ -94,7 +98,9 @@ div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavar
 }
 
 
+
 #CUContainer, #UUContainer, #CPContainer, #RBContainer
+
 
 {
 	padding: 16px;

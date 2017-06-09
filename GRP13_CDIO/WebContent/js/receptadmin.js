@@ -9,6 +9,7 @@ $(document).ready(function() {
 	
 	document.getElementById("OpretReceptSM").addEventListener("click",function() {
 		$("#table").hide();
+
 		$("#createuser").hide();
 		$("#createuser").hide();
 		$("#createprescript").hide();
@@ -28,6 +29,7 @@ $(document).ready(function() {
 	document.getElementById("VisReceptSM").addEventListener("click",function() {
 
 		//visuals
+
 		$("#table").hide();
 		$("#createuser").hide();
 		$("#createuser").hide();
@@ -37,8 +39,10 @@ $(document).ready(function() {
 		$("#rtable").hide();
 		$("#pbtable").hide();
 		$("#createprescript").hide();
+
 		$("#createRB").hide();
 		$("#RBtable").hide();
+
 		$("#receptable").show();
 
 		//ajax request
@@ -90,7 +94,9 @@ $(document).ready(function() {
 		var data = $('#CreatePrescription').serializeObject();
 
 		console.log(data);
-		
+
+		debugger;
+
 		$.ajax({
 			url: "http://localhost:8080/GRP13_CDIO/rest2/receptservice/create/recept",
 			data: JSON.stringify(data),
