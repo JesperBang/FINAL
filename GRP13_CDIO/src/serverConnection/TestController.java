@@ -11,16 +11,8 @@ public class TestController {
 				connections[i] = new ServerConnection(8000+i);
 			}
 			 
-		        for(int i=0; i < 1; i++){
-		        	String[] arg = {Integer.toString(8000+i)};
-		        	Main.main(arg);
-		        	try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-		            
+		        for(int i=0; i < connections.length; i++){
+		        	
 		        	new Thread(connections[i]).start();
 		        }
 			 
