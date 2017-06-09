@@ -6,20 +6,39 @@ $(document).ready(function() {
 	var allRaavare;
 //ajax request
 	document.getElementById("OpretRaavareSM").addEventListener("click",function() {
-		$("#rtable").hide();
-		$("#table").hide();	
+		$("#table").hide();
+		$("#createuser").hide();
+		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
 		$("#updateraavare").hide();
+		$("#pbtable").hide();
+		$("#rtable").hide();
 		$("#createraavare").show();
 		return false;
 	});
 	document.getElementById("OpdaterRaavareSM").addEventListener("click",function() {
-		$("#rtable").hide();
 		$("#table").hide();
+		$("#createuser").hide();
+		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
 		$("#createraavare").hide();
+		$("#pbtable").hide();
+		$("#rtable").hide();
 		$("#updateraavare").show();
 		return false;
+		
 	});
 	document.getElementById("VisRaavareSM").addEventListener("click",function() {
+		$("#table").hide();
+		$("#createuser").hide();
+		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#pbtable").hide();
 		$("#rtable").show();
 		$.ajax({
 		url: "http://localhost:8080/GRP13_CDIO/rest2/raavareservice/raavare",

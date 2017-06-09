@@ -7,12 +7,25 @@ $(document).ready(function() {
 	document.getElementById("createusermenu").addEventListener("click",function() {
 		$("#table").hide();
 		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#pbtable").hide();
+		$("#rtable").hide();
 		$("#createuser").show();
 		return false;
 	});
 	document.getElementById("updateusermenu").addEventListener("click",function() {
 		$("#table").hide();
 		$("#createuser").hide();
+		$("#createuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#rtable").hide();
+		$("#pbtable").hide();
 		$("#updateuser").show();
 		return false;
 	});
@@ -20,6 +33,13 @@ $(document).ready(function() {
 	document.getElementById("logoutmenu").addEventListener("click",function() {
 		$("#table").hide();
 		$("#createuser").hide();
+		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#pbtable").hide();
+		$("#rtable").hide();
 		alert("Du er nu logget ud.");
 		$("#login").show();
 		$("#usradmin").hide();
