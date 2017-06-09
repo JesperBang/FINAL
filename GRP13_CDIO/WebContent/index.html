@@ -22,7 +22,7 @@
 <script type="text/javascript" src="js/raavareadmin.js"></script>
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 <script type="text/javascript" src="js/receptadmin.js"></script>
-
+<script type="text/javascript" src="js/raavarebatchadmin.js"></script>
 
 
 </head>
@@ -105,6 +105,13 @@
          		 
          		<!-- Raavare Batch Admin -->
 				<li><a id="Raavarebatchadmin" href="#RaavarebatchAdministration">Raavarebatch Administration</a>
+				
+				<!-- Sub Menu of Raavarebatch admin -->
+					<ul id="smid" class="sm">
+						<li><a id="VisRaavarebatchSM" href="#">Vis Raavarebatch</a></li>
+                		<li><a id="OpretRaavarebatchSM" href="#">Opret Raavarebatch</a></li>
+                		
+         		    </ul>
 				
 				
 				<!-- Produkt Batch Admin -->
@@ -233,7 +240,19 @@
 
 
 		</div>
+		
+		<!-- Table for RaavareBatch admin -->
+		<div id="RBtable" style="display: none">
+			<h2>Vis Raavarebatches:</h2>
 
+			<table id="raavarebatchtable">
+			
+			</table>
+
+
+		</div>
+
+	
 		<!-- Create user page -->
 		<div id="createuser" style="display: none">
    					
@@ -344,6 +363,8 @@
 
 
 		</div>
+		
+	
 	
 	<!-- Create prescription page -->
 		<div id="createprescript" style="display: none">
@@ -355,15 +376,15 @@
 
 			<form id="CreatePrescription">
 			
-			<!-- MANGLER INFORMATION FRA PRODUKTKOMP!!!!!!! -->
 				<!-- User input -->
 				<div id="CPContainer">
 				
 				<div style="width:100%">
-    			<input type="number" name="receptId" placeholder="ReceptNr" min ="1" max="99" required>
+    			<input type="number" name="receptId" placeholder="Recept ID" min ="1" max="99" required>
     			</div>
-    			<input type="text" name="receptNavn" placeholder="Navn paa recept" maxlength="30" pattern="[a-z A-Z]*" required>
-    			<input type="number" name="receptId" placeholder="" min ="1" max="99" required>
+    			<input type="text" name="receptNavn" placeholder="Recept Navn" maxlength="30" pattern="[a-z A-Z]*" required>
+    			
+    			<!--  !!!Mangler information omkring produktkomp!!! -->
     			<input type="text" name="tolerance" placeholder="Tolerance (0,1-10,0%)" maxlength="50" required>
     	
     			
@@ -374,6 +395,38 @@
     			<!-- Create Prescription Btn -->
     			<div id="CPbtn" class="CPcontainer" style="background-color: #f1f1f1">			
     				<input class="cpbtn" type="submit"  value="Opret recept">
+    			</div>
+			</form>
+			</div>
+	
+		</div>
+		
+		<!-- Create Raavarebatch page -->
+		<div id="createRB" style="display: none">
+   					
+			
+			<!-- Prescription Creation Form -->
+			<div class="CreateRaavarebatch">
+				<h2>Opret Raavarebatch</h2>
+
+			<form id="CreateRaavarebatch">
+			
+				<!-- User input -->
+				<div id="RBContainer">
+				
+				<div style="width:100%">
+    			<input type="number" name="rbId" placeholder="Raavarebatch ID" min ="1" max="99" required>
+    			</div>
+    			<input type="number" name="maengde" placeholder="Maengde" min ="1" max="99" required>
+    	
+    			
+    			
+    			
+    			</div>
+    				
+    			<!-- Create Raavarebatch Btn -->
+    			<div id="RBbtn" class="RBcontainer" style="background-color: #f1f1f1">			
+    				<input class="rbbtn" type="submit"  value="Opret raavarebatch">
     			</div>
 			</form>
 			</div>
