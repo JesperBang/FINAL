@@ -13,6 +13,8 @@ $(document).ready(function() {
 		$("#createraavare").hide();
 		$("#pbtable").hide();
 		$("#rtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
 		$("#createuser").show();
 		return false;
 	});
@@ -26,7 +28,10 @@ $(document).ready(function() {
 		$("#createraavare").hide();
 		$("#rtable").hide();
 		$("#pbtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
 		$("#updateuser").show();
+		
 		return false;
 	});
 	//Load logout
@@ -40,6 +45,8 @@ $(document).ready(function() {
 		$("#createraavare").hide();
 		$("#pbtable").hide();
 		$("#rtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
 		alert("Du er nu logget ud.");
 		$("#login").show();
 		$("#usradmin").hide();
