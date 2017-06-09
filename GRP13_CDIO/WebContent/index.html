@@ -21,6 +21,7 @@
 <script type="text/javascript" src="js/produktbatchadmin.js"></script>
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 <script type="text/javascript" src="js/raavare.js"></script>
+<script type="text/javascript" src="js/raavarebatch.js"></script>
 
 
 </head>
@@ -84,7 +85,7 @@
          		    
 				<li><a id="Raavarebatchadmin" href="#RaavarebatchAdministration">Raavarebatch Administration</a>
 				     <!-- raavarebatch admninistrations submenu -->
-				      <ul class="rba">
+				      <ul id="smid" class="sm">
 				      <li> <a id="RBO" href="#OpretRaavarebatch"> Opret Raavarebatch</a></li>
 				      <li> <a id="RBV" href="#VisRaavarebatch"> Vis Raavarebatches </a></li>
 				      </ul>
@@ -115,6 +116,16 @@
 			<h2>Brugere:</h2>
 
 			<table id="usertable">
+			
+			</table>
+
+
+		</div>
+		<!-- Table for RaavareBatch admin -->
+		<div id="rbtable" style="display: none">
+			<h2>Brugere:</h2>
+
+			<table id="raavarebatchtable">
 			
 			</table>
 
@@ -224,6 +235,7 @@
 </div>
 
 <div id="CreateRaavarebatch" style="display: none">
+RaavareBatch
 <form>
 <input type="number" name="RBno" placeholder="Enter Raavarebatch No.">
 <input type="number" name="Amount" placeholder="Enter amount of Raavare for batch">
