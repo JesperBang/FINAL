@@ -81,13 +81,13 @@ div.CreateUserForm, div.UpdateUserForm
     text-align: center;
 }
 
-#CreateUserForm, #UpdateUserForm
+#CreateUserForm, #UpdateUserForm, #ChooseUserToUpdate
 {
     display: inline-block;
 	width: 32%;
 }
 
-#CUContainer, #UUContainer
+#CUContainer, #UUContainer, #ChooseContainer
 {
 	padding: 16px;
     position: relative;

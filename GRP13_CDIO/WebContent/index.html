@@ -109,7 +109,7 @@
                 		<li><a id="OPB" href="#">Opret Produktbatch</a></li>
                 		<li><a id="UPB" href="#">Opdater Produktbatch</a></li>
          		    </ul>
-
+					
 
 				<!-- Logout -->
 				<li><a id="logoutmenu" href="#">Log ud</a></li>
@@ -182,20 +182,21 @@
     			<!-- Roles -->
     			<b>Roles</b><br>
     			<div class="checkbox-group">
+    			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     			Admin
-    			<input type="checkbox" name="roles[]" value="Administrator">
+    			<input id="checkb" type="checkbox" name="roles[]" value="Administrator">
     			Pharmacist
-    			<input type="checkbox" name="roles[]" value="Farmaceut">
+    			<input id="checkb" type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="Værkfører">
+    			<input id="checkb" type="checkbox" name="roles[]" value="Værkfører">
     			Operatoer
-    			<input type="checkbox" name="roles[]" value="Laborant" checked>
+    			<input id="checkb" type="checkbox" name="roles[]" value="Laborant">
     			
     			</div>	</div>
     				
     			<!-- Create User Btn -->
     			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
-    				<input class="cubtn" type="submit"  value="Create user">
+    				<input id="cubtnid" class="cubtn" type="submit"  value="Create user">
     			</div>
 			</form>
 			</div>
@@ -212,7 +213,14 @@
 			<!-- Usr update Form -->
 			<div class="UpdateUserForm">
 				<h2>Update User Form</h2>
-
+			
+			<!-- Form for chosing user by id to update -->
+			<form id="ChooseUserToUpdate">
+				<div id="ChooseContainer">
+					<input type="number" name="userId" placeholder="Enter the id of the user you wish to update" min ="11" max="99" style="width:59%">
+				</div>
+			</form>
+			
 			<form id="UpdateUserForm">
 			
 			

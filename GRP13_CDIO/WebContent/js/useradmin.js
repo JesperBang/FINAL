@@ -8,6 +8,7 @@ $(document).ready(function() {
 		$("#table").hide();
 		$("#updateuser").hide();
 		$("#createuser").show();
+		
 		return false;
 	});
 	document.getElementById("updateusermenu").addEventListener("click",function() {
@@ -25,6 +26,8 @@ $(document).ready(function() {
 		$("#usradmin").hide();
 		return false;
 	});
+	
+	
 	
 	document.getElementById("VisRaavareSM").addEventListener("click",function() {
 		$("#Testdiv").show();
@@ -76,7 +79,7 @@ $(document).ready(function() {
 						$('<td>').text(item.cpr),
 						$('<td>').text(item.password),
 						$('<td>').text(item.roles),
-						$('<td>').text(item.aktiv)
+						$('<td>').text(item.aktiv)			
 				).appendTo('#usertable');
 			});
 			
