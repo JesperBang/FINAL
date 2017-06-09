@@ -51,7 +51,8 @@ th {
 	font-family:"Times New Roman";
 }
 
-.CUcontainer, .UUcontainer, .CPcontainer 
+
+.CUcontainer, .UUcontainer, .CPcontainer, .RBcontainer 
 
 {
     padding: 1%;
@@ -78,7 +79,9 @@ input[type=submit] {
 
 /* Centering login form */
 
-div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription,CreateRaavareForm
+
+div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavarebatch, CreateRaavareForm
+
 
 {
     display: block;
@@ -86,7 +89,8 @@ div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription,CreateRaavareForm
 }
 
 
-#CreateUserForm, #UpdateUserForm, #CreatePrescription
+
+#CreateUserForm, #UpdateUserForm, #CreatePrescription, #CreateRaavarebatch, #CreateRaavareForm
 
 {
     display: inline-block;
@@ -94,7 +98,9 @@ div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription,CreateRaavareForm
 }
 
 
-#CUContainer, #UUContainer, #CPContainer
+
+#CUContainer, #UUContainer, #CPContainer, #RBContainer
+
 
 {
 	padding: 16px;
