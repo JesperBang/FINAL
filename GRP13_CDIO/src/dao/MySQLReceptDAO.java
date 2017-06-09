@@ -27,6 +27,7 @@ public class MySQLReceptDAO implements IReceptDAO {
 	    	ReceptDTO recept = new ReceptDTO ();
 	    	recept.setReceptId(rs.getInt("recept_id"));
 	    	recept.setReceptNavn(rs.getString("recept_navn"));
+	    	
 	    	return recept;
 	    }
 	    catch (SQLException e) {
@@ -43,15 +44,16 @@ public class MySQLReceptDAO implements IReceptDAO {
 		}
 		try
 		{
-			ReceptDTO recept = new ReceptDTO();
+			ReceptDTO recept;
 			while (rs.next()) 
 			{
+				recept = new ReceptDTO();
 				recept.setReceptId(rs.getInt("recept_id"));
 				recept.setReceptNavn(rs.getString("recept_navn"));
-				
+				list.add(recept);
 			}
 				
-			list.add(recept);
+			
 		}
 		catch (SQLException e) { throw new DALException(e); }
 		return list;
