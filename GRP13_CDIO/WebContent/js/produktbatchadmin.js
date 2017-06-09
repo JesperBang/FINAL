@@ -14,6 +14,8 @@ $(document).ready(function() {
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
 		$("#rtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
 		$("#pbtable").show();
 		$.ajax({
 		url: "http://localhost:8080/GRP13_CDIO/rest2/produktbatchservice/produktbatches",
