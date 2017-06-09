@@ -9,6 +9,16 @@ $(document).ready(function() {
 	
 	document.getElementById("OpretRaavarebatchSM").addEventListener("click",function() {
 		$("#table").hide();
+		$("#createuser").hide();
+		$("#createuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#rtable").hide();
+		$("#pbtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
 		$("#createRB").show();
 		return false;
 		
@@ -18,6 +28,16 @@ $(document).ready(function() {
 	document.getElementById("VisRaavarebatchSM").addEventListener("click",function() {
 
 		//visuals
+		$("#table").hide();
+		$("#createuser").hide();
+		$("#createuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#rtable").hide();
+		$("#pbtable").hide();
+		$("#createRB").hide();
 		$("#RBtable").show();
 
 		//ajax request

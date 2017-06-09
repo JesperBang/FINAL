@@ -18,6 +18,8 @@ $(document).ready(function() {
 		$("#createraavare").hide();
 		$("#rtable").hide();
 		$("#pbtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
 		$("#createprescript").show();
 		return false;
 		
@@ -37,6 +39,9 @@ $(document).ready(function() {
 		$("#rtable").hide();
 		$("#pbtable").hide();
 		$("#createprescript").hide();
+
+		$("#createRB").hide();
+		$("#RBtable").hide();
 
 		$("#receptable").show();
 
