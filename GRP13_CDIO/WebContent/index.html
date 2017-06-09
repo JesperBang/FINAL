@@ -19,6 +19,7 @@
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/useradmin.js"></script>
 <script type="text/javascript" src="js/produktbatchadmin.js"></script>
+<script type="text/javascript" src="js/raavareadmin.js"></script>
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 <script type="text/javascript" src="js/receptadmin.js"></script>
 
@@ -85,7 +86,7 @@
 					<ul id="smid" class="sm">
 						<li><a id="VisRaavareSM" href="#">Vis Raavare</a></li>
                 		<li><a id="OpretRaavareSM" href="#">Opret Raavare</a></li>
-                		<li><a id="RetRaavareSM" href="#">Ret Raavare</a></li>
+                		<li><a id="OpdaterRaavareSM" href="#">Opdater Raavare</a></li>
          		    </ul>
          		   
          		   
@@ -127,12 +128,84 @@
 		</div>
 		
 		
-		<!-- Show Raavare -->
-		<div id="Testdiv" style="display:none;">
-			TEST ETST ETFDSGHGGGGGGGGGGGGGGG
+	<!-- Table for Raavareadmin -->
+		<div id="rtable" style="display: none">
+			<h2>Raavarer:</h2>
+
+			<table id="raavaretable">
+			
+			</table>
+
+
 		</div>
+	
+   					
+			
 		
-		
+		<!-- Create raavare page -->
+		<div id="createraavare" style="display: none">
+   					
+			
+			<!-- Usr Creation Form -->
+			<div class="CreateUserForm">
+				<h2>Create raavare Form</h2>
+
+			<form id="CreateUserForm">
+			
+			
+				<!-- User input -->
+				<div id="CUContainer">
+				
+				<div style="width:100%">
+    			<input type="number" name="raavareId" placeholder="Raavare Id" min ="11" max="99" style="width:59%" required>
+    			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
+    			</div>
+    			<input type="text" name="leverandoer" placeholder="Leverandoer" maxlength="50" pattern="[a-z A-Z]*" required>
+    			
+    			</div>
+    				
+    			<!-- Create User Btn -->
+    			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
+    				<input class="cubtn" type="submit"  value="Create raavare">
+    			</div>
+			</form>
+			</div>
+	
+		</div>
+
+	</div>
+	
+	<!-- Update raavare page -->
+		<div id="updateraavare" style="display: none">
+   					
+			
+			<!-- raavare update Form -->
+			<div class="CreateUserForm">
+				<h2>Update raavare form</h2>
+
+			<form id="CreateUserForm">
+			
+			
+				<!-- User input -->
+				<div id="UUContainer">
+				
+				<div style="width:100%">
+				<input type="number" name="raavareId" placeholder="Raavare Id" min ="11" max="99" style="width:59%" required>
+    			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
+    			</div>
+    			<input type="text" name="leverandoer" placeholder="Leverandoer" maxlength="50" pattern="[a-z A-Z]*" required>
+    			
+    			</div>
+    				
+    			<!-- Update raavare Btn -->
+    			<div id="CUbtn" class="UUcontainer" style="background-color: #f1f1f1">			
+    				<input class="cubtn" type="submit"  value="Update raavare">
+    			</div>
+			</form>
+			</div>
+	
+		</div>
+
 		<!-- popop -->
 		<div id="popupID" class="popup" style="display:none" >
   			<span class="popuptext" id="myPopup" >
