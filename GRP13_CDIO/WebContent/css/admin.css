@@ -78,7 +78,7 @@ input[type=submit] {
 
 /* Centering login form */
 
-div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription
+div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription,CreateRaavareForm
 
 {
     display: block;

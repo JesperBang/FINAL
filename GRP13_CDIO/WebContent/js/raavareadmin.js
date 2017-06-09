@@ -19,6 +19,45 @@ $(document).ready(function() {
 		$("#updateraavare").show();
 		return false;
 	});
+
+	//Create User Submit Button
+	$("#CreateRaavareForm").submit( function() {               
+
+		event.preventDefault();
+		
+		
+		var data = $('#CreateRaavareForm').serializeObject();
+
+		console.log(data);
+		debugger;
+		$.ajax({
+			url: "http://localhost:8080/GRP13_CDIO/rest2/raavareservice/create/raavare",
+			data: JSON.stringify(data),
+			contentType: "application/json",
+			method: 'POST',
+			success: function(resp){
+				console.log(data);
+				console.log('This is the Success method')
+				console.log(resp)
+				document.getElementById("CreateRaavareForm").reset();
+				console.log("CRForm has been cleared")
+				
+				//Goes back to menu
+				$('#usradmin').show();
+				$('#createraavare').hide();
+
+			},
+			error: function(resp){
+				console.log(data);
+				console.log('This is the ERROR method')
+				console.log(resp)
+			}
+		});
+	   
+		return false;
+
+});
+	
 	document.getElementById("VisRaavareSM").addEventListener("click",function() {
 		$("#rtable").show();
 		$.ajax({

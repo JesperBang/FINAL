@@ -147,20 +147,20 @@
    					
 			
 			<!-- Usr Creation Form -->
-			<div class="CreateUserForm">
+			<div class="CreateRaavareForm">
 				<h2>Create raavare Form</h2>
 
-			<form id="CreateUserForm">
+			<form id="CreateRaavareForm">
 			
 			
 				<!-- User input -->
 				<div id="CUContainer">
 				
 				<div style="width:100%">
-    			<input type="number" name="raavareId" placeholder="Raavare Id" min ="11" max="99" style="width:59%" required>
+    			<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" max="99" style="width:59%" required>
     			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
     			</div>
-    			<input type="text" name="leverandoer" placeholder="Leverandoer" maxlength="50" pattern="[a-z A-Z]*" required>
+    			<input type="text" name="leverandoer" placeholder="Leverandoer" maxlength="50" pattern="[a-z A-Z 0-9._%+-/]*" required>
     			
     			</div>
     				
