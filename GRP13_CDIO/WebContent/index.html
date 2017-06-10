@@ -13,7 +13,10 @@
 <link rel="stylesheet" type="text/css" href="css/popupcss.css">
 
 <!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 
 <!-- Script -->
 <script type="text/javascript" src="js/script.js"></script>
@@ -150,36 +153,6 @@
    					
 			
 		
-		<!-- Create raavare page -->
-		<div id="createraavare" style="display: none">
-   					
-			
-			<!-- Usr Creation Form -->
-			<div class="CreateRaavareForm">
-				<h2>Create raavare Form</h2>
-
-			<form id="CreateRaavareForm">
-			
-			
-				<!-- User input -->
-				<div id="CUContainer">
-				
-				<div style="width:100%">
-    			<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" max="99" style="width:59%" required>
-    			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
-    			</div>
-    			<input type="text" name="leverandoer" placeholder="Leverandoer" maxlength="50" pattern="[a-z A-Z 0-9._%+-/]*" required>
-    			
-    			</div>
-    				
-    			<!-- Create User Btn -->
-    			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
-    				<input class="cubtn" type="submit"  value="Create raavare">
-    			</div>
-			</form>
-			</div>
-	
-		</div>
 
 	</div>
 	
@@ -187,30 +160,7 @@
 		<div id="updateraavare" style="display: none">
    					
 			
-			<!-- raavare update Form -->
-			<div class="CreateUserForm">
-				<h2>Update raavare form</h2>
-
-			<form id="CreateUserForm">
 			
-			
-				<!-- User input -->
-				<div id="UUContainer">
-				
-				<div style="width:100%">
-				<input type="number" name="raavareId" placeholder="Raavare Id" min ="11" max="99" style="width:59%" required>
-    			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
-    			</div>
-    			<input type="text" name="leverandoer" placeholder="Leverandoer" maxlength="50" pattern="[a-z A-Z]*" required>
-    			
-    			</div>
-    				
-    			<!-- Update raavare Btn -->
-    			<div id="CUbtn" class="UUcontainer" style="background-color: #f1f1f1">			
-    				<input class="cubtn" type="submit"  value="Update raavare">
-    			</div>
-			</form>
-			</div>
 	
 		</div>
 
@@ -281,7 +231,6 @@
     			<!-- Roles -->
     			<b>Roles</b><br>
     			<div class="checkbox-group">
-    			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     			Admin
     			<input type="checkbox" name="roles[]" value="Administrator">
     			Pharmacist
