@@ -65,6 +65,13 @@ form
     text-align: left;
 }
 
+#ChooseUserToUpdate
+{
+	display: block;
+	position: relative;
+	text-align:center;
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {

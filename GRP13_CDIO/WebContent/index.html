@@ -25,6 +25,7 @@
 <script type="text/javascript" src="js/raavareadmin.js"></script>
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 <script type="text/javascript" src="js/receptadmin.js"></script>
+<script type="text/javascript" src="js/updateusr.js"></script>
 
 <script type="text/javascript" src="js/raavarebatchadmin.js"></script>
 
@@ -251,7 +252,7 @@
 	
 		</div>
 
-	</div>
+	
 	
 	
 	<!-- Update user page -->
@@ -265,9 +266,18 @@
 			<!-- Form for chosing user by id to update -->
 			<form id="ChooseUserToUpdate">
 				<div id="ChooseContainer">
-					<input type="number" name="userId" placeholder="Enter the id of the user you wish to update" min ="11" max="99" style="width:59%">
+					<input id="chooseid" type="number" name="userId" placeholder="Enter the id of the user you wish to update" min ="11" max="99" required style="width:59%">
+					
+					<!-- Fetch User Button -->
+					<div id="FUbtn" class="FUcontainer" style="background-color: #f1f1f1">			
+    					<input class="fubtn" type="submit"  value="Fetch user">
+    				</div>
+    				
 				</div>
 			</form>
+			
+			<!-- Seperation of forms -->
+			<br>
 			
 			<form id="UpdateUserForm">
 			
@@ -276,26 +286,26 @@
 				<div id="UUContainer">
 				
 				<div style="width:100%">
-				<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" readonly>
-    			<input type="text" name="ini" placeholder="Initials" maxlength="3" pattern="[A-Z]*" style="width:40%" required>
+				<input id="updateidin" type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" readonly>
+    			<input id="updateiniin" type="text" name="ini" placeholder="Initials" maxlength="3" style="width:40%" required>
     			</div>
     			
-    			<input type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-z A-Z]*" required>
-		    	<input type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*" required>
-    			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" required>
-    			<input type="password" name="password" placeholder="Password" maxlength="8" required>
+    			<input id="updatefnin" type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-z A-Z]*" required>
+		    	<input id="updatelnin" type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*" required>
+    			<input id="updatecprin" type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" required>
+    			<input id="updatepassin" type="password" name="password" placeholder="Password" maxlength="8" required>
     			
     			<!-- Roles -->
     			<b>Roles</b><br>
     			<div class="checkbox-group">
     			Admin
-    			<input type="checkbox" name="roles[]" value="Administrator">
+    			<input id="updateradmin" type="checkbox" name="roles[]" value="Administrator">
     			Pharmacist
-    			<input type="checkbox" name="roles[]" value="Farmaceut">
+    			<input id="updaterfarm" type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="Værkfører">
+    			<input id="updatervaerk" type="checkbox" name="roles[]" value="Værkfører">
     			Operatoer
-    			<input type="checkbox" name="roles[]" value="Laborant" checked>
+    			<input id="updaterLab" type="checkbox" name="roles[]" value="Laborant">
     			
     			</div>	</div>
     			
@@ -386,7 +396,7 @@
     			</div>
 			</form>
 			</div>
-	
+	</div>
 
 	<!-- Create prescription page -->
 		<div id="createprescript" style="display: none">
