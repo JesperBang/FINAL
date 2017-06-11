@@ -12,9 +12,7 @@ $(document).ready(function() {
 			var vaerk = document.getElementById("updatervaerk");
 			var labor = document.getElementById("updaterLab");
 			
-			
 			var idu  = document.getElementById("chooseid").value;
-			alert('http://localhost:8080/GRP13_CDIO/rest2/userservice/user/' + idu);
 			
 			$.ajax({
 				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/user/" + idu,
@@ -28,6 +26,7 @@ $(document).ready(function() {
 					console.log("Chose User has been cleared")
 					
 					//Parsing fetched information into update form
+					try{
 						console.log(resp.opr_id);
 						$("#updateidin").val(resp.opr_id);
 						$("#updatefnin").val(resp.firstname);
@@ -35,7 +34,7 @@ $(document).ready(function() {
 						$("#updateiniin").val(resp.ini);
 						$("#updatecprin").val(resp.cpr);
 						$("#updatepassin").val(resp.password);
-						
+					
 						//role filling
 						if(resp.roles.length == 1){
 							//prevent update to no role
@@ -90,6 +89,9 @@ $(document).ready(function() {
 							vaerk.disabled = false;
 							labor.diasbled = false;
 						}
+					}catch(err){
+						alert("User doesn't excist! make sure to type a valid id.");
+					}
 				},
 				
 				error: function(resp){
