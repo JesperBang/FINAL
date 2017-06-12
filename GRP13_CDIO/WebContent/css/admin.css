@@ -81,7 +81,7 @@ div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavar
     text-align: center;
 }
 
-#CreateUserForm, #UpdateUserForm, #ChooseUserToUpdate, #CreatePrescription, #CreateRaavarebatch, #CreateRaavareForm
+#CreateUserForm, #UpdateUserForm, #CreatePrescription, #CreateRaavarebatch, #CreateRaavareForm
 {
     display: inline-block;
 	width: 32%;
