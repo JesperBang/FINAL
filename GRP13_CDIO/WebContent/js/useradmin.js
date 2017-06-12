@@ -147,7 +147,6 @@ $(document).ready(function() {
 			var data = $('#CreateUserForm').serializeObject();
 
 			console.log(data);
-			debugger;
 			$.ajax({
 				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/create/user",
 				data: JSON.stringify(data),

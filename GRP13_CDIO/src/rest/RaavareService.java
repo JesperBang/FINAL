@@ -52,7 +52,7 @@ IRaavareDAO raavare = new MySQLRaavareDAO();
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	 public boolean createRaavarer(RaavareDTO raavarer) {
-		System.out.println("Hej");
+		
 
 		System.out.println(raavare);
 		try {
