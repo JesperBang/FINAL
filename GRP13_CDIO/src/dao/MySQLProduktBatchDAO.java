@@ -19,7 +19,7 @@ public class MySQLProduktBatchDAO implements IProduktBatchDAO {
 	public ProduktBatchDTO getProduktBatch(int pbId) throws DALException {
 		// TODO Auto-generated method stub
 		
-		ResultSet rs = null;
+		ResultSet rs, rs2;
 		try { //Files.readAllLines(Paths.get("/UserCommands.txt")).get(0)
 			PreparedStatement stmt = connector.getConnection().prepareStatement("select * from getproduktbatch where pb_id = ?;");
 			stmt.setInt(1, pbId);
@@ -33,6 +33,19 @@ public class MySQLProduktBatchDAO implements IProduktBatchDAO {
 	    	produkt.setPbId(rs.getInt("pb_id"));
 	    	produkt.setStatus(rs.getInt("status"));
 	    	produkt.setReceptId(rs.getInt("recept_id"));
+	    	PreparedStatement stmt = connector.getConnection().prepareStatement("select * from getproduktbatchkomponent where pb_id = ?;");
+			stmt.setInt(1, produkt.getPbId());
+			rs2 = stmt.executeQuery();
+			ProduktBatchKompDTO komp;
+			while(rs2.next()){
+				komp = new ProduktBatchKompDTO();
+				komp.setPbId(rs2.getInt("pb_id"));
+				komp.setNetto(rs2.getDouble("netto"));
+				komp.setTara(rs2.getDouble("tara"));
+				komp.setOprId(rs2.getInt("opr_id"));
+				komp.setRbId(rs2.getInt("rb_id"));
+				produkt.addKomp(komp);
+			}
 	    	return produkt;
 	    }
 	    catch (SQLException e) {
