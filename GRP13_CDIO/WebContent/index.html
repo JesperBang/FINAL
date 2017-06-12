@@ -25,6 +25,7 @@
 <script type="text/javascript" src="js/raavareadmin.js"></script>
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 <script type="text/javascript" src="js/receptadmin.js"></script>
+<script type="text/javascript" src="js/updateusr.js"></script>
 
 <script type="text/javascript" src="js/raavarebatchadmin.js"></script>
 
@@ -68,7 +69,7 @@
 
 		
 		<!-- div for fixing menu bar glitch -->
-		<div id="usrmenu">
+		<div id="usrmenu" style="min-width:1300px; ">
 			<ul class="mm">
 
 			
@@ -89,7 +90,7 @@
 				<li><a id="Raavareadmin" href="#RaavareAdministration">Raavare Administration</a>
 					
 					<!-- Sub Menu of Raavareadmin -->
-					<ul id="smid" class="sm">
+					<ul class="sm">
 						<li><a id="VisRaavareSM" href="#">Vis Raavare</a></li>
                 		<li><a id="OpretRaavareSM" href="#">Opret Raavare</a></li>
                 		<li><a id="OpdaterRaavareSM" href="#">Opdater Raavare</a></li>
@@ -100,7 +101,7 @@
 				<li><a id="Receptadmin" href="#ReceptAdministration">Recept Administration</a>
 				
 					<!-- Sub Menu of Receptadmin -->
-					<ul id="smid" class="sm">
+					<ul class="sm">
 
                 		
 						<li><a id="VisReceptSM" href="#">Vis Recept</a></li>
@@ -113,7 +114,7 @@
 				<li><a id="Raavarebatchadmin" href="#RaavarebatchAdministration">Raavarebatch Administration</a>
 				
 				<!-- Sub Menu of Raavarebatch admin -->
-					<ul id="smid" class="sm">
+					<ul class="sm">
 						<li><a id="VisRaavarebatchSM" href="#">Vis Raavarebatch</a></li>
                 		<li><a id="OpretRaavarebatchSM" href="#">Opret Raavarebatch</a></li>
                 		
@@ -124,19 +125,19 @@
 				<li><a id="Produktbatchadmin" href="#ProduktbatchAdministration">Produktbatch Administration</a>
 				
 					<!-- Sub Menu of Produktbatchadmin -->
-					<ul id="smid" class="sm">
+					<ul class="sm">
 						<li><a id="VPB" href="#">Vis Produktbatches</a></li>
                 		<li><a id="OPB" href="#">Opret Produktbatch</a></li>
-                		<li><a id="UPB" href="#">Opdater Produktbatch</a></li>
          		    </ul>
 
 
-				<!-- Logout -->
-				<li><a id="logoutmenu" href="#">Log ud</a></li>
-				
-				
 				<!-- Author -->
-				<li id="Forfattere" style="float: right"><a href="#Forfattere">Forfattere</a></li>
+				<li id="Forfattere" ><a href="#Forfattere">Forfattere</a>
+				
+				<!-- Logout -->
+				<li><a id="logoutmenu" href="#" >Log ud</a></li>
+				
+
 			</ul>
 		</div>
 		
@@ -148,23 +149,14 @@
 			<table id="raavaretable">
 			
 			</table>
-
-
 		</div>
-	
-   					
-			
-		
-
 	</div>
 	
 	<!-- Update raavare page -->
 		<div id="updateraavare" style="display: none">
    					
-			
-			
-	
 		</div>
+
 
 		<!-- popop -->
 		<div id="popupID" class="popup" style="display:none" >
@@ -212,7 +204,7 @@
 			
 			<!-- Usr Creation Form -->
 			<div class="CreateUserForm">
-				<h2>Create User Form</h2>
+				<h2>Lav Bruger</h2>
 
 			<form id="CreateUserForm">
 			
@@ -238,7 +230,9 @@
     			Pharmacist
     			<input type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="V�rkf�rer">
+
+    			<input type="checkbox" name="roles[]" value="Værkfører">
+
     			Operatoer
     			<input type="checkbox" name="roles[]" value="Laborant">
     			
@@ -246,7 +240,7 @@
     				
     			<!-- Create User Btn -->
     			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
-    				<input id="cubtnid" class="cubtn" type="submit"  value="Create user">
+    				<input id="cubtnid" class="cubtn" type="submit"  value="Create user" style="overflow: hidden;">
     			</div>
 			</form>
 			</div>
@@ -262,14 +256,23 @@
    					
 			<!-- Usr update Form -->
 			<div class="UpdateUserForm">
-				<h2>Update User Form</h2>
+				<h2>Opdater Bruger</h2>
 			
 			<!-- Form for chosing user by id to update -->
 			<form id="ChooseUserToUpdate">
 				<div id="ChooseContainer">
-					<input type="number" name="userId" placeholder="Enter the id of the user you wish to update" min ="11" max="99" style="width:59%">
+					<input id="chooseid" type="number" name="userId" placeholder="Enter id of the user you wish to update" min ="11" max="99" required>
+					
+					<!-- Fetch User Button -->
+					<div id="FUbtn" class="FUcontainer" style="background-color: #f1f1f1">			
+    					<input class="fubtn" type="submit"  value="Fetch user">
+    				</div>
+    				
 				</div>
 			</form>
+			
+			<!-- Seperation of forms -->
+			<br>
 			
 			<form id="UpdateUserForm">
 			
@@ -278,26 +281,28 @@
 				<div id="UUContainer">
 				
 				<div style="width:100%">
-				<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" readonly>
-    			<input type="text" name="ini" placeholder="Initials" maxlength="3" pattern="[A-Z]*" style="width:40%" required>
+				<input id="updateidin" type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" readonly>
+    			<input id="updateiniin" type="text" name="ini" placeholder="Initials" maxlength="3" style="width:40%" required>
     			</div>
     			
-    			<input type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-z A-Z]*" required>
-		    	<input type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*" required>
-    			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" required>
-    			<input type="password" name="password" placeholder="Password" maxlength="8" required>
+    			<input id="updatefnin" type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-z A-Z]*" required>
+		    	<input id="updatelnin" type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*" required>
+    			<input id="updatecprin" type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" required>
+    			<input id="updatepassin" type="password" name="password" placeholder="Password" maxlength="8" required>
     			
     			<!-- Roles -->
     			<b>Roles</b><br>
     			<div class="checkbox-group">
     			Admin
-    			<input type="checkbox" name="roles[]" value="Administrator">
+    			<input id="updateradmin" type="checkbox" name="roles[]" value="Administrator">
     			Pharmacist
-    			<input type="checkbox" name="roles[]" value="Farmaceut">
+    			<input id="updaterfarm" type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="V�rkf�rer">
+
+    			<input id="updatervaerk" type="checkbox" name="roles[]" value="Værkfører">
+
     			Operatoer
-    			<input type="checkbox" name="roles[]" value="Laborant" checked>
+    			<input id="updaterLab" type="checkbox" name="roles[]" value="Laborant">
     			
     			</div>	</div>
     			

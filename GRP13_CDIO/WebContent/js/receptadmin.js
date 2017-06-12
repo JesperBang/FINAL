@@ -20,6 +20,8 @@ $(document).ready(function() {
 		$("#createRB").hide();
 		$("#RBtable").hide();
 		$("#SPtable").hide();
+		$("#popupID").hide();
+
 		$("#createprescript").show();
 		return false;
 		
@@ -42,6 +44,8 @@ $(document).ready(function() {
 		$("#createRB").hide();
 		$("#RBtable").hide();
 		$("#SPtable").show();
+		$("#popupID").hide();
+	
 
 		//ajax request
 		$.ajax({
