@@ -16,6 +16,7 @@ $(document).ready(function() {
 		$("#createRB").hide();
 		$("#RBtable").hide();
 		$("#createuser").show();
+		
 		return false;
 	});
 	document.getElementById("updateusermenu").addEventListener("click",function() {
@@ -52,6 +53,8 @@ $(document).ready(function() {
 		$("#login").show();
 		return false;
 	});
+	
+	
 	
 	document.getElementById("VisRaavareSM").addEventListener("click",function() {
 		$("#Testdiv").show();
@@ -113,7 +116,7 @@ $(document).ready(function() {
 						$('<td>').text(item.cpr),
 						$('<td>').text(item.password),
 						$('<td>').text(item.roles),
-						$('<td>').text(item.aktiv)
+						$('<td>').text(item.aktiv)			
 				).appendTo('#usertable');
 			});
 			
@@ -144,7 +147,6 @@ $(document).ready(function() {
 			var data = $('#CreateUserForm').serializeObject();
 
 			console.log(data);
-			debugger;
 			$.ajax({
 				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/create/user",
 				data: JSON.stringify(data),

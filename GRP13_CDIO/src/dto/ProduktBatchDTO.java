@@ -1,6 +1,8 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProduktBatchDTO implements Serializable {
 	
@@ -14,6 +16,22 @@ public class ProduktBatchDTO implements Serializable {
 	int status;					
 	/** recept id i området 1-99999999. Vælges af brugerne */
 	int receptId;
+	
+	List<ProduktBatchKompDTO> komp = new ArrayList<ProduktBatchKompDTO>();
+	
+	public ProduktBatchDTO() {
+	}
+	public List<ProduktBatchKompDTO> getKomp() {
+		return komp;
+	}
+	public void setKomp(List<ProduktBatchKompDTO> komp) {
+		this.komp = komp;
+	}
+	
+	public void addKomp(ProduktBatchKompDTO komp) {
+		this.komp.add(komp);
+	}
+	
 	public int getPbId() {
 		return pbId;
 	}

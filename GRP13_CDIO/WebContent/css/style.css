@@ -24,6 +24,8 @@ Button {
     cursor: pointer;
     width: 30%;
     position: center;
+    overflow: hidden;
+    min-width: 100px;
 }
 
 
@@ -63,6 +65,14 @@ form
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+}
+
+#ChooseUserToUpdate
+{
+	display: block;
+	position: relative;
+	text-align:center;
+	width: 15%;
 }
 
 /* Change styles for span and cancel button on extra small screens */

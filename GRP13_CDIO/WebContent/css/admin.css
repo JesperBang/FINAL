@@ -50,10 +50,7 @@ th {
 	color: white;
 	font-family:"Times New Roman";
 }
-
-
-.CUcontainer, .UUcontainer, .CPcontainer, .RBcontainer 
-
+.CUcontainer, .UUcontainer, .CPcontainer, .RBcontainer  
 {
     padding: 1%;
     position: relative;
@@ -75,33 +72,24 @@ input[type=submit] {
     cursor: pointer;
     width: 30%;
     position: center;
+    overflow: hidden;
+    min-width: 100px;
 }
 
 /* Centering login form */
-
-
 div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavarebatch, CreateRaavareForm
-
-
 {
     display: block;
     text-align: center;
 }
 
-
-
 #CreateUserForm, #UpdateUserForm, #CreatePrescription, #CreateRaavarebatch, #CreateRaavareForm
-
 {
     display: inline-block;
 	width: 32%;
 }
 
-
-
-#CUContainer, #UUContainer, #CPContainer, #RBContainer
-
-
+#CUContainer, #UUContainer, #ChooseContainer, #CPContainer, #RBContainer
 {
 	padding: 16px;
     position: relative;
