@@ -24,6 +24,8 @@ Button {
     cursor: pointer;
     width: 30%;
     position: center;
+    overflow: hidden;
+    min-width: 100px;
 }
 
 
