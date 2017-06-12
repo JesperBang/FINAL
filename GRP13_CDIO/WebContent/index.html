@@ -29,6 +29,8 @@
 <script type="text/javascript" src="js/raavarebatchadmin.js"></script>
 
 
+
+
 </head>
 
 <!-- Main HTML -->
@@ -236,7 +238,7 @@
     			Pharmacist
     			<input type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="Værkfører">
+    			<input type="checkbox" name="roles[]" value="Vï¿½rkfï¿½rer">
     			Operatoer
     			<input type="checkbox" name="roles[]" value="Laborant">
     			
@@ -251,7 +253,7 @@
 	
 		</div>
 
-	</div>
+	
 	
 	
 	<!-- Update user page -->
@@ -293,7 +295,7 @@
     			Pharmacist
     			<input type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="Værkfører">
+    			<input type="checkbox" name="roles[]" value="Vï¿½rkfï¿½rer">
     			Operatoer
     			<input type="checkbox" name="roles[]" value="Laborant" checked>
     			
@@ -310,7 +312,7 @@
 		</div>
 
 	<!-- Table for prescription admin -->
-		<div id="table" style="display: none">
+		<div id="SPtable" style="display: none">
 			<h2>Vis Recepter:</h2>
 
 			<table id="pretable">
@@ -319,7 +321,6 @@
 
 
 		</div>
-		
 	
 	
 	<!-- Create prescription page -->
@@ -339,12 +340,8 @@
     			<input type="number" name="receptId" placeholder="Recept ID" min ="1" max="99" required>
     			</div>
     			<input type="text" name="receptNavn" placeholder="Recept Navn" maxlength="30" pattern="[a-z A-Z]*" required>
-    			
-    			<!--  !!!Mangler information omkring produktkomp!!! -->
+    			<input type="number" name="nomNetto" placeholder="Maengde" min ="1" max="99" required>
     			<input type="text" name="tolerance" placeholder="Tolerance (0,1-10,0%)" maxlength="50" required>
-    	
-    			
-    			
     			
     			</div>
     				
@@ -386,44 +383,10 @@
     			</div>
 			</form>
 			</div>
-	
-
-	<!-- Create prescription page -->
-		<div id="createprescript" style="display: none">
-   					
 			
-			<!-- Prescription Creation Form -->
-			<div class="CreatePrescription">
-				<h2>Opret Recept</h2>
-
-			<form id="CreatePrescription">
-			
-			<!-- MANGLER INFORMATION FRA PRODUKTKOMP!!!!!!! -->
-				<!-- User input -->
-				<div id="CPContainer">
-				
-				<div style="width:100%">
-    			<input type="number" name="receptId" placeholder="ReceptNr" min ="1" max="99" required>
-    			</div>
-    			<input type="text" name="receptNavn" placeholder="Navn paa recept" maxlength="30" pattern="[a-z A-Z]*" required>
-    			<input type="number" name="receptId" placeholder="" min ="1" max="99" required>
-    			<input type="text" name="tolerance" placeholder="Tolerance (0,1-10,0%)" maxlength="50" required>
-    	
-    			
-    			
-    			
-    			</div>
-    				
-    			<!-- Create Prescription Btn -->
-    			<div id="CPbtn" class="CPcontainer" style="background-color: #f1f1f1">			
-    				<input class="cpbtn" type="submit"  value="Opret recept">
-    			</div>
-			</form>
-			</div>
-	
-
 		</div>
 	
+
 	<!-- Validation icon -->
 	<div class="valid">
 	  	<p>
