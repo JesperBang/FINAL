@@ -15,6 +15,7 @@ $(document).ready(function() {
 		$("#rtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#popupID").hide();
 		$("#createuser").show();
 		
 		return false;
@@ -31,6 +32,7 @@ $(document).ready(function() {
 		$("#pbtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#popupID").hide();
 		$("#updateuser").show();
 		
 		return false;
@@ -49,6 +51,7 @@ $(document).ready(function() {
 		$("#createRB").hide();
 		$("#RBtable").hide();
 		$("#usradmin").hide();
+		$("#popupID").hide();
 		alert("Du er nu logget ud.");
 		$("#login").show();
 		return false;
@@ -75,6 +78,7 @@ $(document).ready(function() {
 		$("#rtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#popupID").hide();
 		$("#table").show();
 		
 		//ajax request
