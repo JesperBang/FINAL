@@ -1,11 +1,8 @@
 $(document).ready(function() {
 	
-//	var data = $("#loginForm").serializeObject();
-//	var un = data['userName'];
-//	sessionStorage.setItem("username", un);
-	
-	// Variable ini
-	var allUsers;
+	//Ini login form with a valid login
+	$("#uname").val("2");
+	$("#pasid").val("atoJ21v");
 	
 	// On login load useradmin page
 	$("#loginform").submit(function() {
@@ -24,25 +21,28 @@ $(document).ready(function() {
 			contentType: "application/json",
 			method: 'GET',
 			success: function(resp) {
-
 				console.log(resp);
-				alert("success");
+				
 				if (resp == null) {
 					alert("Wrong Credentials!");
 				}
 				else {
-					alert("Else");
-					
+
 					sessionStorage.setItem("user", resp); //session Storage
 					$("#login").hide();
 					$("#usradmin").show();
+					
+					var name = sessionStorage.getItem("user");
+					console.log(name);
+					console.log("session "+name.firstname);
+					console.log("response "+resp.firstname);
+					$("#logoutmenu").val("logout - " + resp.firstname)
 					
 				}
 			},
 			error: function(resp) {
 				//Error handling...
 				console.log(idu + " " + pas);
-				alert("Fail");
 				console.log(resp);
 			}
 			
