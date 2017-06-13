@@ -28,15 +28,14 @@ $(document).ready(function() {
 				}
 				else {
 
-					sessionStorage.setItem("user", resp); //session Storage
+					sessionStorage.setItem("user", JSON.stringify(resp)); //session Storage
 					$("#login").hide();
 					$("#usradmin").show();
 					
-					var name = sessionStorage.getItem("user");
-					console.log(name);
-					console.log("session "+name.firstname);
-					console.log("response "+resp.firstname);
-					$("#logoutmenu").val("logout - " + resp.firstname)
+					var name = $.parseJSON(sessionStorage.getItem("user"));
+
+					document.getElementById("logoutmenu").innerHTML = "Logout - "+name.firstname;
+					
 					
 				}
 			},

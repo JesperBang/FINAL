@@ -2,22 +2,30 @@ $(document).ready(function() {
 
 	// Variable ini
 	var allUsers;
+
 	
 	//Load User table on request
 	document.getElementById("createusermenu").addEventListener("click",function() {
-		$("#table").hide();
-		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#pbtable").hide();
-		$("#rtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#popupID").hide();
-		$("#createuser").show();
+		var rights = $.parseJSON(sessionStorage.getItem("user"));
 		
+		if(rights.roles.includes(' Administrator')){
+			$("#table").hide();
+			$("#updateuser").hide();
+			$("#createprescript").hide();
+			$("#receptable").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#pbtable").hide();
+			$("#rtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#createuser").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to create a user!")
+			rights = "";
+		}
 		return false;
 	});
 	document.getElementById("updateusermenu").addEventListener("click",function() {
@@ -53,7 +61,14 @@ $(document).ready(function() {
 		$("#usradmin").hide();
 		$("#popupID").hide();
 		alert("Du er nu logget ud.");
+		
+		//Clearing storage
+		sessionStorage.clear();
+		localStorage.clear();
+		var rights = "";
+		
 		$("#login").show();
+		
 		return false;
 	});
 	
@@ -75,11 +90,10 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	document.getElementById("VisRaavareSM").addEventListener("click",function() {
-		$("#Testdiv").show();
-	});
+
 	// Load users on useradmin page
 	document.getElementById("usradminmenu").addEventListener("click",function() {
+		var rights = $.parseJSON(sessionStorage.getItem("user"));
 		
 		//visuals
 		$("#createuser").hide();
@@ -134,7 +148,7 @@ $(document).ready(function() {
 						$('<td>').text(item.lastname),
 						$('<td>').text(item.ini),
 						$('<td>').text(item.cpr),
-						$('<td>').text(item.password),
+						$('<td>').text(hex_md5(item.password)+" - "+item.password),
 						$('<td>').text(item.roles),
 						$('<td>').text(item.aktiv)			
 				).appendTo('#usertable');

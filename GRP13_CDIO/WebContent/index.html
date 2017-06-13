@@ -27,8 +27,7 @@
 <script type="text/javascript" src="js/receptadmin.js"></script>
 <script type="text/javascript" src="js/updateusr.js"></script>
 <script type="text/javascript" src="js/raavarebatchadmin.js"></script>
-
-
+<script type="text/javascript" src="js/md5.js"></script>
 
 
 </head>
@@ -78,25 +77,25 @@
 			<!-- Menu "Btns" -->	
 				
 				<!-- User Admin -->
-				<li><a id="usradminmm" href="#Brugeradministration">Bruger Administration</a>
+				<li><a id="usradminmm" href="#">Bruger Administration</a>
 					
 					<!-- Sub Menu of usradminmenu -->
 					<ul id="smid" class="sm">
-						<li><a id="usradminmenu" href="#">Vis brugere</a></li>
-                		<li><a id="createusermenu" href="#">Opret ny bruger</a></li>
-                		<li><a id="updateusermenu" href="#">Opdater brugere</a></li>
-                		<li><a id="updatestatususermenu" href="#">Opdater status</a></li>
+						<li><a id="usradminmenu" href="#VisBrugere">Vis brugere</a></li>
+                		<li><a id="createusermenu" href="#OpretBruger">Opret ny bruger</a></li>
+                		<li><a id="updateusermenu" href="#OpdaterBruger">Opdater brugere</a></li>
+                		<li><a id="updatestatususermenu" href="#OpdaterStatus">Opdater status</a></li>
          		    </ul>
          		    
          		    
          		<!-- Raavare Admin -->
-				<li><a id="Raavareadmin" href="#RaavareAdministration">Raavare Administration</a>
+				<li><a id="Raavareadmin" href="#">Raavare Administration</a>
 					
 					<!-- Sub Menu of Raavareadmin -->
 					<ul class="sm">
-						<li><a id="VisRaavareSM" href="#">Vis Raavare</a></li>
-                		<li><a id="OpretRaavareSM" href="#">Opret Raavare</a></li>
-                		<li><a id="OpdaterRaavareSM" href="#">Opdater Raavare</a></li>
+						<li><a id="VisRaavareSM" href="#VisRaavare">Vis Raavare</a></li>
+                		<li><a id="OpretRaavareSM" href="#OpretRaavare">Opret Raavare</a></li>
+                		<li><a id="OpdaterRaavareSM" href="#OpdaterRaavare">Opdater Raavare</a></li>
          		    </ul>
          		   
          		   
@@ -138,7 +137,7 @@
 				<li id="Forfattere" ><a href="#Forfattere">Forfattere</a>
 				
 				<!-- Logout -->
-				<li><a id="logoutmenu" href="#" >Log ud</a></li>
+				<li style="float:right;"><a id="logoutmenu" href="#">Log ud</a>
 				
 
 			</ul>
@@ -232,7 +231,7 @@
     			<input type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
 
-    			<input type="checkbox" name="roles[]" value="VÃ¦rkfÃ¸rer">
+    			<input type="checkbox" name="roles[]" value="VÃƒÂ¦rkfÃƒÂ¸rer">
 
     			Operatoer
     			<input type="checkbox" name="roles[]" value="Laborant">
@@ -303,7 +302,7 @@
     			<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" required>
     			</div>
     			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
-    			<input type="text" name="leverandoer" placeholder="Leverandør" maxlength="30" pattern="[a-z A-Z]*" required>
+    			<input type="text" name="leverandoer" placeholder="LeverandÃ¸r" maxlength="30" pattern="[a-z A-Z]*" required>
     			
     			</div>
     				
@@ -367,7 +366,7 @@
     			<input id="updaterfarm" type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
 
-    			<input id="updatervaerk" type="checkbox" name="roles[]" value="VÃ¦rkfÃ¸rer">
+    			<input id="updatervaerk" type="checkbox" name="roles[]" value="VÃƒÂ¦rkfÃƒÂ¸rer">
 
     			Operatoer
     			<input id="updaterLab" type="checkbox" name="roles[]" value="Laborant">
@@ -409,7 +408,7 @@
 				<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" readonly>
     			</div>
     			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
-    			<input type="text" name="leverandoer" placeholder="LevarandÃ¸r" maxlength="30" pattern="[a-z A-Z /]*" required>
+    			<input type="text" name="leverandoer" placeholder="LevarandÃƒÂ¸r" maxlength="30" pattern="[a-z A-Z /]*" required>
     			</div>
     			
     				
