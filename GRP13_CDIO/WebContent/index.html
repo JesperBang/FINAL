@@ -11,14 +11,14 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 <link rel="stylesheet" type="text/css" href="css/popupcss.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
-
 <!-- Script -->
+<script type="text/javascript" src="js/succesalert.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/useradmin.js"></script>
 <script type="text/javascript" src="js/produktbatchadmin.js"></script>
@@ -26,7 +26,6 @@
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 <script type="text/javascript" src="js/receptadmin.js"></script>
 <script type="text/javascript" src="js/updateusr.js"></script>
-
 <script type="text/javascript" src="js/raavarebatchadmin.js"></script>
 
 
@@ -161,6 +160,7 @@
   				<img src="img/popup.png" class="popfor" alt="forfattere">
  			 </span>
 		</div>
+		
 
 		<!-- Table for user admin -->
 		<div id="table" style="display: none">
@@ -238,6 +238,10 @@
     			<!-- Create User Btn -->
     			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
     				<input id="cubtnid" class="cubtn" type="submit"  value="Create user" style="overflow: hidden;">
+    			<!--  Succes alert -->
+				<div id="succes" style="display:none" class="alert alert-success">
+    				<strong>Success!</strong> The user has been created!
+  				</div>
     			</div>
 			</form>
 			</div>
