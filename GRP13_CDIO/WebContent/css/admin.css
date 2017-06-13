@@ -54,7 +54,7 @@ th {
 	color: white;
 	font-family:"Times New Roman";
 }
-.CUcontainer, .UUcontainer, .CPcontainer, .RBcontainer  , .CRcontainer
+.CUcontainer, .UUcontainer, .CPcontainer, .RBcontainer  , .CRcontainer, .DUcontainer
 {
     padding: 1%;
     position: relative;
@@ -81,21 +81,21 @@ input[type=submit] {
 }
 
 /* Centering login form */
-div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavarebatch, div.CreateRaavareForm, div.UpdateRavvareForm
+div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavarebatch, div.CreateRaavareForm, div.UpdateRavvareForm, div.DeactivateUserForm
 {
     display: block;
     text-align: center;
 }
 
 
-#CreateUserForm, #UpdateUserForm, #ChooseUserToUpdate, #CreatePrescription, #CreateRaavarebatch, #CreateRaavareForm, #UpdateRavvareForm
+#CreateUserForm, #UpdateUserForm, #ChooseUserToUpdate, #CreatePrescription, #CreateRaavarebatch, #CreateRaavareForm, #UpdateRavvareForm, #DeactivateUserForm
 
 {
     display: inline-block;
 	width: 32%;
 }
 
-#CUContainer, #UUContainer, #ChooseContainer, #CPContainer, #RBContainer, #Rcontainer
+#CUContainer, #UUContainer, #ChooseContainer, #CPContainer, #RBContainer, #Rcontainer, #DUContainer
 {
 	padding: 16px;
     position: relative;

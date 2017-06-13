@@ -57,7 +57,23 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	
+	document.getElementById("updatestatususermenu").addEventListener("click",function() {
+		$("#table").hide();
+		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#pbtable").hide();
+		$("#rtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
+		$("#popupID").hide();
+		$("#createuser").hide();
+		$("#deactivateuser").show();
+		
+		return false;
+	});
 	
 	document.getElementById("VisRaavareSM").addEventListener("click",function() {
 		$("#Testdiv").show();
@@ -166,6 +182,41 @@ $(document).ready(function() {
 					//Goes back to menu
 					$('#usradmin').show();
 					$('#createuser').hide();
+
+				},
+				error: function(resp){
+					console.log(data);
+					console.log('This is the ERROR method')
+					console.log(resp)
+				}
+			});
+		   
+			return false;
+
+	});
+		$("#DeactivateUserForm").submit( function() {               
+			   
+			event.preventDefault();
+			
+			
+			var data = $('#DeactivateUserForm').serializeObject();
+
+			console.log(data);
+			$.ajax({
+				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/deactivate/user",
+				data: JSON.stringify(data),
+				contentType: "application/json",
+				method: 'POST',
+				success: function(resp){
+					console.log(data);
+					console.log('This is the Success method')
+					console.log(resp)
+					document.getElementById("DeactivateUserForm").reset();
+					console.log("DUForm has been cleared")
+					
+					//Goes back to menu
+					$('#usradmin').show();
+					$('#deactivateuser').hide();
 
 				},
 				error: function(resp){

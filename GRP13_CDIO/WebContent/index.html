@@ -83,6 +83,7 @@
 						<li><a id="usradminmenu" href="#">Vis brugere</a></li>
                 		<li><a id="createusermenu" href="#">Opret ny bruger</a></li>
                 		<li><a id="updateusermenu" href="#">Opdater brugere</a></li>
+                		<li><a id="updatestatususermenu" href="#">Opdater status</a></li>
          		    </ul>
          		    
          		    
@@ -244,6 +245,37 @@
 	
 		</div>
 
+	<!-- Deactivate user page -->
+		<div id="deactivateuser" style="display: none">
+   					
+			
+			<!-- Usr Deactivation Form -->
+			<div class="DeactivateUserForm">
+				<h2>Status opdatering for brugere</h2>
+
+			<form id="DeactivateUserForm">
+			
+			
+				<!-- User input -->
+				<div id="DUContainer">
+				
+				<div style="width:100%">
+    			<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" required>
+    			<input type="number" name="aktiv" placeholder="Status" min = "0" max="1" style="width:59%" required>
+    			</div>
+    			
+    		</div>
+    				
+    			<!-- Deactivate User Btn -->
+    			<div id="DUbtn" class="DUcontainer" style="background-color: #f1f1f1">			
+    				<input id="dubtnid" class="dubtn" type="submit"  value="Deactivate user" style="overflow: hidden;">
+    			</div>
+			</form>
+			</div>
+	
+		</div>
+
+	
 	
 
 		<!-- Create raavare page -->
