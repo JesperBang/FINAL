@@ -8,8 +8,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sound.midi.Patch;
-
 import dao.MySQLProduktBatchDAO;
 import dao.MySQLReceptDAO;
 import dao.MySQLUserDAO;
@@ -17,7 +15,6 @@ import database.UserDTO;
 import dto.ProduktBatchDTO;
 import dto.ProduktBatchKompDTO;
 import dto.ReceptDTO;
-import dto.ReceptKompDTO;
 
 
 public class ServerConnection implements Runnable{
@@ -108,7 +105,7 @@ public class ServerConnection implements Runnable{
 				}
 			}
 			pBatch.setStatus(1);
-			pBatchDAO.updateProduktBatch(pBatch);
+			pBatchDAO.updateStatus(pBatch);
 			
 			List<ProduktBatchKompDTO> oldKomp =  pBatch.getKomp();
 			List<ProduktBatchKompDTO> newKomp =  new ArrayList<ProduktBatchKompDTO>();
