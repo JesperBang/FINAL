@@ -80,6 +80,21 @@ public class UserService {
 		
 		return true;
 	}
+	@Path("/deactivate/user")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public boolean deactivateUser(UserDTO user){
+		
+		try {
+			users.deactivateOperatoer(user);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return true;
+		
+	}
 
 
 }

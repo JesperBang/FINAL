@@ -179,4 +179,17 @@ public class MySQLUserDAO implements UserDAO {
 		}
 	}
 
+	@Override
+	public void deactivateOperatoer(UserDTO user) throws DALException {
+		try { 
+			PreparedStatement stmt = connector.getConnection().prepareStatement("call deactivate_user(?,?);");
+			stmt.setInt(1, user.getUserId());
+			stmt.setInt(2, user.getAktiv());
+			stmt.executeQuery();
+		} catch (Exception e) {
+			throw new DALException(e.getMessage());
+		}
+		
+	}
+
 }
