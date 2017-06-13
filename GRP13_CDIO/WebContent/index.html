@@ -11,14 +11,14 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 <link rel="stylesheet" type="text/css" href="css/popupcss.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
-
 <!-- Script -->
+<script type="text/javascript" src="js/succesalert.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/useradmin.js"></script>
 <script type="text/javascript" src="js/produktbatchadmin.js"></script>
@@ -26,7 +26,6 @@
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 <script type="text/javascript" src="js/receptadmin.js"></script>
 <script type="text/javascript" src="js/updateusr.js"></script>
-
 <script type="text/javascript" src="js/raavarebatchadmin.js"></script>
 
 
@@ -86,6 +85,7 @@
 						<li><a id="usradminmenu" href="#">Vis brugere</a></li>
                 		<li><a id="createusermenu" href="#">Opret ny bruger</a></li>
                 		<li><a id="updateusermenu" href="#">Opdater brugere</a></li>
+                		<li><a id="updatestatususermenu" href="#">Opdater status</a></li>
          		    </ul>
          		    
          		    
@@ -164,6 +164,7 @@
   				<img src="img/popup.png" class="popfor" alt="forfattere">
  			 </span>
 		</div>
+		
 
 		<!-- Table for user admin -->
 		<div id="table" style="display: none">
@@ -241,12 +242,47 @@
     			<!-- Create User Btn -->
     			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
     				<input id="cubtnid" class="cubtn" type="submit"  value="Create user" style="overflow: hidden;">
+    			<!--  Succes alert -->
+				<div id="succes" style="display:none" class="alert alert-success">
+    				<strong>Success!</strong> The user has been created!
+  				</div>
     			</div>
 			</form>
 			</div>
 	
 		</div>
 
+	<!-- Deactivate user page -->
+		<div id="deactivateuser" style="display: none">
+   					
+			
+			<!-- Usr Deactivation Form -->
+			<div class="DeactivateUserForm">
+				<h2>Status opdatering for brugere</h2>
+
+			<form id="DeactivateUserForm">
+			
+			
+				<!-- User input -->
+				<div id="DUContainer">
+				
+				<div style="width:100%">
+    			<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" required>
+    			<input type="number" name="aktiv" placeholder="Status" min = "0" max="1" style="width:59%" required>
+    			</div>
+    			
+    		</div>
+    				
+    			<!-- Deactivate User Btn -->
+    			<div id="DUbtn" class="DUcontainer" style="background-color: #f1f1f1">			
+    				<input id="dubtnid" class="dubtn" type="submit"  value="Deactivate user" style="overflow: hidden;">
+    			</div>
+			</form>
+			</div>
+	
+		</div>
+
+	
 	
 
 		<!-- Create raavare page -->
