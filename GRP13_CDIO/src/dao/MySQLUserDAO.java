@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import passgen.Password;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -91,7 +92,9 @@ public class MySQLUserDAO implements UserDAO {
 
 	@Override
 	public void createOperatoer(UserDTO user) throws DALException {
-
+		Password pss = new Password();
+		String pass = pss.generatePassword();
+		System.out.println(pass);
 		try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(2)
 			PreparedStatement stmt = connector.getConnection().prepareStatement("call add_operatoer(?,?,?,?,?,?);");
 			stmt.setInt(1, user.getUserId());
@@ -99,7 +102,7 @@ public class MySQLUserDAO implements UserDAO {
 			stmt.setString(3, user.getLastname());
 			stmt.setString(4, user.getIni());
 			stmt.setString(5, user.getCPR());
-			stmt.setString(6, user.getPassword());
+			stmt.setString(6, pass);
 			stmt.executeQuery();
 		} catch (Exception e) {
 			throw new DALException(e.getMessage());
@@ -115,7 +118,7 @@ public class MySQLUserDAO implements UserDAO {
 				case "Farmaceut":
 					stmt.setInt(1, 2);
 					break;
-				case "V�rkf�rer":
+				case "Værkfører":
 					stmt.setInt(1, 3);
 					break;
 				case "Laborant":
@@ -152,6 +155,7 @@ public class MySQLUserDAO implements UserDAO {
 		} catch (Exception e) {
 			throw new DALException(e.getMessage());
 		}
+		System.out.println(user);
 		for (int i = 0; i < user.getRoles().size(); i++) {
 			try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(3)
 				PreparedStatement stmt = connector.getConnection().prepareStatement("call add_userroles(?,?);");
@@ -163,7 +167,7 @@ public class MySQLUserDAO implements UserDAO {
 				case "Farmaceut":
 					stmt.setInt(1, 2);
 					break;
-				case "V�rkf�rer":
+				case "Værkfører":
 					stmt.setInt(1, 3);
 					break;
 				case "Laborant":
