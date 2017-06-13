@@ -9,6 +9,7 @@ import java.util.List;
 import database.Connector;
 import database.DALException;
 import dto.ReceptDTO;
+import dto.ReceptKompDTO;
 
 public class MySQLReceptDAO implements IReceptDAO {
 
@@ -36,7 +37,7 @@ public class MySQLReceptDAO implements IReceptDAO {
 	}
 	public List<ReceptDTO> getReceptList() throws DALException{
 		List<ReceptDTO> list = new ArrayList<ReceptDTO>();
-		ResultSet rs;
+		ResultSet rs, rs2;
 		try { //Files.readAllLines(Paths.get("/UserCommands.txt")).get(1)
 			rs = connector.doQuery("select * from getrecept;");
 		} catch (Exception e) {
@@ -45,11 +46,27 @@ public class MySQLReceptDAO implements IReceptDAO {
 		try
 		{
 			ReceptDTO recept;
+			PreparedStatement stmt;
 			while (rs.next()) 
 			{
 				recept = new ReceptDTO();
 				recept.setReceptId(rs.getInt("recept_id"));
 				recept.setReceptNavn(rs.getString("recept_navn"));
+				stmt = connector.getConnection().prepareStatement("select * from getreceptkomponent where recept_id = ?");
+				stmt.setInt(1, recept.getReceptId());
+				rs2 = stmt.executeQuery();
+				ReceptKompDTO komp;
+				while(rs2.next()){
+					komp = new ReceptKompDTO();
+					komp.setReceptId(rs2.getInt("recept_id"));
+					komp.setNomNetto(rs2.getDouble("nom_netto"));
+					komp.setRaavareId(rs2.getInt("raavare_id"));
+					komp.setTolerance(rs2.getDouble("tolerance"));
+					recept.addKomp(komp);
+					
+				}
+				
+		
 				list.add(recept);
 			}
 				

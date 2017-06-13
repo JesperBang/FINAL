@@ -16,6 +16,7 @@ $(document).ready(function() {
 		$("#rtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#popupID").hide();
 		$("#createraavare").show();
 		return false;
 	});
@@ -30,6 +31,7 @@ $(document).ready(function() {
 		$("#rtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#popupID").hide();
 		$("#updateraavare").show();
 		return false;
 		
@@ -84,6 +86,7 @@ $(document).ready(function() {
 		$("#pbtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#popupID").hide();
 		$("#rtable").show();
 		$.ajax({
 		url: "http://localhost:8080/GRP13_CDIO/rest2/raavareservice/raavare",

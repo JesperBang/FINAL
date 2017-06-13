@@ -19,6 +19,9 @@ $(document).ready(function() {
 		$("#pbtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#SPtable").hide();
+		$("#popupID").hide();
+
 		$("#createprescript").show();
 		return false;
 		
@@ -40,7 +43,9 @@ $(document).ready(function() {
 		$("#createprescript").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
-		$("#receptable").show();
+		$("#SPtable").show();
+		$("#popupID").hide();
+	
 
 		//ajax request
 		$.ajax({
@@ -56,23 +61,54 @@ $(document).ready(function() {
 				var tr;
 
 				//clearing old table rows and table heads
-				$("#recepttable tr").remove();
-				$("#recepttable th").remove();
+				$("#pretable tr").remove();
+				$("#pretable th").remove();
 
 				//Append table row with descriptions
 				$('<tr>').append(
 						$('<th>').text("Recept ID"),
 						$('<th>').text("Navn"),
-						$('<th>').text("Receptkomponenter")
-				).appendTo("#recepttable");
+						$('<th>').text("Raavare (type)"),
+						$('<th>').text("Maengde"),
+						$('<th>').text("Tolerance")
+						
+				).appendTo("#pretable");
 
 				//Loop through prescriptions and append them to the table in html
 				$.each(allPrescriptions, function(i, item) {
+					
+					var raavareId = "<table > ";
+					$.each(item.komp, function(j, item2){
+						raavareId += "<tr><td>";
+						raavareId += item2.raavareId;
+						raavareId += "</td></tr>";
+					})
+					raavareId += " </table>";
+					
+					var nomNetto = "<table > ";
+					$.each(item.komp, function(j, item2){
+						nomNetto += "<tr><td>";
+						nomNetto += item2.nomNetto;
+						nomNetto += "</td></tr>";
+					})
+					nomNetto += " </table>";
+					
+					var tolerance = "<table > ";
+					$.each(item.komp, function(j, item2){
+						tolerance += "<tr><td>";
+						tolerance += item2.tolerance;
+						tolerance += "</td></tr>";
+					})
+					
+					
 					$('<tr>').append(
 							$('<td>').text(item.receptId),
 							$('<td>').text(item.receptNavn),
-							$('<td>').text(item.receptId)
-					).appendTo('#recepttable');
+							$('<td>').html(raavareId),
+							$('<td>').html(nomNetto),
+							$('<td>').html(tolerance)
+							
+					).appendTo('#pretable');
 				});
 
 			}
@@ -108,7 +144,7 @@ $(document).ready(function() {
 
 				//Goes back to menu
 				$('#usradmin').show();
-				$('#receptable').hide();
+				$('#SPtable').hide();
 
 			},
 			error: function(resp){
@@ -121,6 +157,7 @@ $(document).ready(function() {
 		return false;
 
 	});
+	
 
 });
 	

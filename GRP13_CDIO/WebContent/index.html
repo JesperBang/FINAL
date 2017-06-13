@@ -25,8 +25,11 @@
 <script type="text/javascript" src="js/raavareadmin.js"></script>
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 <script type="text/javascript" src="js/receptadmin.js"></script>
+<script type="text/javascript" src="js/updateusr.js"></script>
 
 <script type="text/javascript" src="js/raavarebatchadmin.js"></script>
+
+
 
 
 </head>
@@ -66,7 +69,7 @@
 
 		
 		<!-- div for fixing menu bar glitch -->
-		<div id="usrmenu">
+		<div id="usrmenu" style="min-width:1300px; ">
 			<ul class="mm">
 
 			
@@ -87,7 +90,7 @@
 				<li><a id="Raavareadmin" href="#RaavareAdministration">Raavare Administration</a>
 					
 					<!-- Sub Menu of Raavareadmin -->
-					<ul id="smid" class="sm">
+					<ul class="sm">
 						<li><a id="VisRaavareSM" href="#">Vis Raavare</a></li>
                 		<li><a id="OpretRaavareSM" href="#">Opret Raavare</a></li>
                 		<li><a id="OpdaterRaavareSM" href="#">Opdater Raavare</a></li>
@@ -98,7 +101,7 @@
 				<li><a id="Receptadmin" href="#ReceptAdministration">Recept Administration</a>
 				
 					<!-- Sub Menu of Receptadmin -->
-					<ul id="smid" class="sm">
+					<ul class="sm">
 
                 		
 						<li><a id="VisReceptSM" href="#">Vis Recept</a></li>
@@ -111,7 +114,7 @@
 				<li><a id="Raavarebatchadmin" href="#RaavarebatchAdministration">Raavarebatch Administration</a>
 				
 				<!-- Sub Menu of Raavarebatch admin -->
-					<ul id="smid" class="sm">
+					<ul class="sm">
 						<li><a id="VisRaavarebatchSM" href="#">Vis Raavarebatch</a></li>
                 		<li><a id="OpretRaavarebatchSM" href="#">Opret Raavarebatch</a></li>
                 		
@@ -122,19 +125,19 @@
 				<li><a id="Produktbatchadmin" href="#ProduktbatchAdministration">Produktbatch Administration</a>
 				
 					<!-- Sub Menu of Produktbatchadmin -->
-					<ul id="smid" class="sm">
+					<ul class="sm">
 						<li><a id="VPB" href="#">Vis Produktbatches</a></li>
                 		<li><a id="OPB" href="#">Opret Produktbatch</a></li>
-                		<li><a id="UPB" href="#">Opdater Produktbatch</a></li>
          		    </ul>
 
 
-				<!-- Logout -->
-				<li><a id="logoutmenu" href="#">Log ud</a></li>
-				
-				
 				<!-- Author -->
-				<li id="Forfattere" style="float: right"><a href="#Forfattere">Forfattere</a></li>
+				<li id="Forfattere" ><a href="#Forfattere">Forfattere</a>
+				
+				<!-- Logout -->
+				<li><a id="logoutmenu" href="#" >Log ud</a></li>
+				
+
 			</ul>
 		</div>
 		
@@ -146,16 +149,11 @@
 			<table id="raavaretable">
 			
 			</table>
-
-
 		</div>
-	
-   					
-			
-		
-
 	</div>
 	
+
+
 
 		<!-- popop -->
 		<div id="popupID" class="popup" style="display:none" >
@@ -203,7 +201,7 @@
 			
 			<!-- Usr Creation Form -->
 			<div class="CreateUserForm">
-				<h2>Create User Form</h2>
+				<h2>Lav Bruger</h2>
 
 			<form id="CreateUserForm">
 			
@@ -229,7 +227,9 @@
     			Pharmacist
     			<input type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="Værkfører">
+
+    			<input type="checkbox" name="roles[]" value="VÃ¦rkfÃ¸rer">
+
     			Operatoer
     			<input type="checkbox" name="roles[]" value="Laborant">
     			
@@ -237,7 +237,7 @@
     				
     			<!-- Create User Btn -->
     			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
-    				<input id="cubtnid" class="cubtn" type="submit"  value="Create user">
+    				<input id="cubtnid" class="cubtn" type="submit"  value="Create user" style="overflow: hidden;">
     			</div>
 			</form>
 			</div>
@@ -245,6 +245,7 @@
 		</div>
 
 	
+
 		<!-- Create raavare page -->
 		<div id="createraavare" style="display: none">
    					
@@ -263,7 +264,7 @@
     			<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" required>
     			</div>
     			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
-    			<input type="text" name="leverandoer" placeholder="Leverandør" maxlength="30" pattern="[a-z A-Z]*" required>
+    			<input type="text" name="leverandoer" placeholder="Leverandï¿½r" maxlength="30" pattern="[a-z A-Z]*" required>
     			
     			</div>
     				
@@ -275,6 +276,7 @@
 			</div>
 	
 		</div>
+
 	
 	
 	<!-- Update user page -->
@@ -283,14 +285,23 @@
    					
 			<!-- Usr update Form -->
 			<div class="UpdateUserForm">
-				<h2>Update User Form</h2>
+				<h2>Opdater Bruger</h2>
 			
 			<!-- Form for chosing user by id to update -->
 			<form id="ChooseUserToUpdate">
 				<div id="ChooseContainer">
-					<input type="number" name="userId" placeholder="Enter the id of the user you wish to update" min ="11" max="99" style="width:59%">
+					<input id="chooseid" type="number" name="userId" placeholder="Enter id of the user you wish to update" min ="11" max="99" required>
+					
+					<!-- Fetch User Button -->
+					<div id="FUbtn" class="FUcontainer" style="background-color: #f1f1f1">			
+    					<input class="fubtn" type="submit"  value="Fetch user">
+    				</div>
+    				
 				</div>
 			</form>
+			
+			<!-- Seperation of forms -->
+			<br>
 			
 			<form id="UpdateUserForm">
 			
@@ -299,26 +310,28 @@
 				<div id="UUContainer">
 				
 				<div style="width:100%">
-				<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" readonly>
-    			<input type="text" name="ini" placeholder="Initials" maxlength="3" pattern="[A-Z]*" style="width:40%" required>
+				<input id="updateidin" type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" readonly>
+    			<input id="updateiniin" type="text" name="ini" placeholder="Initials" maxlength="3" style="width:40%" required>
     			</div>
     			
-    			<input type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-z A-Z]*" required>
-		    	<input type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*" required>
-    			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" required>
-    			<input type="password" name="password" placeholder="Password" maxlength="8" required>
+    			<input id="updatefnin" type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-z A-Z]*" required>
+		    	<input id="updatelnin" type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*" required>
+    			<input id="updatecprin" type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" required>
+    			<input id="updatepassin" type="password" name="password" placeholder="Password" maxlength="8" required>
     			
     			<!-- Roles -->
     			<b>Roles</b><br>
     			<div class="checkbox-group">
     			Admin
-    			<input type="checkbox" name="roles[]" value="Administrator">
+    			<input id="updateradmin" type="checkbox" name="roles[]" value="Administrator">
     			Pharmacist
-    			<input type="checkbox" name="roles[]" value="Farmaceut">
+    			<input id="updaterfarm" type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
-    			<input type="checkbox" name="roles[]" value="Værkfører">
+
+    			<input id="updatervaerk" type="checkbox" name="roles[]" value="VÃ¦rkfÃ¸rer">
+
     			Operatoer
-    			<input type="checkbox" name="roles[]" value="Laborant" checked>
+    			<input id="updaterLab" type="checkbox" name="roles[]" value="Laborant">
     			
     			</div>	</div>
     			
@@ -357,7 +370,7 @@
 				<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" readonly>
     			</div>
     			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
-    			<input type="text" name="leverandoer" placeholder="Levarandør" maxlength="30" pattern="[a-z A-Z]*" required>
+    			<input type="text" name="leverandoer" placeholder="LevarandÃ¸r" maxlength="30" pattern="[a-z A-Z /]*" required>
     			</div>
     			
     				
@@ -372,7 +385,7 @@
 	
 
 	<!-- Table for prescription admin -->
-		<div id="table" style="display: none">
+		<div id="SPtable" style="display: none">
 			<h2>Vis Recepter:</h2>
 
 			<table id="pretable">
@@ -381,7 +394,6 @@
 
 
 		</div>
-		
 	
 	
 	<!-- Create prescription page -->
@@ -401,12 +413,8 @@
     			<input type="number" name="receptId" placeholder="Recept ID" min ="1" max="99" required>
     			</div>
     			<input type="text" name="receptNavn" placeholder="Recept Navn" maxlength="30" pattern="[a-z A-Z]*" required>
-    			
-    			<!--  !!!Mangler information omkring produktkomp!!! -->
+    			<input type="number" name="nomNetto" placeholder="Maengde" min ="1" max="99" required>
     			<input type="text" name="tolerance" placeholder="Tolerance (0,1-10,0%)" maxlength="50" required>
-    	
-    			
-    			
     			
     			</div>
     				
@@ -448,44 +456,10 @@
     			</div>
 			</form>
 			</div>
-	
-
-	<!-- Create prescription page -->
-		<div id="createprescript" style="display: none">
-   					
 			
-			<!-- Prescription Creation Form -->
-			<div class="CreatePrescription">
-				<h2>Opret Recept</h2>
-
-			<form id="CreatePrescription">
-			
-			<!-- MANGLER INFORMATION FRA PRODUKTKOMP!!!!!!! -->
-				<!-- User input -->
-				<div id="CPContainer">
-				
-				<div style="width:100%">
-    			<input type="number" name="receptId" placeholder="ReceptNr" min ="1" max="99" required>
-    			</div>
-    			<input type="text" name="receptNavn" placeholder="Navn paa recept" maxlength="30" pattern="[a-z A-Z]*" required>
-    			<input type="number" name="receptId" placeholder="" min ="1" max="99" required>
-    			<input type="text" name="tolerance" placeholder="Tolerance (0,1-10,0%)" maxlength="50" required>
-    	
-    			
-    			
-    			
-    			</div>
-    				
-    			<!-- Create Prescription Btn -->
-    			<div id="CPbtn" class="CPcontainer" style="background-color: #f1f1f1">			
-    				<input class="cpbtn" type="submit"  value="Opret recept">
-    			</div>
-			</form>
-			</div>
-	
-
 		</div>
 	
+
 	<!-- Validation icon -->
 	<div class="valid">
 	  	<p>
