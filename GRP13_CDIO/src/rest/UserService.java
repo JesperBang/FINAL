@@ -81,5 +81,29 @@ public class UserService {
 		return true;
 	}
 
-
+	@Path("/validate/{id}/{password}")
+	@GET
+	@Produces("application/json")
+	public UserDTO validateUser(@PathParam("id") Integer id, @PathParam("password") String password){
+		UserDTO user = null;
+		try {
+			user = users.getUser(id);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String passdb = user.getPassword();
+		String passin = password;
+		System.out.println(passdb+" "+passin);
+		
+		
+		if(passdb.equals(passin)){
+			System.out.println("YAAA");
+			return user;
+		}else{
+			System.out.println("No User");
+			return null;
+		}
+	}
 }

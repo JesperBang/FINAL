@@ -40,7 +40,7 @@
 
 		<!-- Login page called form -->
 		<div class="form" id="login">
-			<form>
+			<form id="loginform">
 
 				<!-- DTU Image Container -->
 				<div class="imgcontainer" >
@@ -49,15 +49,18 @@
 
 				<!-- Login fields -->
 				<div class="container">
-					<label><b>Username</b></label> <input type="text"
-						placeholder="Enter Username" name="uname" id="uname"> <label><b>Password</b></label>
-					<input type="password" placeholder="Enter Password" name="psw">
+					<label><b>Username</b></label> 
+					<input type="text" placeholder="Enter Username" name="uname" id="uname"> 
+					
+					<label><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="psw" id="pasid">
 				</div>
 
-				<!-- Container for login btn -->
-				<div id="btn" class="container" style="background-color: #f1f1f1">
-					<button class="loginbtn">Login</button>
-				</div>
+
+				
+				<div id="btn" class="container" style="background-color: #f1f1f1">			
+    				<input id="loginbtnid" class="loginbtn" type="submit"  value="Login" style="overflow: hidden;">
+    			</div>
 
 			</form>
 			
@@ -228,7 +231,7 @@
     			<input type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
 
-    			<input type="checkbox" name="roles[]" value="Værkfører">
+    			<input type="checkbox" name="roles[]" value="VÃ¦rkfÃ¸rer">
 
     			Operatoer
     			<input type="checkbox" name="roles[]" value="Laborant">
@@ -264,7 +267,7 @@
     			<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" required>
     			</div>
     			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
-    			<input type="text" name="leverandoer" placeholder="Leverand�r" maxlength="30" pattern="[a-z A-Z]*" required>
+    			<input type="text" name="leverandoer" placeholder="Leverandør" maxlength="30" pattern="[a-z A-Z]*" required>
     			
     			</div>
     				
@@ -328,7 +331,7 @@
     			<input id="updaterfarm" type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
 
-    			<input id="updatervaerk" type="checkbox" name="roles[]" value="Værkfører">
+    			<input id="updatervaerk" type="checkbox" name="roles[]" value="VÃ¦rkfÃ¸rer">
 
     			Operatoer
     			<input id="updaterLab" type="checkbox" name="roles[]" value="Laborant">
@@ -370,7 +373,7 @@
 				<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" readonly>
     			</div>
     			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
-    			<input type="text" name="leverandoer" placeholder="Levarandør" maxlength="30" pattern="[a-z A-Z /]*" required>
+    			<input type="text" name="leverandoer" placeholder="LevarandÃ¸r" maxlength="30" pattern="[a-z A-Z /]*" required>
     			</div>
     			
     				

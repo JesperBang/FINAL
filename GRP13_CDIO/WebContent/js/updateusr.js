@@ -1,7 +1,7 @@
 /**
  *  Yas
  */
-$(document).ready(function() {
+$(document).ready(function() {	
 		//Fetch Update User Submit Button
 		$("#ChooseUserToUpdate").submit( function() {               
 		 
