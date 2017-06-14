@@ -1,42 +1,39 @@
 /**
+ * 
+ */
+/**
  *  Yas
  */
 $(document).ready(function() {	
 		//Fetch Update User Submit Button
-		$("#ChooseUserToUpdate").submit( function() {               
+		$("#FUpdateRaavareForm").submit( function() {               
 		 
 			event.preventDefault();
 			
-			var admin = document.getElementById("updateradmin");
-			var farma = document.getElementById("updaterfarm");
-			var vaerk = document.getElementById("updatervaerk");
-			var labor = document.getElementById("updaterLab");
 			
-			var idu  = document.getElementById("chooseid").value;
+			var idu  = document.getElementById("chooseraaid").value;
 			
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/user/" + idu,
+				url: "http://localhost:8080/GRP13_CDIO/rest2/raavareservice/raavare/" + idu,
 				contentType: "application/json",
 				method: 'GET',
 				success: function(resp){
 					console.log(idu);
 					console.log('This is the Success method')
 					console.log(resp)
-					document.getElementById("ChooseUserToUpdate").reset();
+					document.getElementById("FUpdateRaavareForm").reset();
 					console.log("Chose User has been cleared")
 					
 					//Parsing fetched information into update form
 					try{
 						console.log(resp.opr_id);
-						$("#updateidin").val(resp.opr_id);
-						$("#updatefnin").val(resp.firstname);
-						$("#updatelnin").val(resp.lastname);
-						$("#updateiniin").val(resp.ini);
-						$("#updatecprin").val(resp.cpr);
-						$("#updatepassin").val(resp.password);
+						$("#updateraaid").val(resp.raavareId);
+						$("#updateraan").val(resp.raavareNavn);
+						$("#updateraal").val(resp.leverandoer);
+					
 
 					}catch(err){
-						alert("User doesn't excist! make sure to type a valid id.");
+						alert("Raavare doesn't excist! make sure to type a valid id.");
 					}
 				},
 				
@@ -45,7 +42,7 @@ $(document).ready(function() {
 					console.log('This is the ERROR method')
 					console.log(resp)
 					
-					$("#chooseid").text("No user with that id was found");
+					$("#chooseid").text("No raavare with that id was found");
 				}
 			});
 			return false;
@@ -53,15 +50,15 @@ $(document).ready(function() {
 		
 		
 		//Send updated user details to db
-		$("#UpdateUserForm").submit( function() {
+		$("#UpdateRaavareForm").submit( function() {
 			
 			event.preventDefault();
 			
-			var data = $('#UpdateUserForm').serializeObject();
+			var data = $('#UpdateRaavareForm').serializeObject();
 
 			console.log(data);
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/update/user",
+				url: "http://localhost:8080/GRP13_CDIO/rest2/raavareservice/update/raavare",
 				data: JSON.stringify(data),
 				contentType: "application/json",
 				method: 'POST',
@@ -69,12 +66,11 @@ $(document).ready(function() {
 					console.log(data);
 					console.log('This is the Success method')
 					console.log(resp)
-					document.getElementById("UpdateUserForm").reset();
-					console.log("CUForm has been cleared")
+					document.getElementById("UpdateRaavareForm").reset();
 					
-					document.getElementById('updateUsrSuccess').style.display = 'block';
+					document.getElementById('updateRSuccess').style.display = 'block';
 					setTimeout(function() {
-						$('#updateUsrSuccess').fadeOut('slow').empty()}, 5000)
+						$('#updateRSuccess').fadeOut('slow').empty()}, 5000)
 					//Goes back to menu
 					$('#usradmin').show();
 					$('#createuser').hide();

@@ -81,14 +81,14 @@ input[type=submit] {
 }
 
 /* Centering login form */
-div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavarebatch, div.CreateRaavareForm, div.UpdateRavvareForm, div.DeactivateUserForm, div.Createproduktbatch
+div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavarebatch, div.CreateRaavareForm, div.UpdateRaavareForm, div.DeactivateUserForm, div.Createproduktbatch
 {
     display: block;
     text-align: center;
 }
 
 
-#CreateUserForm, #UpdateUserForm, #ChooseUserToUpdate, #CreatePrescription, #CreateRaavarebatch, #CreateRaavareForm, #UpdateRavvareForm, #DeactivateUserForm, #Createproduktbatch
+#CreateUserForm, #UpdateUserForm, #ChooseUserToUpdate, #CreatePrescription, #CreateRaavarebatch, #CreateRaavareForm, #UpdateRaavareForm, #DeactivateUserForm, #Createproduktbatch
 
 {
     display: inline-block;
