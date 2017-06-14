@@ -24,6 +24,13 @@ $(document).ready(function() {
 		$("#createprescript").show();
 		return false;
 	});
+	
+	document.getElementById("addKomp").addEventListener("click",function() {
+		$( ".komponenter" ).append( "<input type=\"number\" name=\"komp[][raavareId]\" placeholder=\"Raavare ID\" min =\"1\" max=\"99\">"
+    			+" <input type=\"number\" name=\"komp[][nomNetto]\" placeholder=\"Maengde\" min =\"1\" max=\"99\">"
+    			+" <input type=\"number\" name=\"komp[][tolerance]\" placeholder=\"Tolerance (0,1-10,0%)\" maxlength=\"50\">" );
+		return false;
+	});
 
 	// Load prescriptions on Vis Recepter page
 	document.getElementById("VisReceptSM").addEventListener("click",function() {
@@ -111,6 +118,8 @@ $(document).ready(function() {
 		});
 
 	});
+	
+	
 	
 	
 

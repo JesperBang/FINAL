@@ -446,6 +446,37 @@
 
 		</div>
 	
+	<!-- Create produktBatch page -->
+		<div id="createproduktbatch" style="display: none">
+   					
+			
+			<!-- Prescription Creation Form -->
+			<div class="Createproduktbatch">
+				<h2>Opret Produkt</h2>
+
+			<form id="Createproduktbatch">
+			
+				<!-- User input -->
+				<div id="CPBContainer">
+				
+				<div style="width:100%">
+    			<input type="number" name="pbId" placeholder="Produktbatch ID" min ="1" max="99" required>
+    			<input type="number" name="receptId" placeholder="Recept ID" min ="1" max="99" required>
+    			</div>
+    			<div class="pbkomponenter">
+    			<input type="number" name="komp[][rbId]" placeholder="Raavarebatch ID" min ="1" max="99">
+    			</div>
+    			<input type="button" id="addpbKomp" value="+">
+    			</div>
+    				
+    			<!-- Create Prescription Btn -->
+    			<div id="CPBbtn" class="CPBcontainer" style="background-color: #f1f1f1">			
+    				<input class="cpbbtn" type="submit"  value="Opret produktbatch">
+    			</div>
+			</form>
+			</div>
+				
+		</div>
 	
 	<!-- Create prescription page -->
 		<div id="createprescript" style="display: none">
@@ -464,10 +495,12 @@
     			<input type="number" name="receptId" placeholder="Recept ID" min ="1" max="99" required>
     			</div>
     			<input type="text" name="receptNavn" placeholder="Recept Navn" maxlength="30" pattern="[a-z A-Z]*" required>
-    			<input type="number" name="raavareId" placeholder="Raavare ID" min ="1" max="99">
-    			<input type="number" name="nomNetto" placeholder="Maengde" min ="1" max="99">
-    			<input type="number" name="tolerance" placeholder="Tolerance (0,1-10,0%)" maxlength="50">
-    			
+    			<div class="komponenter">
+    			<input type="number" name="komp[][raavareId]" placeholder="Raavare ID" min ="1" max="99">
+    			<input type="number" name="komp[][nomNetto]" placeholder="Maengde" min ="1" max="99">
+    			<input type="number" name="komp[][tolerance]" placeholder="Tolerance (0,1-10,0%)" maxlength="50" pattern="[0-9 .]*">
+    			</div>
+    			<input type="button" id="addKomp" value="+">
     			</div>
     				
     			<!-- Create Prescription Btn -->

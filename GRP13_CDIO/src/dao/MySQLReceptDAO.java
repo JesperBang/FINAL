@@ -82,6 +82,16 @@ public class MySQLReceptDAO implements IReceptDAO {
 			stmt.setInt(1, recept.getReceptId());
 			stmt.setString(2, recept.getReceptNavn());
 			stmt.executeQuery();
+			List<ReceptKompDTO> komps = recept.getKomp();
+			for (ReceptKompDTO komp : komps) {
+				komp.setReceptId(recept.getReceptId());
+				stmt = connector.getConnection().prepareStatement("call add_receptkomponent(?,?,?,?);");
+				stmt.setInt(1, komp.getReceptId());
+				stmt.setInt(2, komp.getRaavareId());
+				stmt.setDouble(3, komp.getNomNetto());
+				stmt.setDouble(4, komp.getTolerance());
+				stmt.executeQuery();
+			}
 		} catch (Exception e) {
 			throw new DALException(e.getMessage());
 		}
