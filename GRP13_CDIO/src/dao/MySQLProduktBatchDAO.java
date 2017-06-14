@@ -103,18 +103,19 @@ public class MySQLProduktBatchDAO implements IProduktBatchDAO {
 		try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(2)
 			PreparedStatement stmt = connector.getConnection().prepareStatement("call add_produktbatch(?,?,?);");
 			stmt.setInt(1, produktbatch.getPbId());
-			stmt.setInt(2, produktbatch.getStatus());
+			stmt.setInt(2, 0);
 			stmt.setInt(3, produktbatch.getReceptId());
 			stmt.executeQuery();
 			List<ProduktBatchKompDTO> komp = produktbatch.getKomp();
 			PreparedStatement stmt2;
 			for (ProduktBatchKompDTO kompDTO : komp) {
+				kompDTO.setPbId(produktbatch.getPbId());
 				stmt2 = connector.getConnection().prepareStatement("call add_produktbatchkomponent(?,?,?,?,?);");
 				stmt2.setInt(1, kompDTO.getPbId());
 				stmt2.setInt(2, kompDTO.getRbId());
-				stmt2.setDouble(3, kompDTO.getTara());
-				stmt2.setDouble(4, kompDTO.getNetto());
-				stmt2.setInt(5, kompDTO.getOprId());
+				stmt2.setDouble(3, 0);
+				stmt2.setDouble(4, 0);
+				stmt2.setInt(5, 1);
 				stmt2.executeQuery();
 				
 			}

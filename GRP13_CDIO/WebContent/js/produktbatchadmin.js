@@ -5,6 +5,31 @@ $(document).ready(function() {
 
 	var allProduktbatches;
 //ajax request
+	
+	document.getElementById("OPB").addEventListener("click",function() {
+		$("#table").hide();
+		$("#updateuser").hide();
+		$("#createprescript").hide();
+		$("#receptable").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#pbtable").hide();
+		$("#rtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
+		$("#popupID").hide();
+		$("#createuser").hide();
+		$("#createproduktbatch").show();
+		
+		return false;
+	});
+	
+	
+	document.getElementById("addpbKomp").addEventListener("click",function() {
+		$( ".pbkomponenter" ).append( "<input type=\"number\" name=\"komp[][rbId]\" placeholder=\"Raavarebatch ID\" min =\"1\" max=\"99\">" );
+		return false;
+	});
+	
 	document.getElementById("VPB").addEventListener("click",function() {
 		$("#table").hide();
 		$("#createuser").hide();
@@ -113,4 +138,45 @@ $(document).ready(function() {
 	});
 		return false;
 	});
+	
+	
+	$("#Createproduktbatch").submit( function() {               
+
+		event.preventDefault();
+
+
+		var data = $('#Createproduktbatch').serializeObject();
+
+		console.log(data);
+
+
+		$.ajax({
+			url: "http://localhost:8080/GRP13_CDIO/rest2/produktbatchservice/create/produktbatch",
+			data: JSON.stringify(data),
+			contentType: "application/json",
+			method: 'POST',
+			success: function(resp){
+				console.log(data);
+				console.log('This is the Success method')
+				console.log(resp)
+				document.getElementById("Createproduktbatch").reset();
+				console.log("CPBForm has been cleared")
+
+				//Goes back to menu
+				$('#usradmin').show();
+				$('#pbtable').hide();
+
+			},
+			error: function(resp){
+				console.log(data);
+				console.log('This is the ERROR method')
+				console.log(resp)
+			}
+		});
+
+		return false;
+
+	});
+	
+	
 });
