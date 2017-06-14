@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+.success {
+	border: 1px solid;
+	margin: 8px 0px;
+	padding:12px 8px 12px 45px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	color: #4F8A10;
+	background-color: #DFF2BF;
+	margin-top: 3%;
+}
+
+.successImg {
+	width: 20px;
+	height: 20px;
+}
+

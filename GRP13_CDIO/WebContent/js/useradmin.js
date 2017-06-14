@@ -7,14 +7,15 @@ $(document).ready(function() {
 	document.getElementById("createusermenu").addEventListener("click",function() {
 		$("#table").hide();
 		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
-		$("#pbtable").hide();
 		$("#rtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
 		$("#createuser").show();
 		
@@ -23,15 +24,15 @@ $(document).ready(function() {
 	document.getElementById("updateusermenu").addEventListener("click",function() {
 		$("#table").hide();
 		$("#createuser").hide();
-		$("#createuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
 		$("#rtable").hide();
-		$("#pbtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
 		$("#updateuser").show();
 		
@@ -39,18 +40,19 @@ $(document).ready(function() {
 	});
 	//Load logout
 	document.getElementById("logoutmenu").addEventListener("click",function() {
+		$("#usradmin").hide();
 		$("#table").hide();
 		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
-		$("#pbtable").hide();
 		$("#rtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
-		$("#usradmin").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
 		alert("Du er nu logget ud.");
 		$("#login").show();
@@ -59,17 +61,17 @@ $(document).ready(function() {
 	
 	document.getElementById("updatestatususermenu").addEventListener("click",function() {
 		$("#table").hide();
+		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
-		$("#pbtable").hide();
 		$("#rtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
-		$("#createuser").hide();
 		$("#deactivateuser").show();
 		
 		return false;
@@ -82,21 +84,20 @@ $(document).ready(function() {
 	document.getElementById("usradminmenu").addEventListener("click",function() {
 		
 		//visuals
+		$("#table").hide();
 		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createuser").hide();
-		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
-		$("#pbtable").hide();
 		$("#rtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
 		$("#table").show();
-		$("#SPtable").hide();
 		
 		//ajax request
 		$.ajax({
@@ -179,6 +180,10 @@ $(document).ready(function() {
 					console.log(resp)
 					document.getElementById("CreateUserForm").reset();
 					console.log("CUForm has been cleared")
+					 	
+					document.getElementById('createUsrSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#createUsrSuccess').fadeOut('slow').empty()}, 5000)
 					
 					//Goes back to menu
 					$('#usradmin').show();
@@ -215,6 +220,9 @@ $(document).ready(function() {
 					document.getElementById("DeactivateUserForm").reset();
 					console.log("DUForm has been cleared")
 					
+					document.getElementById('statusUsrSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#statusUsrSuccess').fadeOut('slow').empty()}, 5000)
 					//Goes back to menu
 					$('#usradmin').show();
 					$('#deactivateuser').hide();
