@@ -19,6 +19,7 @@ $(document).ready(function() {
 		$("#RBtable").hide();
 		$("#popupID").hide();
 		$("#createuser").hide();
+		$("#SPtable").hide();
 		$("#createproduktbatch").show();
 		
 		return false;
@@ -43,6 +44,7 @@ $(document).ready(function() {
 		$("#createRB").hide();
 		$("#RBtable").hide();
 		$("#popupID").hide();
+		$("#createproduktbatch").hide();
 		$("#pbtable").show();
 
 		$.ajax({

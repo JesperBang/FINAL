@@ -22,6 +22,7 @@ $(document).ready(function() {
 		$("#popupID").hide();
 		$("#createRB").show();
 		$("#SPtable").hide();
+		$("#createproduktbatch").hide();
 		return false;
 		
 	});
@@ -42,6 +43,7 @@ $(document).ready(function() {
 		$("#createRB").hide();
 		$("#pbtable").hide();
 		$("#popupID").hide();
+		$("#createproduktbatch").hide();
 		$("#RBtable").show();
 
 		//ajax request
