@@ -22,6 +22,7 @@
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/useradmin.js"></script>
 <script type="text/javascript" src="js/produktbatchadmin.js"></script>
+<script type="text/javascript" src="js/updateraavare.js"></script>
 <script type="text/javascript" src="js/raavareadmin.js"></script>
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 <script type="text/javascript" src="js/receptadmin.js"></script>
@@ -162,6 +163,9 @@
   				</div>
   				
   				<div id="createPSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> The prescription has been created!
+  				</div>
+  				<div id="updateRSuccess" class="success" style="display:none" >
     				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> The prescription has been created!
   				</div>
   				
@@ -406,11 +410,18 @@
 				<h2>Update Raavare Form</h2>
 			
 			<!-- Form for chosing user by id to update -->
-			<form id="ChooseUserToUpdate">
-				<div id="ChooseContainer">
-					<input type="number" name="raavareId" placeholder="Enter the id of the raavare you wish to update" min ="11" style="width:59%">
+			<form id="FUpdateRaavareForm">
+				<div id="ChooseraaContainer">
+					<input id="chooseraaid" type="number" name="raavareId" placeholder="Enter the id of the raavare you wish to update" min ="1" style="width:59%">
+				
+					<div id="FRbtn" class="FUcontainer" style="background-color: #f1f1f1">			
+    					<input class="fubtn" type="submit"  value="Fetch user">
+    				</div>
 				</div>
 			</form>
+			
+			<!-- Seperation of forms -->
+			<br>
 			
 			<form id="UpdateRaavareForm">
 			
@@ -419,10 +430,10 @@
 				<div id="UUContainer">
 				
 				<div style="width:100%">
-				<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" readonly>
+				<input id= "updateraaid" type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" readonly>
     			</div>
-    			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
-    			<input type="text" name="leverandoer" placeholder="LevarandÃƒÆ’Ã‚Â¸r" maxlength="30" pattern="[a-z A-Z /]*" required>
+    			<input id= "updateraan" type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
+    			<input id= "updateraal" type="text" name="leverandoer" placeholder="Levarandoer" maxlength="30" pattern="[a-z A-Z /]*" required>
     			</div>
     			
     				
