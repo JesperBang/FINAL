@@ -47,6 +47,10 @@ public class Password {
 			all[i] = all[a];
 			all[a] = temp;
 		}
-		return Arrays.toString(all);
+		String out = "";
+		for(int j = 0; j < all.length; j++){
+			out += all[j];
+		}
+		return out;
 	}
 }
