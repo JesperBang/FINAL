@@ -32,17 +32,17 @@ $(document).ready(function() {
 		//visuals
 		$("#table").hide();
 		$("#createuser").hide();
-		$("#createuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#updateuser").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
 		$("#rtable").hide();
-		$("#pbtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
 		$("#RBtable").show();
-		$("#SPtable").hide();
 
 		//ajax request
 		$.ajax({
@@ -105,6 +105,10 @@ $(document).ready(function() {
 				document.getElementById("CreateRaavarebatch").reset();
 				console.log("RBForm has been cleared")
 
+				document.getElementById('createRBSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#createRBSuccess').fadeOut('slow').empty()}, 5000)
+						
 				//Goes back to menu
 				$('#usradmin').show();
 				$('#RBtable').hide();

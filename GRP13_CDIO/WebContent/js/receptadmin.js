@@ -11,42 +11,38 @@ $(document).ready(function() {
 		$("#table").hide();
 		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
 		$("#rtable").hide();
-		$("#pbtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
-		$("#SPtable").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
-
 		$("#createprescript").show();
 		return false;
-		
 	});
 
 	// Load prescriptions on Vis Recepter page
 	document.getElementById("VisReceptSM").addEventListener("click",function() {
 
 		//visuals
-
 		$("#table").hide();
 		$("#createuser").hide();
-		$("#createuser").hide();
-		$("#createprescript").hide();
+		$("#updateuser").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
 		$("#rtable").hide();
-		$("#pbtable").hide();
 		$("#createprescript").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
-		$("#SPtable").show();
+		$("#pbtable").hide();
 		$("#popupID").hide();
+		$("#SPtable").show();
 	
-
 		//ajax request
 		$.ajax({
 			url: "http://localhost:8080/GRP13_CDIO/rest2/receptservice/recept",
@@ -141,6 +137,10 @@ $(document).ready(function() {
 				document.getElementById("CreatePrescription").reset();
 				console.log("CPForm has been cleared")
 
+				document.getElementById('createPSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#createPSuccess').fadeOut('slow').empty()}, 5000)
+						
 				//Goes back to menu
 				$('#usradmin').show();
 				$('#SPtable').hide();

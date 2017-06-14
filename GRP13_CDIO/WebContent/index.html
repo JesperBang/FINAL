@@ -8,6 +8,7 @@
 <title>Index</title>
 
 <!-- CSS -->
+<link rel="stylesheet" type="text/css" href="css/successMessage.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 <link rel="stylesheet" type="text/css" href="css/popupcss.css">
@@ -18,7 +19,6 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Script -->
-<script type="text/javascript" src="js/succesalert.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/useradmin.js"></script>
 <script type="text/javascript" src="js/produktbatchadmin.js"></script>
@@ -35,8 +35,6 @@
 
 <!-- Main HTML -->
 <body>
-
-
 		<!-- Login page called form -->
 		<div class="form" id="login">
 			<form id="loginform">
@@ -68,8 +66,6 @@
 	<!-- Menu page -->
 	<div id="usradmin" style="display: none">
 	
-
-		
 		<!-- div for fixing menu bar glitch -->
 		<div id="usrmenu" style="min-width:1300px; ">
 			<ul class="mm">
@@ -139,10 +135,36 @@
 				
 				<!-- Logout -->
 				<li><a id="logoutmenu" href="#" >Log ud</a></li>
-				
-
+			
 			</ul>
 		</div>
+		
+		<!--  Succes alerts -->
+				<div id="createUsrSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> The user has been created!
+  				</div>
+  				
+  				<div id="updateUsrSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> The user has been updated!
+  				</div>
+  				
+  				<div id="statusUsrSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> The user status has been changed!
+  				</div>
+  				
+  				<div id="createRaavareSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> Raavare has been created!
+  				</div>
+  				
+  				<div id="createRBSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> Raavarebatch has been created!
+  				</div>
+  				
+  				<div id="createPSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> The prescription has been created!
+  				</div>
+  				
+  				
 		
 		
 	<!-- Table for Raavareadmin -->
@@ -155,9 +177,6 @@
 		</div>
 	</div>
 	
-
-
-
 		<!-- popop -->
 		<div id="popupID" class="popup" style="display:none" >
   			<span class="popuptext" id="myPopup" >
@@ -165,7 +184,6 @@
  			 </span>
 		</div>
 		
-
 		<!-- Table for user admin -->
 		<div id="table" style="display: none">
 			<h2>Brugere:</h2>
@@ -173,7 +191,6 @@
 			<table id="usertable">
 			
 			</table>
-
 
 		</div>
 		<!-- Table for product admin -->
@@ -242,10 +259,7 @@
     			<!-- Create User Btn -->
     			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
     				<input id="cubtnid" class="cubtn" type="submit"  value="Create user" style="overflow: hidden;">
-    			<!--  Succes alert -->
-				<div id="succes" style="display:none" class="alert alert-success">
-    				<strong>Success!</strong> The user has been created!
-  				</div>
+    			
     			</div>
 			</form>
 			</div>
@@ -282,8 +296,6 @@
 	
 		</div>
 
-	
-	
 
 		<!-- Create raavare page -->
 		<div id="createraavare" style="display: none">

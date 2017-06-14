@@ -9,16 +9,17 @@ $(document).ready(function() {
 		$("#table").hide();
 		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
 		$("#rtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
 		$("#popupID").hide();
 		$("#pbtable").show();
-		$("#SPtable").hide();
+
 		$.ajax({
 		url: "http://localhost:8080/GRP13_CDIO/rest2/produktbatchservice/produktbatches",
 		method: "GET",
