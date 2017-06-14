@@ -88,6 +88,7 @@ $(document).ready(function() {
 		$("#RBtable").hide();
 		$("#popupID").hide();
 		$("#rtable").show();
+		$("#SPtable").hide();
 		$.ajax({
 		url: "http://localhost:8080/GRP13_CDIO/rest2/raavareservice/raavare",
 		method: "GET",

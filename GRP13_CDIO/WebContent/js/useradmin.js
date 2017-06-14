@@ -80,6 +80,7 @@ $(document).ready(function() {
 		$("#RBtable").hide();
 		$("#popupID").hide();
 		$("#table").show();
+		$("#SPtable").hide();
 		
 		//ajax request
 		$.ajax({

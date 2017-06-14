@@ -128,7 +128,6 @@ $(document).ready(function() {
 
 		console.log(data);
 
-		debugger;
 
 		$.ajax({
 			url: "http://localhost:8080/GRP13_CDIO/rest2/receptservice/create/recept",
@@ -157,6 +156,7 @@ $(document).ready(function() {
 		return false;
 
 	});
+	
 	
 
 });
