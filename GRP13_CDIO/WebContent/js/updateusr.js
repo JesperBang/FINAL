@@ -126,6 +126,9 @@ $(document).ready(function() {
 					document.getElementById("UpdateUserForm").reset();
 					console.log("CUForm has been cleared")
 					
+					document.getElementById('updateUsrSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#updateUsrSuccess').fadeOut('slow').empty()}, 5000)
 					//Goes back to menu
 					$('#usradmin').show();
 					$('#createuser').hide();

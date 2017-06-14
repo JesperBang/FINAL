@@ -14,7 +14,9 @@ $(document).ready(function() {
 	
 	//Load User table on request
 	document.getElementById("createusermenu").addEventListener("click",function() {
+
 		var rights = getRole();
+
 		
 		if(rights.includes(' Administrator')){
 			$("#table").hide();
@@ -37,6 +39,7 @@ $(document).ready(function() {
 		return false;
 	});
 	document.getElementById("updateusermenu").addEventListener("click",function() {
+
 		var rights = getRole();
 		
 		if(rights.includes(' Administrator')){
@@ -58,23 +61,25 @@ $(document).ready(function() {
 			alert("You do not meet the required role to create a user!")
 			rights = "";
 		}
+
 		
 		return false;
 	});
 	//Load logout
 	document.getElementById("logoutmenu").addEventListener("click",function() {
+		$("#usradmin").hide();
 		$("#table").hide();
 		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
-		$("#pbtable").hide();
 		$("#rtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
-		$("#usradmin").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
 		alert("Du er nu logget ud.");
 		
@@ -89,6 +94,7 @@ $(document).ready(function() {
 	});
 	
 	document.getElementById("updatestatususermenu").addEventListener("click",function() {
+
 		var rights = getRole();
 		
 		if(rights.includes(' Administrator')){	
@@ -120,18 +126,18 @@ $(document).ready(function() {
 		var rights = $.parseJSON(sessionStorage.getItem("user"));
 		
 		//visuals
+		$("#table").hide();
 		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createuser").hide();
-		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
-		$("#pbtable").hide();
 		$("#rtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
 		$("#table").show();
 		
@@ -216,6 +222,10 @@ $(document).ready(function() {
 					console.log(resp)
 					document.getElementById("CreateUserForm").reset();
 					console.log("CUForm has been cleared")
+					 	
+					document.getElementById('createUsrSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#createUsrSuccess').fadeOut('slow').empty()}, 5000)
 					
 					//Goes back to menu
 					$('#usradmin').show();
@@ -252,6 +262,9 @@ $(document).ready(function() {
 					document.getElementById("DeactivateUserForm").reset();
 					console.log("DUForm has been cleared")
 					
+					document.getElementById('statusUsrSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#statusUsrSuccess').fadeOut('slow').empty()}, 5000)
 					//Goes back to menu
 					$('#usradmin').show();
 					$('#deactivateuser').hide();

@@ -9,13 +9,14 @@ $(document).ready(function() {
 		$("#table").hide();
 		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
-		$("#pbtable").hide();
 		$("#rtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
 		$("#createraavare").show();
 		return false;
@@ -24,20 +25,21 @@ $(document).ready(function() {
 		$("#table").hide();
 		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#createraavare").hide();
-		$("#pbtable").hide();
 		$("#rtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
 		$("#updateraavare").show();
 		return false;
 		
 	});
 
-	//Create User Submit Button
+	//Create Raavare Submit Button
 	$("#CreateRaavareForm").submit( function() {               
 
 		event.preventDefault();
@@ -59,6 +61,10 @@ $(document).ready(function() {
 				document.getElementById("CreateRaavareForm").reset();
 				console.log("CRForm has been cleared")
 				
+				document.getElementById('createRaavareSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#createRaavareSuccess').fadeOut('slow').empty()}, 5000)
+						
 				//Goes back to menu
 				$('#usradmin').show();
 				$('#createraavare').hide();
@@ -79,15 +85,17 @@ $(document).ready(function() {
 		$("#table").hide();
 		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
-		$("#pbtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
 		$("#rtable").show();
+	
 		$.ajax({
 		url: "http://localhost:8080/GRP13_CDIO/rest2/raavareservice/raavare",
 		method: "GET",

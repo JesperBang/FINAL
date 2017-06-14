@@ -11,42 +11,45 @@ $(document).ready(function() {
 		$("#table").hide();
 		$("#createuser").hide();
 		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
 		$("#rtable").hide();
-		$("#pbtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
-		$("#SPtable").hide();
+		$("#pbtable").hide();
 		$("#popupID").hide();
-
 		$("#createprescript").show();
 		return false;
-		
+	});
+	
+	document.getElementById("addKomp").addEventListener("click",function() {
+		$( ".komponenter" ).append( "<input type=\"number\" name=\"komp[][raavareId]\" placeholder=\"Raavare ID\" min =\"1\" max=\"99\">"
+    			+" <input type=\"number\" name=\"komp[][nomNetto]\" placeholder=\"Maengde\" min =\"1\" max=\"99\">"
+    			+" <input type=\"number\" name=\"komp[][tolerance]\" placeholder=\"Tolerance (0,1-10,0%)\" maxlength=\"50\">" );
+		return false;
 	});
 
 	// Load prescriptions on Vis Recepter page
 	document.getElementById("VisReceptSM").addEventListener("click",function() {
 
 		//visuals
-
 		$("#table").hide();
 		$("#createuser").hide();
-		$("#createuser").hide();
-		$("#createprescript").hide();
+		$("#updateuser").hide();
+		$("#deactivateuser").hide();
 		$("#updateraavare").hide();
 		$("#createraavare").hide();
 		$("#rtable").hide();
-		$("#pbtable").hide();
 		$("#createprescript").hide();
 		$("#createRB").hide();
 		$("#RBtable").hide();
-		$("#SPtable").show();
+		$("#pbtable").hide();
 		$("#popupID").hide();
+		$("#SPtable").show();
 	
-
 		//ajax request
 		$.ajax({
 			url: "http://localhost:8080/GRP13_CDIO/rest2/receptservice/recept",
@@ -117,6 +120,8 @@ $(document).ready(function() {
 	});
 	
 	
+	
+	
 
 	//Create Prescription Button
 	$("#CreatePrescription").submit( function() {               
@@ -128,7 +133,6 @@ $(document).ready(function() {
 
 		console.log(data);
 
-		debugger;
 
 		$.ajax({
 			url: "http://localhost:8080/GRP13_CDIO/rest2/receptservice/create/recept",
@@ -142,6 +146,10 @@ $(document).ready(function() {
 				document.getElementById("CreatePrescription").reset();
 				console.log("CPForm has been cleared")
 
+				document.getElementById('createPSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#createPSuccess').fadeOut('slow').empty()}, 5000)
+						
 				//Goes back to menu
 				$('#usradmin').show();
 				$('#SPtable').hide();
@@ -157,6 +165,7 @@ $(document).ready(function() {
 		return false;
 
 	});
+	
 	
 
 });

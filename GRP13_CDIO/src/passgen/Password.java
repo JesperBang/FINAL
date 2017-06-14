@@ -49,6 +49,7 @@ public class Password {
 		String out = "";
 		for (int i = 0; i < all.length; i++) {
 			out += all[i];
+
 		}
 		return out;
 	}
