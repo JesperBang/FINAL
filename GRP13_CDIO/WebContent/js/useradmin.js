@@ -1,40 +1,67 @@
 $(document).ready(function() {
-
+	
+	$( document ).ajaxSend(function( event, jqxhr, settings ) {
+	    jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
+	});
 	// Variable ini
 	var allUsers;
+
+	//Get current logged in users rights fom their JWT
+	function getRole(){
+		var rights = $.parseJSON(window.atob(localStorage.getItem("user").split(".")[1])).UserDTO.roles;
+		return rights;
+	}
 	
 	//Load User table on request
 	document.getElementById("createusermenu").addEventListener("click",function() {
-		$("#table").hide();
-		$("#updateuser").hide();
-		$("#deactivateuser").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#createprescript").hide();
-		$("#SPtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#pbtable").hide();
-		$("#popupID").hide();
-		$("#createuser").show();
+
+		var rights = getRole();
+
 		
+		if(rights.includes(' Administrator')){
+			$("#table").hide();
+			$("#updateuser").hide();
+			$("#createprescript").hide();
+			$("#receptable").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#pbtable").hide();
+			$("#rtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#createuser").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to create a user!")
+			rights = "";
+		}
 		return false;
 	});
 	document.getElementById("updateusermenu").addEventListener("click",function() {
-		$("#table").hide();
-		$("#createuser").hide();
-		$("#deactivateuser").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#createprescript").hide();
-		$("#SPtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#pbtable").hide();
-		$("#popupID").hide();
-		$("#updateuser").show();
+
+		var rights = getRole();
+		
+		if(rights.includes(' Administrator')){
+			$("#table").hide();
+			$("#createuser").hide();
+			$("#createuser").hide();
+			$("#createprescript").hide();
+			$("#receptable").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#rtable").hide();
+			$("#pbtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#updateuser").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to create a user!")
+			rights = "";
+		}
+
 		
 		return false;
 	});
@@ -55,33 +82,48 @@ $(document).ready(function() {
 		$("#pbtable").hide();
 		$("#popupID").hide();
 		alert("Du er nu logget ud.");
+		
+		//Clearing storage
+		sessionStorage.clear();
+		localStorage.clear();
+		var rights = "";
+		
 		$("#login").show();
-		return false;
-	});
-	
-	document.getElementById("updatestatususermenu").addEventListener("click",function() {
-		$("#table").hide();
-		$("#createuser").hide();
-		$("#updateuser").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#createprescript").hide();
-		$("#SPtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#pbtable").hide();
-		$("#popupID").hide();
-		$("#deactivateuser").show();
 		
 		return false;
 	});
 	
-	document.getElementById("VisRaavareSM").addEventListener("click",function() {
-		$("#Testdiv").show();
+	document.getElementById("updatestatususermenu").addEventListener("click",function() {
+
+		var rights = getRole();
+		
+		if(rights.includes(' Administrator')){	
+			$("#table").hide();
+			$("#updateuser").hide();
+			$("#createprescript").hide();
+			$("#receptable").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#pbtable").hide();
+			$("#rtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#createuser").hide();
+			$("#deactivateuser").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to create a user!")
+			rights = "";
+		}
+		
+		return false;
 	});
+	
+
 	// Load users on useradmin page
 	document.getElementById("usradminmenu").addEventListener("click",function() {
+		var rights = $.parseJSON(sessionStorage.getItem("user"));
 		
 		//visuals
 		$("#table").hide();
@@ -136,7 +178,7 @@ $(document).ready(function() {
 						$('<td>').text(item.lastname),
 						$('<td>').text(item.ini),
 						$('<td>').text(item.cpr),
-						$('<td>').text(item.password),
+						$('<td>').text(hex_md5(item.password)+" - "+item.password),
 						$('<td>').text(item.roles),
 						$('<td>').text(item.aktiv)			
 				).appendTo('#usertable');

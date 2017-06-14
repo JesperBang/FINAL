@@ -10,7 +10,8 @@ import java.util.List;
 import database.Connector;
 import database.DALException;
 import database.UserDAO;
-import database.UserDTO;
+import dto.UserDTO;
+import passgen.Password;
 
 public class MySQLUserDAO implements UserDAO {
 	private Connector connector = new Connector();
@@ -92,9 +93,10 @@ public class MySQLUserDAO implements UserDAO {
 
 	@Override
 	public void createOperatoer(UserDTO user) throws DALException {
-		Password pss = new Password();
-		String pass = pss.generatePassword();
-		System.out.println(pass);
+
+		Password pass = new Password();
+		String pss = pass.generatePassword();
+
 		try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(2)
 			PreparedStatement stmt = connector.getConnection().prepareStatement("call add_operatoer(?,?,?,?,?,?);");
 			stmt.setInt(1, user.getUserId());
@@ -102,7 +104,8 @@ public class MySQLUserDAO implements UserDAO {
 			stmt.setString(3, user.getLastname());
 			stmt.setString(4, user.getIni());
 			stmt.setString(5, user.getCPR());
-			stmt.setString(6, pass);
+			stmt.setString(6, pss);
+
 			stmt.executeQuery();
 		} catch (Exception e) {
 			throw new DALException(e.getMessage());
@@ -118,7 +121,7 @@ public class MySQLUserDAO implements UserDAO {
 				case "Farmaceut":
 					stmt.setInt(1, 2);
 					break;
-				case "Værkfører":
+				case "Varkforer":
 					stmt.setInt(1, 3);
 					break;
 				case "Laborant":
@@ -167,7 +170,7 @@ public class MySQLUserDAO implements UserDAO {
 				case "Farmaceut":
 					stmt.setInt(1, 2);
 					break;
-				case "Værkfører":
+				case "Varkforer":
 					stmt.setInt(1, 3);
 					break;
 				case "Laborant":

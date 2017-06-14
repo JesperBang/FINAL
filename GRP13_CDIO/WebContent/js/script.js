@@ -1,11 +1,11 @@
 $(document).ready(function() {
+	$( document ).ajaxSend(function( event, jqxhr, settings ) {
+	    jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
+	});
 	
-//	var data = $("#loginForm").serializeObject();
-//	var un = data['userName'];
-//	sessionStorage.setItem("username", un);
-	
-	// Variable ini
-	var allUsers;
+	//Ini login form with a valid login
+	$("#uname").val("2");
+	$("#pasid").val("atoJ21v");
 	
 	// On login load useradmin page
 	$("#loginform").submit(function() {
@@ -24,25 +24,34 @@ $(document).ready(function() {
 			contentType: "application/json",
 			method: 'GET',
 			success: function(resp) {
-
 				console.log(resp);
-				alert("success");
+				
 				if (resp == null) {
 					alert("Wrong Credentials!");
 				}
 				else {
-					alert("Else");
-					
-					sessionStorage.setItem("user", resp); //session Storage
+
+					localStorage.setItem("user", resp); //session Storage
 					$("#login").hide();
 					$("#usradmin").show();
+					
+					console.log(resp);
+					
+					var name = $.parseJSON(window.atob(resp.split(".")[1]));
+//					var name = window.atob(name);
+//					var name = $.parseJSON(name);
+					
+					console.log(name);
+					console.log(name.UserDTO.firstname);
+					
+					document.getElementById("logoutmenu").innerHTML = "Logout - "+name.UserDTO.firstname;
+					
 					
 				}
 			},
 			error: function(resp) {
 				//Error handling...
 				console.log(idu + " " + pas);
-				alert("Fail");
 				console.log(resp);
 			}
 			

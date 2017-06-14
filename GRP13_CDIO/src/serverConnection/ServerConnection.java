@@ -11,10 +11,10 @@ import java.util.List;
 import dao.MySQLProduktBatchDAO;
 import dao.MySQLReceptDAO;
 import dao.MySQLUserDAO;
-import database.UserDTO;
 import dto.ProduktBatchDTO;
 import dto.ProduktBatchKompDTO;
 import dto.ReceptDTO;
+import dto.UserDTO;
 
 
 public class ServerConnection implements Runnable{

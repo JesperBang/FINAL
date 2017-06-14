@@ -2,6 +2,8 @@ package database;
 
 import java.util.List;
 
+import dto.UserDTO;
+
 
 
 public interface UserDAO {
