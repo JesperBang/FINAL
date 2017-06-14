@@ -1,5 +1,8 @@
 $(document).ready(function() {
-
+	
+	$( document ).ajaxSend(function( event, jqxhr, settings ) {
+	    jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
+	});
 	// Variable ini
 	var allUsers;
 

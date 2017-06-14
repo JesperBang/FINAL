@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	$( document ).ajaxSend(function( event, jqxhr, settings ) {
+	    jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
+	});
 	
 	//Ini login form with a valid login
 	$("#uname").val("2");
@@ -28,7 +31,7 @@ $(document).ready(function() {
 				}
 				else {
 
-					sessionStorage.setItem("user", JSON.stringify(resp)); //session Storage
+					localStorage.setItem("user", resp); //session Storage
 					$("#login").hide();
 					$("#usradmin").show();
 					

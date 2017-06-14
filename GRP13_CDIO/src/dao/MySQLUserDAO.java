@@ -9,7 +9,7 @@ import java.util.List;
 import database.Connector;
 import database.DALException;
 import database.UserDAO;
-import database.UserDTO;
+import dto.UserDTO;
 
 public class MySQLUserDAO implements UserDAO {
 	private Connector connector = new Connector();
