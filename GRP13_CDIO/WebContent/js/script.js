@@ -35,9 +35,16 @@ $(document).ready(function() {
 					$("#login").hide();
 					$("#usradmin").show();
 					
-					var name = $.parseJSON(sessionStorage.getItem("user"));
-
-					document.getElementById("logoutmenu").innerHTML = "Logout - "+name.firstname;
+					console.log(resp);
+					
+					var name = $.parseJSON(window.atob(resp.split(".")[1]));
+//					var name = window.atob(name);
+//					var name = $.parseJSON(name);
+					
+					console.log(name);
+					console.log(name.UserDTO.firstname);
+					
+					document.getElementById("logoutmenu").innerHTML = "Logout - "+name.UserDTO.firstname;
 					
 					
 				}

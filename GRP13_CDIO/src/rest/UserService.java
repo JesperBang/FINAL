@@ -39,6 +39,7 @@ public class UserService {
 			e1.printStackTrace();
 			throw new WebApplicationException(403);
 		}
+		
 //		String Users = "all users";
 		List<UserDTO> allUsers = null;
 		try {

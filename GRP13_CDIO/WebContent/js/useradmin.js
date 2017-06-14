@@ -6,12 +6,17 @@ $(document).ready(function() {
 	// Variable ini
 	var allUsers;
 
+	//Get current logged in users rights fom their JWT
+	function getRole(){
+		var rights = $.parseJSON(window.atob(localStorage.getItem("user").split(".")[1])).UserDTO.roles;
+		return rights;
+	}
 	
 	//Load User table on request
 	document.getElementById("createusermenu").addEventListener("click",function() {
-		var rights = $.parseJSON(sessionStorage.getItem("user"));
+		var rights = getRole();
 		
-		if(rights.roles.includes(' Administrator')){
+		if(rights.includes(' Administrator')){
 			$("#table").hide();
 			$("#updateuser").hide();
 			$("#createprescript").hide();
@@ -32,19 +37,27 @@ $(document).ready(function() {
 		return false;
 	});
 	document.getElementById("updateusermenu").addEventListener("click",function() {
-		$("#table").hide();
-		$("#createuser").hide();
-		$("#createuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#pbtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#popupID").hide();
-		$("#updateuser").show();
+		var rights = getRole();
+		
+		if(rights.includes(' Administrator')){
+			$("#table").hide();
+			$("#createuser").hide();
+			$("#createuser").hide();
+			$("#createprescript").hide();
+			$("#receptable").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#rtable").hide();
+			$("#pbtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#updateuser").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to create a user!")
+			rights = "";
+		}
 		
 		return false;
 	});
@@ -76,19 +89,27 @@ $(document).ready(function() {
 	});
 	
 	document.getElementById("updatestatususermenu").addEventListener("click",function() {
-		$("#table").hide();
-		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#pbtable").hide();
-		$("#rtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#popupID").hide();
-		$("#createuser").hide();
-		$("#deactivateuser").show();
+		var rights = getRole();
+		
+		if(rights.includes(' Administrator')){	
+			$("#table").hide();
+			$("#updateuser").hide();
+			$("#createprescript").hide();
+			$("#receptable").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#pbtable").hide();
+			$("#rtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#createuser").hide();
+			$("#deactivateuser").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to create a user!")
+			rights = "";
+		}
 		
 		return false;
 	});
