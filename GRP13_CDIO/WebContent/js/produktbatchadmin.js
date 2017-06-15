@@ -2,26 +2,43 @@
  * 
  */
 $(document).ready(function() {
-
+	$( document ).ajaxSend(function( event, jqxhr, settings ) {
+	    jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
+	});
+	
 	var allProduktbatches;
-//ajax request
+	
+	//Get current logged in users rights fom their JWT
+	function getRole(){
+		var rights = $.parseJSON(window.atob(localStorage.getItem("user").split(".")[1])).UserDTO.roles;
+		return rights;
+	}
+
 	
 	document.getElementById("OPB").addEventListener("click",function() {
-		$("#table").hide();
-		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#pbtable").hide();
-		$("#rtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#popupID").hide();
-		$("#createuser").hide();
-		$("#SPtable").hide();
-		$("#createproduktbatch").show();
+
+		var rights = getRole();
 		
+		if(rights.includes('Farmaceut') || rights.includes('Varkforer')){
+			$("#table").hide();
+			$("#updateuser").hide();
+			$("#createprescript").hide();
+			$("#receptable").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#pbtable").hide();
+			$("#rtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#createuser").hide();
+			$("#SPtable").hide();
+			$("#createproduktbatch").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to create a Produktbatch!")
+			rights = "";
+		}
 		return false;
 	});
 	
@@ -32,23 +49,32 @@ $(document).ready(function() {
 	});
 	
 	document.getElementById("VPB").addEventListener("click",function() {
-		$("#table").hide();
-		$("#createuser").hide();
-		$("#updateuser").hide();
-		$("#deactivateuser").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#createprescript").hide();
-		$("#SPtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#popupID").hide();
-		$("#createproduktbatch").hide();
-		$("#pbtable").show();
 
+		var rights = getRole();
+		
+		if(rights.includes('Farmaceut') || rights.includes('Varkforer')){
+			$("#table").hide();
+			$("#createuser").hide();
+			$("#updateuser").hide();
+			$("#deactivateuser").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#rtable").hide();
+			$("#createprescript").hide();
+			$("#SPtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#createproduktbatch").hide();
+			$("#pbtable").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to view produktbatches!")
+			rights = "";
+		}
+			
 		$.ajax({
-		url: "http://localhost:8080/GRP13_CDIO/rest2/produktbatchservice/produktbatches",
+		url: "rest2/produktbatchservice/produktbatches",
 		method: "GET",
 		
 		//success function
@@ -114,20 +140,7 @@ $(document).ready(function() {
 						$('<td>').html(netto),
 						$('<td>').html(tara),
 						$('<td>').html(oprId)
-//						$('<td>').append(
-//								
-//								$('<td>').text(item.receptId),
-//								
-//								$.each(item.komp, function(j, item2){
-//									$('<td>').text(item2.netto).appendTo('#produktbatchtable');
-//								})
-//								)
-//						$('<td>').append(
-//								$.each(item, function(j, item2){
-//									$('<tr>').text(item2.komp[j].oprId)
-//								})
-//						)
-								
+
 				).appendTo('#produktbatchtable');
 		});
 			
@@ -154,7 +167,7 @@ $(document).ready(function() {
 
 
 		$.ajax({
-			url: "http://localhost:8080/GRP13_CDIO/rest2/produktbatchservice/create/produktbatch",
+			url: "rest2/produktbatchservice/create/produktbatch",
 			data: JSON.stringify(data),
 			contentType: "application/json",
 			method: 'POST',
@@ -199,21 +212,6 @@ $(document).ready(function() {
 	
 	//Printer
 	function Print(elem, recept){
-		
-		
-		
-//		$.ajax({
-//			url: "rest2/raavareservice/raavare/"+resp.raavareId,
-//			method: 'GET',
-//			success: function(resp2){
-//				console.log(resp2)
-//			},
-//			error: function(resp2){
-//				console.log('This is the ERROR method')
-//				console.log(resp2)
-//			}
-//		});
-		 
 	
 		var currentdate = new Date(); 
 		var datetime =  currentdate.getDate() + "-"
@@ -255,7 +253,4 @@ $(document).ready(function() {
 
 	    return true;
 	}
-	
-	
-	
 });

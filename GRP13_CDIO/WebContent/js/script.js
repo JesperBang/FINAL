@@ -3,7 +3,7 @@ $(document).ready(function() {
 	    jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
 	});
 	
-	//Ini login form with a valid login
+	//Ini login form with a valid l ogin
 	$("#uname").val("2");
 	$("#pasid").val("atoJ21v");
 	
@@ -18,9 +18,13 @@ $(document).ready(function() {
 		var idu  = document.getElementById("uname").value;
 		var pas  = document.getElementById("pasid").value;
 		
+		if(idu == "Admin"){
+			var idu = 2;
+		}
+		
 		$.ajax({
 			
-			url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/validate/" + idu +"/"+ pas,
+			url: "rest2/userservice/validate/" + idu +"/"+ pas,
 			contentType: "application/json",
 			method: 'GET',
 			success: function(resp) {
@@ -38,8 +42,6 @@ $(document).ready(function() {
 					console.log(resp);
 					
 					var name = $.parseJSON(window.atob(resp.split(".")[1]));
-//					var name = window.atob(name);
-//					var name = $.parseJSON(name);
 					
 					console.log(name);
 					console.log(name.UserDTO.firstname);

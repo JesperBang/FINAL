@@ -18,7 +18,6 @@ $(document).ready(function() {
 
 		var rights = getRole();
 
-		
 		if(rights.includes(' Administrator')){
 			$("#table").hide();
 			$("#updateuser").hide();
@@ -227,7 +226,7 @@ $(document).ready(function() {
 
 			console.log(data);
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/create/user",
+				url: "rest2/userservice/create/user",
 				data: JSON.stringify(data),
 				contentType: "application/json",
 				method: 'POST',
@@ -266,7 +265,7 @@ $(document).ready(function() {
 
 			console.log(data);
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/deactivate/user",
+				url: "rest2/userservice/deactivate/user",
 				data: JSON.stringify(data),
 				contentType: "application/json",
 				method: 'POST',

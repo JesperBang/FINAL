@@ -31,12 +31,20 @@ public class UserService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<UserDTO> ShowUsers() {
+	
+		//VAlidate token and role requirement
 		String header = request.getHeader("Authorization");
-		System.out.println("header" +header);
+		System.out.println("header: " +header);
 
 		try {
 			if(header != null){
 				JWTHandler.validateToken(header.split(" ")[1]);
+				
+				if((JWTHandler.validateToken(header.split(" ")[1])).toString().contains("Administrator")){
+					System.out.println("Admin confirmed");
+				}else{
+					throw new WebApplicationException(401);
+				}
 			}else{
 				throw new WebApplicationException(401);
 			}
@@ -44,6 +52,7 @@ public class UserService {
 			e1.printStackTrace();
 			throw new WebApplicationException(403);
 		}
+		
 		
 //		String Users = "all users";
 		List<UserDTO> allUsers = null;
@@ -62,6 +71,28 @@ public class UserService {
 	@Produces("application/json")
 	public UserDTO findUserOnId(@PathParam("id") Integer id) {
 		
+		//VAlidate token and role requirement
+		String header = request.getHeader("Authorization");
+		System.out.println("header: " +header);
+
+		try {
+			if(header != null){
+				JWTHandler.validateToken(header.split(" ")[1]);
+				
+				if((JWTHandler.validateToken(header.split(" ")[1])).toString().contains("Administrator")){
+					System.out.println("Admin confirmed");
+				}else{
+					throw new WebApplicationException(401);
+				}
+			}else{
+				throw new WebApplicationException(401);
+			}
+		} catch (AuthException e1) {
+			e1.printStackTrace();
+			throw new WebApplicationException(403);
+		}
+		
+		
 		UserDTO user = null;
 		try {
 			user = users.getUser(id);
@@ -78,6 +109,29 @@ public class UserService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	 public boolean createUser(UserDTO user) {
 		System.out.println(user);
+		
+		//VAlidate token and role requirement
+		String header = request.getHeader("Authorization");
+		System.out.println("header: " +header);
+
+		try {
+			if(header != null){
+				JWTHandler.validateToken(header.split(" ")[1]);
+				
+				if((JWTHandler.validateToken(header.split(" ")[1])).toString().contains("Administrator")){
+					System.out.println("Admin confirmed");
+				}else{
+					throw new WebApplicationException(401);
+				}
+			}else{
+				throw new WebApplicationException(401);
+			}
+		} catch (AuthException e1) {
+			e1.printStackTrace();
+			throw new WebApplicationException(403);
+		}
+		
+		
 		try {
 			users.createOperatoer(user);
 		} catch (DALException e) {
@@ -91,6 +145,29 @@ public class UserService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public boolean updateUser(UserDTO user){
+		
+		//VAlidate token and role requirement
+		String header = request.getHeader("Authorization");
+		System.out.println("header: " +header);
+
+		try {
+			if(header != null){
+				JWTHandler.validateToken(header.split(" ")[1]);
+				
+				if((JWTHandler.validateToken(header.split(" ")[1])).toString().contains("Administrator")){
+					System.out.println("Admin confirmed");
+				}else{
+					throw new WebApplicationException(401);
+				}
+			}else{
+				throw new WebApplicationException(401);
+			}
+		} catch (AuthException e1) {
+			e1.printStackTrace();
+			throw new WebApplicationException(403);
+		}
+		
+		
 		try {
 			users.updateOperatoer(user);
 		} catch (DALException e) {
@@ -104,6 +181,28 @@ public class UserService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public boolean deactivateUser(UserDTO user){
+		
+		//VAlidate token and role requirement
+		String header = request.getHeader("Authorization");
+		System.out.println("header: " +header);
+
+		try {
+			if(header != null){
+				JWTHandler.validateToken(header.split(" ")[1]);
+				
+				if((JWTHandler.validateToken(header.split(" ")[1])).toString().contains("Administrator")){
+					System.out.println("Admin confirmed");
+				}else{
+					throw new WebApplicationException(401);
+				}
+			}else{
+				throw new WebApplicationException(401);
+			}
+		} catch (AuthException e1) {
+			e1.printStackTrace();
+			throw new WebApplicationException(403);
+		}
+		
 		
 		try {
 			users.deactivateOperatoer(user);

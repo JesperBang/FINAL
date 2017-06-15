@@ -15,7 +15,7 @@ $(document).ready(function() {
 			var idu  = document.getElementById("chooseid").value;
 			
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/user/" + idu,
+				url: "rest2/userservice/user/" + idu,
 				contentType: "application/json",
 				method: 'GET',
 				success: function(resp){
@@ -115,7 +115,7 @@ $(document).ready(function() {
 
 			console.log(data);
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/update/user",
+				url: "rest2/userservice/update/user",
 				data: JSON.stringify(data),
 				contentType: "application/json",
 				method: 'POST',
