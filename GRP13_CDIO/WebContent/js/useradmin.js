@@ -127,7 +127,9 @@ $(document).ready(function() {
 
 	// Load users on useradmin page
 	document.getElementById("usradminmenu").addEventListener("click",function() {
+
 		var rights = getRole();
+
 		
 		if(rights.includes(' Administrator')){	
 			//visuals

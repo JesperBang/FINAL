@@ -19,6 +19,7 @@ $(document).ready(function() {
 //ajax request
 	document.getElementById("OpretRaavareSM").addEventListener("click",function() {
 
+
 		var rights = getRole();
 		
 		if(rights.includes('Farmaceut')){
@@ -67,6 +68,7 @@ $(document).ready(function() {
 			alert("You do not meet the required role to update raavare!")
 			rights = "";
 		}
+
 		return false;
 		
 	});
@@ -114,6 +116,7 @@ $(document).ready(function() {
 	
 	document.getElementById("VisRaavareSM").addEventListener("click",function() {
 
+
 		var rights = getRole();
 		
 		if(rights.includes('Farmaceut')){
@@ -137,7 +140,7 @@ $(document).ready(function() {
 			rights = "";
 		}
 		
-		
+
 		$.ajax({
 		url: "rest2/raavareservice/raavare",
 		method: "GET",
