@@ -32,9 +32,14 @@ public class UserService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<UserDTO> ShowUsers() {
 		String header = request.getHeader("Authorization");
-		System.out.println(header);
+		System.out.println("header" +header);
+
 		try {
-			JWTHandler.validateToken(header.split(" ")[1]);
+			if(header != null){
+				JWTHandler.validateToken(header.split(" ")[1]);
+			}else{
+				throw new WebApplicationException(401);
+			}
 		} catch (AuthException e1) {
 			e1.printStackTrace();
 			throw new WebApplicationException(403);

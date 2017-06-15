@@ -176,10 +176,86 @@ $(document).ready(function() {
 				console.log(resp)
 			}
 		});
-
+		var recept;
+		
+		$.ajax({
+			url: "rest2/receptservice/recept/"+data.receptId,
+			method: 'GET',
+			success: function(resp){
+				console.log(resp)
+				recept = resp;
+				Print(data, recept);
+			},
+			error: function(resp){
+				console.log('This is the ERROR method')
+				console.log(resp)
+			}
+		});
+		
+		
 		return false;
 
 	});
+	
+	//Printer
+	function Print(elem, recept){
+		
+		
+		
+//		$.ajax({
+//			url: "rest2/raavareservice/raavare/"+resp.raavareId,
+//			method: 'GET',
+//			success: function(resp2){
+//				console.log(resp2)
+//			},
+//			error: function(resp2){
+//				console.log('This is the ERROR method')
+//				console.log(resp2)
+//			}
+//		});
+		 
+	
+		var currentdate = new Date(); 
+		var datetime =  currentdate.getDate() + "-"
+		                + (currentdate.getMonth()+1)  + "-" 
+		                + currentdate.getYear() ;
+		
+		var PBP = "Udskrevet "+datetime;
+		PBP += "<br>";
+		PBP += "Produkt Batch nr.: "+elem.pbId;
+		PBP += "<br>";
+		PBP += "Recept nr.: "+elem.receptId;
+		PBP += "<br><br>";
+		
+		$.each(elem.komp, function(i, item){
+			PBP += "Raavare nr.: "+ recept.komp[i].raavareId;
+			PBP += "<br>";
+			PBP += "----------------------------------------------------------------------------------------------------------------------------";
+			PBP += "<br>";
+			PBP += "<table style=\"width:100%\"> <tr><td>Maengde</td><td>Tolerance</td><td>Tara</td><td>Netto (kg)</td><td>Batch</td><td>Opr.</td> </tr>"
+			
+			PBP += "<tr><td>"+recept.komp[i].nomNetto+"</td><td>"+recept.komp[i].tolerance +"</td><td>0</td><td>0</td><td>0</td><td>0</td></tr> </table>";
+			PBP += "<br>";
+		});
+		
+		
+	    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+	    mywindow.document.write('<html><head><title>' + "Produktbatch Print"  + '</title>');
+	    mywindow.document.write('</head><body >');
+	    mywindow.document.write('<h1>' + "Produktbatch Print"  + '</h1>');
+	    mywindow.document.write(PBP);
+	    mywindow.document.write('</body></html>');
+
+	    mywindow.document.close(); // necessary for IE >= 10
+	    mywindow.focus(); // necessary for IE >= 10*/
+
+	    mywindow.print();
+	    mywindow.close();
+
+	    return true;
+	}
+	
 	
 	
 });

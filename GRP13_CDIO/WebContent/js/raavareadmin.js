@@ -50,7 +50,6 @@ $(document).ready(function() {
 		var data = $('#CreateRaavareForm').serializeObject();
 
 		console.log(data);
-		debugger;
 		$.ajax({
 			url: "http://localhost:8080/GRP13_CDIO/rest2/raavareservice/create/raavare",
 			data: JSON.stringify(data),

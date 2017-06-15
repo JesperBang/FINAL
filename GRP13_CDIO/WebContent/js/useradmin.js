@@ -3,6 +3,7 @@ $(document).ready(function() {
 	$( document ).ajaxSend(function( event, jqxhr, settings ) {
 	    jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
 	});
+	
 	// Variable ini
 	var allUsers;
 
@@ -127,78 +128,87 @@ $(document).ready(function() {
 
 	// Load users on useradmin page
 	document.getElementById("usradminmenu").addEventListener("click",function() {
-		var rights = $.parseJSON(sessionStorage.getItem("user"));
+		var rights = getRole();
 		
-		//visuals
-		$("#table").hide();
-		$("#createuser").hide();
-		$("#updateuser").hide();
-		$("#deactivateuser").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#createprescript").hide();
-		$("#SPtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#pbtable").hide();
-		$("#popupID").hide();
-		$("#createproduktbatch").hide();
-		$("#table").show();
-		
-		//ajax request
-		$.ajax({
-		url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/users",
-		method: "GET",
-		
-		//success function
-		success: function(data){
-			allUsers = data;
-			console.log(data);
-			//Parse JSON from ajax request to html table
-			//ini vars for table row
-			var tr;
+		if(rights.includes(' Administrator')){	
+			//visuals
+			$("#table").hide();
+			$("#createuser").hide();
+			$("#updateuser").hide();
+			$("#deactivateuser").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#rtable").hide();
+			$("#createprescript").hide();
+			$("#SPtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#pbtable").hide();
+			$("#popupID").hide();
+			$("#createproduktbatch").hide();
+			$("#table").show();
 			
-			//clearing old table rows and table heads
-			$("#usertable tr").remove();
-			$("#usertable th").remove();
-		
-			//Append table row with descriptions
-			$('<tr>').append(
-					$('<th>').text("User ID"),
-					$('<th>').text("First Name"),
-					$('<th>').text("Last Name"),
-					$('<th>').text("Initials"),
-					$('<th>').text("SSN"),
-					$('<th>').text("Password"),
-					$('<th>').text("Roles"),
-					$('<th>').text("Status")
-			).appendTo("#usertable");
+			//ajax request
+			$.ajax({
+			url: "rest2/userservice/users",
+			method: "GET",
 			
-			//Loop through users and append them to the table in html
-			$.each(allUsers, function(i, item) {
+			//success function
+			success: function(data){
+				allUsers = data;
+				console.log(data);
+				//Parse JSON from ajax request to html table
+				//ini vars for table row
+				var tr;
+				
+				//clearing old table rows and table heads
+				$("#usertable tr").remove();
+				$("#usertable th").remove();
+			
+				//Append table row with descriptions
 				$('<tr>').append(
-						$('<td>').text(item.opr_id),
-						$('<td>').text(item.firstname),
-						$('<td>').text(item.lastname),
-						$('<td>').text(item.ini),
-						$('<td>').text(item.cpr),
-						$('<td>').text(hex_md5(item.password)+" - "+item.password),
-						$('<td>').text(item.roles),
-						$('<td>').text(item.aktiv)			
-				).appendTo('#usertable');
-			});
+						$('<th>').text("User ID"),
+						$('<th>').text("First Name"),
+						$('<th>').text("Last Name"),
+						$('<th>').text("Initials"),
+						$('<th>').text("SSN"),
+						$('<th>').text("Password"),
+						$('<th>').text("Roles"),
+						$('<th>').text("Status")
+				).appendTo("#usertable");
+				
+				//Loop through users and append them to the table in html
+				$.each(allUsers, function(i, item) {
+					$('<tr>').append(
+							$('<td>').text(item.opr_id),
+							$('<td>').text(item.firstname),
+							$('<td>').text(item.lastname),
+							$('<td>').text(item.ini),
+							$('<td>').text(item.cpr),
+							$('<td>').text(hex_md5(item.password)+" - "+item.password),
+							$('<td>').text(item.roles),
+							$('<td>').text(item.aktiv)			
+					).appendTo('#usertable');
+				});
+				
+			},
 			
-		},
+			//error function
+			error: function(error){
+				alert("Error, sorry! :(");
+			},
+	
+		});
+	}else{
+		alert("You do not meet the required role to create a user!")
+		rights = "";
+	}
 		
-		//error function
-		error: function(error){
-			alert("Error, sorry! :(");
-		},
-
-	});
 		return false;
+		
 	});
+	
+	
 	document.getElementById("Forfattere").addEventListener("click",function myFunction() {
 	    var popup = document.getElementById("myPopup");
 	    popup.classList.toggle("show");
