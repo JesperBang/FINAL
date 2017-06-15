@@ -22,6 +22,7 @@ $(document).ready(function() {
 		$("#popupID").hide();
 		$("#createRB").show();
 		$("#SPtable").hide();
+		$("#createproduktbatch").hide();
 		return false;
 		
 	});
@@ -42,6 +43,7 @@ $(document).ready(function() {
 		$("#createRB").hide();
 		$("#pbtable").hide();
 		$("#popupID").hide();
+		$("#createproduktbatch").hide();
 		$("#RBtable").show();
 
 		//ajax request
@@ -82,7 +84,6 @@ $(document).ready(function() {
 
 	});
 	
-	
 	//Create Raavarebatch Button
 	$("#CreateRaavarebatch").submit( function() {               
 
@@ -111,7 +112,7 @@ $(document).ready(function() {
 						
 				//Goes back to menu
 				$('#usradmin').show();
-				$('#RBtable').hide();
+				$("#createRB").hide();
 
 			},
 			error: function(resp){

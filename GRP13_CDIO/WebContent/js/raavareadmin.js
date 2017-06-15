@@ -18,6 +18,7 @@ $(document).ready(function() {
 		$("#RBtable").hide();
 		$("#pbtable").hide();
 		$("#popupID").hide();
+		$("#createproduktbatch").hide();
 		$("#createraavare").show();
 		return false;
 	});
@@ -34,6 +35,7 @@ $(document).ready(function() {
 		$("#RBtable").hide();
 		$("#pbtable").hide();
 		$("#popupID").hide();
+		$("#createproduktbatch").hide();
 		$("#updateraavare").show();
 		return false;
 		
@@ -94,6 +96,7 @@ $(document).ready(function() {
 		$("#RBtable").hide();
 		$("#pbtable").hide();
 		$("#popupID").hide();
+		$("#createproduktbatch").hide();
 		$("#rtable").show();
 	
 		$.ajax({
