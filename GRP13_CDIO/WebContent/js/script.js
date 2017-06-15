@@ -3,9 +3,17 @@ $(document).ready(function() {
 	    jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
 	});
 	
+
 	//Ini login form with a valid l ogin
 	$("#uname").val("Admin");
 	$("#pasid").val("root");
+	
+	console.log(localStorage.getItem("user"));
+	if(!localStorage.getItem("user").includes("Null")){
+		$("#login").hide();
+		$("#usradmin").show();
+		console.log("user allready logged in");
+	}
 	
 	// On login load useradmin page
 	$("#loginform").submit(function() {

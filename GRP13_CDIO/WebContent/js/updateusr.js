@@ -102,13 +102,14 @@ $(document).ready(function() {
 					console.log(resp)
 					document.getElementById("UpdateUserForm").reset();
 					console.log("CUForm has been cleared")
+										//Goes back to menu
+					$('#usradmin').show();
+					$('#updateuser').hide();
 					
 					document.getElementById('updateUsrSuccess').style.display = 'block';
 					setTimeout(function() {
 						$('#updateUsrSuccess').fadeOut('slow').empty()}, 5000)
-					//Goes back to menu
-					$('#usradmin').show();
-					$('#createuser').hide();
+
 
 				},
 				error: function(resp){
