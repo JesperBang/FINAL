@@ -30,6 +30,7 @@ $(document).ready(function() {
 			$("#createRB").hide();
 			$("#RBtable").hide();
 			$("#popupID").hide();
+			$("#createproduktbatch").hide();
 			$("#createuser").show();
 			rights = "";
 		}else{
@@ -55,6 +56,7 @@ $(document).ready(function() {
 			$("#createRB").hide();
 			$("#RBtable").hide();
 			$("#popupID").hide();
+			$("#createproduktbatch").hide();
 			$("#updateuser").show();
 			rights = "";
 		}else{
@@ -81,6 +83,7 @@ $(document).ready(function() {
 		$("#RBtable").hide();
 		$("#pbtable").hide();
 		$("#popupID").hide();
+		$("#createproduktbatch").hide();
 		alert("Du er nu logget ud.");
 		
 		//Clearing storage
@@ -110,6 +113,7 @@ $(document).ready(function() {
 			$("#RBtable").hide();
 			$("#popupID").hide();
 			$("#createuser").hide();
+			$("#createproduktbatch").hide();
 			$("#deactivateuser").show();
 			rights = "";
 		}else{
@@ -139,6 +143,7 @@ $(document).ready(function() {
 		$("#RBtable").hide();
 		$("#pbtable").hide();
 		$("#popupID").hide();
+		$("#createproduktbatch").hide();
 		$("#table").show();
 		
 		//ajax request

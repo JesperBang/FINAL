@@ -71,9 +71,10 @@ $(document).ready(function() {
 					document.getElementById('updateRSuccess').style.display = 'block';
 					setTimeout(function() {
 						$('#updateRSuccess').fadeOut('slow').empty()}, 5000)
-					//Goes back to menu
+					
+						//Goes back to menu
 					$('#usradmin').show();
-					$('#createuser').hide();
+					$("#updateraavare").hide();
 
 				},
 				error: function(resp){
