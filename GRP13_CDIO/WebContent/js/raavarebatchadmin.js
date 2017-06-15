@@ -17,6 +17,7 @@ $(document).ready(function() {
 	
 	document.getElementById("OpretRaavarebatchSM").addEventListener("click",function() {
 
+
 		var rights = getRole();
 		
 		if(rights.includes('Farmaceut') || rights.includes('Varkforer')){
@@ -40,12 +41,14 @@ $(document).ready(function() {
 			alert("You do not meet the required role to create a Raavarebatches!")
 			rights = "";
 		}
+
 		return false;
 		
 	});
 
 	// Load prescriptions on Vis Raavarebatch page
 	document.getElementById("VisRaavarebatchSM").addEventListener("click",function() {
+
 
 		var rights = getRole();
 		
@@ -70,7 +73,7 @@ $(document).ready(function() {
 			alert("You do not meet the required role to view Raavarebatches!")
 			rights = "";
 		}
-			
+
 		//ajax request
 		$.ajax({
 			url: "rest2/raavarebatchservice/raavarebatch",
@@ -109,7 +112,6 @@ $(document).ready(function() {
 
 	});
 	
-	
 	//Create Raavarebatch Button
 	$("#CreateRaavarebatch").submit( function() {               
 
@@ -138,7 +140,7 @@ $(document).ready(function() {
 						
 				//Goes back to menu
 				$('#usradmin').show();
-				$('#RBtable').hide();
+				$("#createRB").hide();
 
 			},
 			error: function(resp){

@@ -67,7 +67,7 @@ form
     text-align: left;
 }
 
-#ChooseUserToUpdate
+#ChooseUserToUpdate, #FUpdateRaavareForm
 {
 	display: block;
 	position: relative;

@@ -34,6 +34,7 @@ $(document).ready(function() {
 						$("#updateiniin").val(resp.ini);
 						$("#updatecprin").val(resp.cpr);
 						$("#updatepassin").val(resp.password);
+
 					
 						//role filling
 						if(resp.roles.length == 1){
@@ -66,6 +67,7 @@ $(document).ready(function() {
 							admin.checked = true;
 							
 						}
+
 					}catch(err){
 						alert("User doesn't excist! make sure to type a valid id.");
 					}

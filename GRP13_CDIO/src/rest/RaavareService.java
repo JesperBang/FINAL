@@ -133,5 +133,20 @@ public class RaavareService {
 		}
 		return true;
 	}
+	@Path("/update/raavare")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	 public boolean updateRaavarer(RaavareDTO raavarer) {
+		
+
+		System.out.println(raavare);
+		try {
+			raavare.updateRaavare(raavarer);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
 
 }

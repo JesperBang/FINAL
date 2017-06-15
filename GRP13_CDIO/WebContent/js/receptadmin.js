@@ -17,6 +17,7 @@ $(document).ready(function() {
 	
 	document.getElementById("OpretReceptSM").addEventListener("click",function() {
 
+
 		var rights = getRole();
 
 		if(rights.includes('Farmaceut')){
@@ -40,6 +41,7 @@ $(document).ready(function() {
 			alert("You do not meet the required role to create recept!")
 			rights = "";
 		}
+
 		return false;
 	});
 	
@@ -52,6 +54,7 @@ $(document).ready(function() {
 
 	// Load prescriptions on Vis Recepter page
 	document.getElementById("VisReceptSM").addEventListener("click",function() {
+
 
 		var rights = getRole();
 
@@ -76,7 +79,7 @@ $(document).ready(function() {
 			alert("You do not meet the required role to view recepts!")
 			rights = "";
 		}
-			
+
 		//ajax request
 		$.ajax({
 			url: "rest2/receptservice/recept",
@@ -179,7 +182,7 @@ $(document).ready(function() {
 						
 				//Goes back to menu
 				$('#usradmin').show();
-				$('#SPtable').hide();
+				$("#createprescript").hide();
 
 			},
 			error: function(resp){

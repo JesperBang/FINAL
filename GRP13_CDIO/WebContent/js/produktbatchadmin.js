@@ -50,6 +50,7 @@ $(document).ready(function() {
 	
 	document.getElementById("VPB").addEventListener("click",function() {
 
+
 		var rights = getRole();
 		
 		if(rights.includes('Farmaceut') || rights.includes('Varkforer')){
@@ -178,9 +179,12 @@ $(document).ready(function() {
 				document.getElementById("Createproduktbatch").reset();
 				console.log("CPBForm has been cleared")
 
+				document.getElementById('createPBSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#createPBSuccess').fadeOut('slow').empty()}, 5000)
 				//Goes back to menu
 				$('#usradmin').show();
-				$('#pbtable').hide();
+				$("#createproduktbatch").hide();
 
 			},
 			error: function(resp){

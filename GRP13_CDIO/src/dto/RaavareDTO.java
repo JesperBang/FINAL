@@ -28,6 +28,7 @@ public class RaavareDTO implements Serializable {
 	
 	public String getLeverandoer() {return leverandoer;}
 	public void setLeverandoer(String leverandoer) {this.leverandoer = leverandoer;}
+	
 
 
 }
