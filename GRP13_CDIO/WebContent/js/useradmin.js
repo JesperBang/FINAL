@@ -184,7 +184,7 @@ $(document).ready(function() {
 							$('<td>').text(item.lastname),
 							$('<td>').text(item.ini),
 							$('<td>').text(item.cpr),
-							$('<td>').text(hex_md5(item.password)+" - "+item.password),
+							$('<td>').text(item.password),
 							$('<td>').text(item.roles),
 							$('<td>').text(item.aktiv)			
 					).appendTo('#usertable');

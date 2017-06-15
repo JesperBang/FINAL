@@ -190,11 +190,12 @@ $(document).ready(function() {
 			}
 		});
 		var recept;
-		
+		alert("start");
 		$.ajax({
 			url: "rest2/receptservice/recept/"+data.receptId,
 			method: 'GET',
 			success: function(resp){
+				alert("Success");
 				console.log(resp)
 				recept = resp;
 				Print(data, recept);
@@ -212,7 +213,7 @@ $(document).ready(function() {
 	
 	//Printer
 	function Print(elem, recept){
-	
+		alert("1");
 		var currentdate = new Date(); 
 		var datetime =  currentdate.getDate() + "-"
 		                + (currentdate.getMonth()+1)  + "-" 
@@ -236,7 +237,7 @@ $(document).ready(function() {
 			PBP += "<br>";
 		});
 		
-		
+		alert("2");
 	    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
 	    mywindow.document.write('<html><head><title>' + "Produktbatch Print"  + '</title>');

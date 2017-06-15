@@ -34,6 +34,7 @@ public class MySQLUserDAO implements UserDAO {
 			user.setIni(rs.getString("ini"));
 			user.setCPR(rs.getString("cpr"));
 			user.setPassword(rs.getString("password"));
+			user.setAktiv(rs.getInt("aktiv"));
 			user.addRole(rs.getString("rollenavn"));
 	    	List<String> roles = new ArrayList<>();
 	    	for (int i = 1; i < 5; i++) {

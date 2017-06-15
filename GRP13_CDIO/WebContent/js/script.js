@@ -4,8 +4,8 @@ $(document).ready(function() {
 	});
 	
 	//Ini login form with a valid l ogin
-	$("#uname").val("2");
-	$("#pasid").val("atoJ21v");
+	$("#uname").val("Admin");
+	$("#pasid").val("root");
 	
 	// On login load useradmin page
 	$("#loginform").submit(function() {
@@ -13,13 +13,13 @@ $(document).ready(function() {
 		event.preventDefault();
 		
 		var formData = $("loginform").serializeObject();
-		var username = formData['uname'];
+		//var username = formData['uname'];
 		
 		var idu  = document.getElementById("uname").value;
 		var pas  = document.getElementById("pasid").value;
 		
-		if(idu == "Admin"){
-			var idu = 2;
+		if(idu == "Admin" || idu == "admin"){
+			var idu = 1;
 		}
 		
 		$.ajax({

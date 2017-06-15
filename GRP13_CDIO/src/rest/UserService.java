@@ -226,13 +226,14 @@ public class UserService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(user);
 		
 		String passdb = user.getPassword();
 		String passin = password;
 		System.out.println(passdb+" "+passin);
 		
-		
-		if(passdb.equals(passin)){
+		System.out.println("aktiv:" +user.getAktiv());
+		if(passdb.equals(passin) && user.getAktiv() == 1){
 			//Protects user password
 			user.setPassword("");
 			return JWTHandler.generateJwtToken(user);

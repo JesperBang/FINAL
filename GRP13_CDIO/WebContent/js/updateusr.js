@@ -37,20 +37,11 @@ $(document).ready(function() {
 					
 						//role filling
 						if(resp.roles.length == 1){
-							//prevent update to no role
-							labor.disabled = true;
 							//current role chosen
 							labor.checked = true;
 							vaerk.checked = false;
 							farma.checked = false;
 							admin.checked = false;
-							
-							
-							//non allowed roles to gain
-							vaerk.disabled = true;
-							farma.disabled = true;
-							admin.disabled = true;
-							
 							
 						}if(resp.roles.length == 2){
 							//current role chosen
@@ -59,23 +50,14 @@ $(document).ready(function() {
 							farma.checked = false;
 							admin.checked = false;
 							
-							//non allowed roles to gain
-							farma.disabled = true;
-							admin.disabled = true;
-							vaerk.disabled = false;
-							labor.diasbled = false;
+
 						}if(resp.roles.length == 3){
 							//current role chosen
 							labor.checked = true;
 							vaerk.checked = true;
 							farma.checked = true;
 							admin.checked = false;
-							
-							//non allowed roles to gain
-							farma.disabled = false;
-							admin.disabled = true;
-							vaerk.disabled = false;
-							labor.diasbled = false;
+
 						}if(resp.roles.length == 4){
 							//current role chosen
 							labor.checked = true;
@@ -83,11 +65,6 @@ $(document).ready(function() {
 							farma.checked = true;
 							admin.checked = true;
 							
-							//non allowed roles to gain
-							farma.disabled = false;
-							admin.disabled = false;
-							vaerk.disabled = false;
-							labor.diasbled = false;
 						}
 					}catch(err){
 						alert("User doesn't excist! make sure to type a valid id.");
