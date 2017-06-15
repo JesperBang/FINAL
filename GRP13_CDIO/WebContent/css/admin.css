@@ -95,7 +95,7 @@ div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavar
 	width: 32%;
 }
 
-#CUContainer, #UUContainer, #ChooseContainer, #CPContainer, #RBContainer, #Rcontainer, #DUContainer, #CPBContainer
+#CUContainer, #UUContainer, #ChooseContainer, #CPContainer, #RBContainer, #Rcontainer, #DUContainer, #CPBContainer, #CRContainer
 {
 	padding: 16px;
     position: relative;

@@ -28,8 +28,6 @@
 <script type="text/javascript" src="js/receptadmin.js"></script>
 <script type="text/javascript" src="js/updateusr.js"></script>
 <script type="text/javascript" src="js/raavarebatchadmin.js"></script>
-<script type="text/javascript" src="js/md5.js"></script>
-
 
 </head>
 
@@ -320,10 +318,10 @@
 				
 				<div style="width:100%">
     			<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" required>
-    			</div>
-    			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
-    			<input type="text" name="leverandoer" placeholder="LeverandÃƒÂ¸r" maxlength="30" pattern="[a-z A-Z]*" required>
     			
+    			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
+    			<input type="text" name="leverandoer" placeholder="Leverandoer" maxlength="30" pattern="[a-z A-Z]*" required>
+    			</div>
     			</div>
     				
     			<!-- Create raavare Btn -->
@@ -434,8 +432,10 @@
 				<div style="width:100%">
 				<input id= "updateraaid" type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" readonly>
     			</div>
+
     			<input id= "updateraan" type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
     			<input id= "updateraal" type="text" name="leverandoer" placeholder="Levarandoer" maxlength="30" pattern="[a-z A-Z /]*" required>
+
     			</div>
     			
     				

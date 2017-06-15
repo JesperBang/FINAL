@@ -15,7 +15,7 @@ $(document).ready(function() {
 			var idu  = document.getElementById("chooseid").value;
 			
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/user/" + idu,
+				url: "rest2/userservice/user/" + idu,
 				contentType: "application/json",
 				method: 'GET',
 				success: function(resp){
@@ -34,6 +34,39 @@ $(document).ready(function() {
 						$("#updateiniin").val(resp.ini);
 						$("#updatecprin").val(resp.cpr);
 						$("#updatepassin").val(resp.password);
+
+					
+						//role filling
+						if(resp.roles.length == 1){
+							//current role chosen
+							labor.checked = true;
+							vaerk.checked = false;
+							farma.checked = false;
+							admin.checked = false;
+							
+						}if(resp.roles.length == 2){
+							//current role chosen
+							labor.checked = true;
+							vaerk.checked = true;
+							farma.checked = false;
+							admin.checked = false;
+							
+
+						}if(resp.roles.length == 3){
+							//current role chosen
+							labor.checked = true;
+							vaerk.checked = true;
+							farma.checked = true;
+							admin.checked = false;
+
+						}if(resp.roles.length == 4){
+							//current role chosen
+							labor.checked = true;
+							vaerk.checked = true;
+							farma.checked = true;
+							admin.checked = true;
+							
+						}
 
 					}catch(err){
 						alert("User doesn't excist! make sure to type a valid id.");
@@ -61,7 +94,7 @@ $(document).ready(function() {
 
 			console.log(data);
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/update/user",
+				url: "rest2/userservice/update/user",
 				data: JSON.stringify(data),
 				contentType: "application/json",
 				method: 'POST',

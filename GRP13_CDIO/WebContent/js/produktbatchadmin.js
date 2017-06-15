@@ -2,25 +2,43 @@
  * 
  */
 $(document).ready(function() {
-
+	$( document ).ajaxSend(function( event, jqxhr, settings ) {
+	    jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
+	});
+	
 	var allProduktbatches;
-//ajax request
+	
+	//Get current logged in users rights fom their JWT
+	function getRole(){
+		var rights = $.parseJSON(window.atob(localStorage.getItem("user").split(".")[1])).UserDTO.roles;
+		return rights;
+	}
+
 	
 	document.getElementById("OPB").addEventListener("click",function() {
-		$("#table").hide();
-		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#pbtable").hide();
-		$("#rtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#popupID").hide();
-		$("#createuser").hide();
-		$("#createproduktbatch").show();
+
+		var rights = getRole();
 		
+		if(rights.includes('Farmaceut') || rights.includes('Varkforer')){
+			$("#table").hide();
+			$("#updateuser").hide();
+			$("#createprescript").hide();
+			$("#receptable").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#pbtable").hide();
+			$("#rtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#createuser").hide();
+			$("#SPtable").hide();
+			$("#createproduktbatch").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to create a Produktbatch!")
+			rights = "";
+		}
 		return false;
 	});
 	
@@ -31,23 +49,33 @@ $(document).ready(function() {
 	});
 	
 	document.getElementById("VPB").addEventListener("click",function() {
-		$("#table").hide();
-		$("#createuser").hide();
-		$("#updateuser").hide();
-		$("#deactivateuser").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#createprescript").hide();
-		$("#SPtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#popupID").hide();
-		$("#createproduktbatch").hide();
-		$("#pbtable").show();
 
+
+		var rights = getRole();
+		
+		if(rights.includes('Farmaceut') || rights.includes('Varkforer')){
+			$("#table").hide();
+			$("#createuser").hide();
+			$("#updateuser").hide();
+			$("#deactivateuser").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#rtable").hide();
+			$("#createprescript").hide();
+			$("#SPtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#createproduktbatch").hide();
+			$("#pbtable").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to view produktbatches!")
+			rights = "";
+		}
+			
 		$.ajax({
-		url: "http://localhost:8080/GRP13_CDIO/rest2/produktbatchservice/produktbatches",
+		url: "rest2/produktbatchservice/produktbatches",
 		method: "GET",
 		
 		//success function
@@ -113,20 +141,7 @@ $(document).ready(function() {
 						$('<td>').html(netto),
 						$('<td>').html(tara),
 						$('<td>').html(oprId)
-//						$('<td>').append(
-//								
-//								$('<td>').text(item.receptId),
-//								
-//								$.each(item.komp, function(j, item2){
-//									$('<td>').text(item2.netto).appendTo('#produktbatchtable');
-//								})
-//								)
-//						$('<td>').append(
-//								$.each(item, function(j, item2){
-//									$('<tr>').text(item2.komp[j].oprId)
-//								})
-//						)
-								
+
 				).appendTo('#produktbatchtable');
 		});
 			
@@ -153,7 +168,7 @@ $(document).ready(function() {
 
 
 		$.ajax({
-			url: "http://localhost:8080/GRP13_CDIO/rest2/produktbatchservice/create/produktbatch",
+			url: "rest2/produktbatchservice/create/produktbatch",
 			data: JSON.stringify(data),
 			contentType: "application/json",
 			method: 'POST',
@@ -178,10 +193,69 @@ $(document).ready(function() {
 				console.log(resp)
 			}
 		});
-
+		var recept;
+		alert("start");
+		$.ajax({
+			url: "rest2/receptservice/recept/"+data.receptId,
+			method: 'GET',
+			success: function(resp){
+				alert("Success");
+				console.log(resp)
+				recept = resp;
+				Print(data, recept);
+			},
+			error: function(resp){
+				console.log('This is the ERROR method')
+				console.log(resp)
+			}
+		});
+		
+		
 		return false;
 
 	});
 	
-	
+	//Printer
+	function Print(elem, recept){
+		alert("1");
+		var currentdate = new Date(); 
+		var datetime =  currentdate.getDate() + "-"
+		                + (currentdate.getMonth()+1)  + "-" 
+		                + currentdate.getYear() ;
+		
+		var PBP = "Udskrevet "+datetime;
+		PBP += "<br>";
+		PBP += "Produkt Batch nr.: "+elem.pbId;
+		PBP += "<br>";
+		PBP += "Recept nr.: "+elem.receptId;
+		PBP += "<br><br>";
+		
+		$.each(elem.komp, function(i, item){
+			PBP += "Raavare nr.: "+ recept.komp[i].raavareId;
+			PBP += "<br>";
+			PBP += "----------------------------------------------------------------------------------------------------------------------------";
+			PBP += "<br>";
+			PBP += "<table style=\"width:100%\"> <tr><td>Maengde</td><td>Tolerance</td><td>Tara</td><td>Netto (kg)</td><td>Batch</td><td>Opr.</td> </tr>"
+			
+			PBP += "<tr><td>"+recept.komp[i].nomNetto+"</td><td>"+recept.komp[i].tolerance +"</td><td>0</td><td>0</td><td>0</td><td>0</td></tr> </table>";
+			PBP += "<br>";
+		});
+		
+		alert("2");
+	    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+	    mywindow.document.write('<html><head><title>' + "Produktbatch Print"  + '</title>');
+	    mywindow.document.write('</head><body >');
+	    mywindow.document.write('<h1>' + "Produktbatch Print"  + '</h1>');
+	    mywindow.document.write(PBP);
+	    mywindow.document.write('</body></html>');
+
+	    mywindow.document.close(); // necessary for IE >= 10
+	    mywindow.focus(); // necessary for IE >= 10*/
+
+	    mywindow.print();
+	    mywindow.close();
+
+	    return true;
+	}
 });
