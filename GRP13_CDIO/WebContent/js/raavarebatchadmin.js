@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 	var allRaavareBatches;
 	
-	//Get current logged in users rights fom their JWT
+	//Get current logged in users rights from their JWT
 	function getRole(){
 		var rights = $.parseJSON(window.atob(localStorage.getItem("user").split(".")[1])).UserDTO.roles;
 		return rights;
@@ -107,6 +107,17 @@ $(document).ready(function() {
 					).appendTo('#raavarebatchtable');
 				});
 
+			},
+			
+			error: function(resp){
+				localStorage.clear();
+				
+				$("#login").show();
+				$("#table").hide();
+				$("#usradmin").hide();
+				
+				alert("Error, timed out or invalid security token");
+				console.log('This is the ERROR method: '+resp);
 			}
 		});
 
@@ -144,15 +155,16 @@ $(document).ready(function() {
 
 			},
 			error: function(resp){
-				console.log(data);
-				console.log('This is the ERROR method')
-				console.log(resp)
+				localStorage.clear();
+				
+				$("#login").show();
+				$("#table").hide();
+				$("#usradmin").hide();
+				
+				alert("Error, timed out or invalid security token");
+				console.log('This is the ERROR method: '+resp);
 			}
 		});
-
 		return false;
-
 	});
-
 });
-	

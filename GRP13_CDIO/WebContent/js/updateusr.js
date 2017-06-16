@@ -74,11 +74,14 @@ $(document).ready(function() {
 				},
 				
 				error: function(resp){
-					console.log(idu);
-					console.log('This is the ERROR method')
-					console.log(resp)
+					localStorage.clear();
 					
-					$("#chooseid").text("No user with that id was found");
+					$("#login").show();
+					$("#table").hide();
+					$("#usradmin").hide();
+					
+					alert("Error, timed out or invalid security token");
+					console.log('This is the ERROR method: '+resp);
 				}
 			});
 			return false;
@@ -104,7 +107,7 @@ $(document).ready(function() {
 					console.log(resp)
 					document.getElementById("UpdateUserForm").reset();
 					console.log("CUForm has been cleared")
-										//Goes back to menu
+					//Goes back to menu
 					$('#usradmin').show();
 					$('#updateuser').hide();
 					
@@ -115,13 +118,16 @@ $(document).ready(function() {
 
 				},
 				error: function(resp){
-					console.log(data);
-					console.log('This is the ERROR method')
-					console.log(resp)
+					localStorage.clear();
+					
+					$("#login").show();
+					$("#table").hide();
+					$("#usradmin").hide();
+					
+					alert("Error, timed out or invalid security token");
+					console.log('This is the ERROR method: '+resp);
 				}
 			});
-		   
 			return false;	
-		});
-		
+		});	
 });

@@ -144,25 +144,29 @@ $(document).ready(function() {
 					).appendTo('#pretable');
 				});
 
-			}
+			},
+			
+			//error function
+			error: function(error){
+				localStorage.clear();
+				
+				$("#login").show();
+				$("#table").hide();
+				$("#usradmin").hide();
+				
+				alert("Error, timed out or invalid security token");
+			},
 		});
-
 	});
-	
-	
-	
-	
 
 	//Create Prescription Button
 	$("#CreatePrescription").submit( function() {               
 
 		event.preventDefault();
 
-
 		var data = $('#CreatePrescription').serializeObject();
 
 		console.log(data);
-
 
 		$.ajax({
 			url: "rest2/receptservice/create/recept",
@@ -186,17 +190,16 @@ $(document).ready(function() {
 
 			},
 			error: function(resp){
-				console.log(data);
-				console.log('This is the ERROR method')
-				console.log(resp)
+				localStorage.clear();
+				
+				$("#login").show();
+				$("#table").hide();
+				$("#usradmin").hide();
+				
+				alert("Error, timed out or invalid security token");
+				console.log('This is the ERROR method: '+rest);
 			}
 		});
-
 		return false;
-
 	});
-	
-	
-
 });
-	
