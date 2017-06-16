@@ -104,9 +104,14 @@ $(document).ready(function() {
 
 			},
 			error: function(resp){
-				console.log(data);
-				console.log('This is the ERROR method')
-				console.log(resp)
+				localStorage.clear();
+				
+				$("#login").show();
+				$("#table").hide();
+				$("#usradmin").hide();
+				
+				alert("Error, timed out or invalid security token");
+				console.log('This is the ERROR method: '+resp);
 			}
 		});
 	   
@@ -177,9 +182,15 @@ $(document).ready(function() {
 		
 		//error function
 		error: function(error){
-			alert("Error, sorry! :(");
+			localStorage.clear();
+			
+			$("#login").show();
+			$("#table").hide();
+			$("#usradmin").hide();
+			
+			alert("Error, timed out or invalid security token");
+			console.log('This is the ERROR method: '+resp);
 		},
-
 	});
 		return false;
 	});

@@ -32,7 +32,7 @@ $(document).ready(function() {
 					
 					document.getElementById("logoutmenu").innerHTML = "Logout - "+name.UserDTO.firstname;
 				}else{
-					alert("Token invalid, please login again.")
+					
 					$("#login").show();
 				}
 				
