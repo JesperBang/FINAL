@@ -1,7 +1,7 @@
 package dao;
 
 import java.sql.PreparedStatement;
-import passgen.Password;
+import passgen.PasswordGenerator;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,10 +9,9 @@ import java.util.List;
 
 import database.Connector;
 import database.DALException;
-import database.UserDAO;
 import dto.UserDTO;
 
-public class MySQLUserDAO implements UserDAO {
+public class MySQLUserDAO implements IUserDAO {
 	private Connector connector = new Connector();
 	@Override
 	public UserDTO getUser(int opr_id) throws DALException {
@@ -94,7 +93,7 @@ public class MySQLUserDAO implements UserDAO {
 	@Override
 	public void createOperatoer(UserDTO user) throws DALException {
 
-		Password pass = new Password();
+		PasswordGenerator pass = new PasswordGenerator();
 		String pss = pass.generatePassword();
 
 		try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(2)

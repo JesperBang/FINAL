@@ -1,6 +1,6 @@
 package serverConnection;
 
-public class TestController {
+public class WeightController {
 
 		 public static void main(String[] args) {
 			 

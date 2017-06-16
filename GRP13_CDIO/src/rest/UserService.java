@@ -15,8 +15,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import dao.MySQLUserDAO;
+import dao.IUserDAO;
 import database.DALException;
-import database.UserDAO;
 import dto.UserDTO;
 import jwtHandler.JWTHandler;
 import jwtHandler.JWTHandler.AuthException;
@@ -25,7 +25,7 @@ import jwtHandler.JWTHandler.AuthException;
 public class UserService {
 	@Context HttpServletRequest request;
 	
-	UserDAO users = new MySQLUserDAO();
+	IUserDAO users = new MySQLUserDAO();
 	
 	@Path("/users")
 	@GET

@@ -1,7 +1,7 @@
 package passgen;
 
 
-public class Password {
+public class PasswordGenerator {
 	public String generatePassword(){
 		int antalTal = (int) (Math.random() * 2) + 2;
 		int antalStoreBog = (int) (Math.random() * 2) + 2;
