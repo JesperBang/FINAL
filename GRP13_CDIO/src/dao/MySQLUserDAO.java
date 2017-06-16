@@ -11,7 +11,6 @@ import database.Connector;
 import database.DALException;
 import database.UserDAO;
 import dto.UserDTO;
-import passgen.Password;
 
 public class MySQLUserDAO implements UserDAO {
 	private Connector connector = new Connector();

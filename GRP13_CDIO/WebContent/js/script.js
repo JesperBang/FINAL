@@ -20,7 +20,6 @@ $(document).ready(function() {
 				
 				console.log(resp);
 				if(resp == "true"){
-					alert("True");
 					$("#login").hide();
 					$("#usradmin").show();
 					console.log("user allready logged in");

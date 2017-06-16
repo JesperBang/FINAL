@@ -54,10 +54,7 @@ public class MySQLRaavareDAO implements IRaavareDAO {
 			raavare = new RaavareDTO();
 			raavare.setRaavareId(rs.getInt("raavare_id"));
 			raavare.setRaavareNavn(rs.getString("raavare_navn"));
-			raavare.setLeverandoer(rs.getString("leverandoer"));
-
-			System.out.println("Hej");
-			
+			raavare.setLeverandoer(rs.getString("leverandoer"));			
 			list.add(raavare);
 			}
 		}
@@ -94,10 +91,5 @@ public class MySQLRaavareDAO implements IRaavareDAO {
 			throw new DALException(e.getMessage());
 
 		}
-
 	}
-
-
 }
-
-
