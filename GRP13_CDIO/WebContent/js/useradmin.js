@@ -225,6 +225,20 @@ $(document).ready(function() {
 	document.getElementById("Forfattere").addEventListener("click",function myFunction() {
 	    var popup = document.getElementById("myPopup");
 	    popup.classList.toggle("show");
+	    $("#table").hide();
+		$("#createuser").hide();
+		$("#updateuser").hide();
+		$("#deactivateuser").hide();
+		$("#updateraavare").hide();
+		$("#createraavare").hide();
+		$("#rtable").hide();
+		$("#createprescript").hide();
+		$("#SPtable").hide();
+		$("#createRB").hide();
+		$("#RBtable").hide();
+		$("#pbtable").hide();
+		$("#popupID").hide();
+		$("#createproduktbatch").hide();
 	    $("#popupID").show();
 	    
 	});
