@@ -8,11 +8,17 @@ import java.sql.Statement;
 
 /** @author Ronnie Dalsgaard */
 public class Connector {
-    private final String HOST     = "eu-cdbr-west-01.cleardb.com";
-    private final int    PORT     = 3306;
-    private final String DATABASE = "heroku_65cc93a9800caef";
-    private final String USERNAME = "b9a98146a86690"; 
-    private final String PASSWORD = "5a54aa78";
+//    private final String HOST     = "eu-cdbr-west-01.cleardb.com";
+//    private final int    PORT     = 3306;
+//    private final String DATABASE = "heroku_65cc93a9800caef";
+//    private final String USERNAME = "b9a98146a86690"; 
+//    private final String PASSWORD = "5a54aa78";
+	
+	   private final String HOST     = "sql11.freemysqlhosting.net";
+	    private final int    PORT     = 3306;
+	    private final String DATABASE = "sql11180483";
+	    private final String USERNAME = "sql11180483"; 
+	    private final String PASSWORD = "SfECsrgpBs";
     private Connection connection;
     
     public Connector() {
