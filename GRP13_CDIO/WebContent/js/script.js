@@ -7,6 +7,44 @@ $(document).ready(function() {
 	$("#uname").val("Admin");
 	$("#pasid").val("root");
 	
+	//Check jwt
+	validjwt();
+	
+	function validjwt(){
+	
+		$.ajax({
+			url: "rest2/userservice/validate/jwt",
+			contentType: "application/json",
+			method: 'GET',
+			success: function(resp) {
+				
+				console.log(resp);
+				if(resp == "true"){
+					alert("True");
+					$("#login").hide();
+					$("#usradmin").show();
+					console.log("user allready logged in");
+					
+					var name = $.parseJSON(window.atob(localStorage.getItem("user").split(".")[1]));
+					
+					console.log(name);
+					console.log(name.UserDTO.firstname);
+					
+					document.getElementById("logoutmenu").innerHTML = "Logout - "+name.UserDTO.firstname;
+				}else{
+					alert("Token invalid, please login again.")
+					$("#login").show();
+				}
+				
+	
+			},
+			error: function(resp) {
+				//Error handling...
+				console.log("error: "+resp);
+			}
+			});
+	}
+	
 	// On login load useradmin page
 	$("#loginform").submit(function() {
 		

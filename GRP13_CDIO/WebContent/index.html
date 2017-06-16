@@ -3,9 +3,9 @@
 <head>
 
 <!-- Basics -->
-
-
 <title>Index</title>
+<link rel="shortcut icon" href="img/favicon.png" type="image/png">
+<meta charset="UTF-8">
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="css/successMessage.css">
@@ -392,7 +392,7 @@
     			</div>	</div>
     			
     				
-    			<!-- Create User Btn -->
+    			<!-- Update User Btn -->
     			<div id="UUbtn" class="UUcontainer" style="background-color: #f1f1f1">			
     				<input class="uubtn" type="submit"  value="Update user">
     			</div>
@@ -427,21 +427,20 @@
 			
 			
 				<!-- Raavare input -->
-				<div id="UUContainer">
+				<div id="URContainer">
 				
 				<div style="width:100%">
-				<input id= "updateraaid" type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" readonly>
-    			</div>
+				<input id= "updateraaid" type="number" name="raavareId" placeholder="Raavare Id" min ="1" readonly>
 
-    			<input id= "updateraan" type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
+    			<input id= "updateraan" type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*"  required>
     			<input id= "updateraal" type="text" name="leverandoer" placeholder="Levarandoer" maxlength="30" pattern="[a-z A-Z /]*" required>
-
+				</div>
     			</div>
     			
     				
     			<!-- Update raavare Btn -->
-    			<div id="UUbtn" class="UUcontainer" style="background-color: #f1f1f1">			
-    				<input class="uubtn" type="submit"  value="Update raavare">
+    			<div id="URbtn" class="URcontainer" style="background-color: #f1f1f1">			
+    				<input class="urbtn" type="submit"  value="Update raavare">
     			</div>
 			</form>
 			</div>
@@ -512,7 +511,7 @@
     			<div class="komponenter">
     			<input type="number" name="komp[][raavareId]" placeholder="Raavare ID" min ="1" max="99">
     			<input type="number" name="komp[][nomNetto]" placeholder="Maengde" min ="1" max="99">
-    			<input type="number" name="komp[][tolerance]" placeholder="Tolerance (0,1-10,0%)" maxlength="50" pattern="[0-9 .]*">
+    			<input type="number" name="komp[][tolerance]" placeholder="Tolerance (0,1-10,0%)" >
     			</div>
     			<input type="button" id="addKomp" value="+">
     			</div>

@@ -1,4 +1,4 @@
-@CHARSET "ISO-8859-1";
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -54,7 +54,7 @@ th {
 	color: white;
 	font-family:"Times New Roman";
 }
-.CUcontainer, .UUcontainer, .CPcontainer, .RBcontainer  , .CRcontainer, .DUcontainer
+.CUcontainer, .UUcontainer, .CPcontainer, .RBcontainer  , .CRcontainer, .DUcontainer, .URcontainer
 {
     padding: 1%;
     position: relative;
@@ -95,7 +95,7 @@ div.CreateUserForm, div.UpdateUserForm, div.CreatePrescription, div.CreateRaavar
 	width: 32%;
 }
 
-#CUContainer, #UUContainer, #ChooseContainer, #CPContainer, #RBContainer, #Rcontainer, #DUContainer, #CPBContainer, #CRContainer
+#CUContainer, #UUContainer, #ChooseContainer, #CPContainer, #RBContainer, #Rcontainer, #DUContainer, #CPBContainer, #CRContainer, #URContainer
 {
 	padding: 16px;
     position: relative;
