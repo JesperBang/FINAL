@@ -150,9 +150,23 @@ $(document).ready(function() {
 			error: function(error){
 				localStorage.clear();
 				
-				$("#login").show();
 				$("#table").hide();
+				$("#createuser").hide();
+				$("#createuser").hide();
+				$("#createprescript").hide();
+				$("#receptable").hide();
+				$("#updateraavare").hide();
+				$("#createraavare").hide();
+				$("#rtable").hide();
+				$("#pbtable").hide();
+				$("#createRB").hide();
+				$("#RBtable").hide();
+				$("#popupID").hide();
+				$("#createproduktbatch").hide();
+				$("#deactivateuser").hide();
+				$("#updateuser").hide();
 				$("#usradmin").hide();
+				$("#login").show();
 				
 				alert("Error, timed out or invalid security token");
 			},
@@ -192,9 +206,23 @@ $(document).ready(function() {
 			error: function(resp){
 				localStorage.clear();
 				
-				$("#login").show();
 				$("#table").hide();
+				$("#createuser").hide();
+				$("#createuser").hide();
+				$("#createprescript").hide();
+				$("#receptable").hide();
+				$("#updateraavare").hide();
+				$("#createraavare").hide();
+				$("#rtable").hide();
+				$("#pbtable").hide();
+				$("#createRB").hide();
+				$("#RBtable").hide();
+				$("#popupID").hide();
+				$("#createproduktbatch").hide();
+				$("#deactivateuser").hide();
+				$("#updateuser").hide();
 				$("#usradmin").hide();
+				$("#login").show();
 				
 				alert("Error, timed out or invalid security token");
 				console.log('This is the ERROR method: '+rest);

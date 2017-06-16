@@ -151,9 +151,23 @@ $(document).ready(function() {
 		error: function(error){
 			localStorage.clear();
 			
-			$("#login").show();
 			$("#table").hide();
+			$("#createuser").hide();
+			$("#createuser").hide();
+			$("#createprescript").hide();
+			$("#receptable").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#rtable").hide();
+			$("#pbtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#createproduktbatch").hide();
+			$("#deactivateuser").hide();
+			$("#updateuser").hide();
 			$("#usradmin").hide();
+			$("#login").show();
 			
 			alert("Error, timed out or invalid security token");
 			console.log('This is the ERROR method: '+resp);
@@ -195,24 +209,63 @@ $(document).ready(function() {
 
 			},
 			error: function(resp){
-				console.log(data);
-				console.log('This is the ERROR method')
-				console.log(resp)
+				localStorage.clear();
+				
+				$("#table").hide();
+				$("#createuser").hide();
+				$("#createuser").hide();
+				$("#createprescript").hide();
+				$("#receptable").hide();
+				$("#updateraavare").hide();
+				$("#createraavare").hide();
+				$("#rtable").hide();
+				$("#pbtable").hide();
+				$("#createRB").hide();
+				$("#RBtable").hide();
+				$("#popupID").hide();
+				$("#createproduktbatch").hide();
+				$("#deactivateuser").hide();
+				$("#updateuser").hide();
+				$("#usradmin").hide();
+				$("#login").show();
+				
+				alert("Error, timed out or invalid security token");
+				console.log('This is the ERROR method: '+resp);
 			}
 		});
 		var recept;
-		alert("start");
+		
 		$.ajax({
 			url: "rest2/receptservice/recept/"+data.receptId,
 			method: 'GET',
 			success: function(resp){
-				alert("Success");
 				console.log(resp)
 				recept = resp;
-				Print(data, recept);
+				Print(data, recept);s
 			},
 			error: function(resp){
-				console.log('This is the ERROR method: '+rest);
+				localStorage.clear();
+				
+				$("#table").hide();
+				$("#createuser").hide();
+				$("#createuser").hide();
+				$("#createprescript").hide();
+				$("#receptable").hide();
+				$("#updateraavare").hide();
+				$("#createraavare").hide();
+				$("#rtable").hide();
+				$("#pbtable").hide();
+				$("#createRB").hide();
+				$("#RBtable").hide();
+				$("#popupID").hide();
+				$("#createproduktbatch").hide();
+				$("#deactivateuser").hide();
+				$("#updateuser").hide();
+				$("#usradmin").hide();
+				$("#login").show();
+				
+				alert("Error, timed out or invalid security token");
+				console.log('This is the ERROR method: '+resp);
 			}
 		});
 		
@@ -223,7 +276,6 @@ $(document).ready(function() {
 	
 	//Printer
 	function Print(elem, recept){
-		alert("1");
 		var currentdate = new Date(); 
 		var datetime =  currentdate.getDate() + "-"
 		                + (currentdate.getMonth()+1)  + "-" 
@@ -247,7 +299,6 @@ $(document).ready(function() {
 			PBP += "<br>";
 		});
 		
-		alert("2");
 	    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
 	    mywindow.document.write('<html><head><title>' + "Produktbatch Print"  + '</title>');
