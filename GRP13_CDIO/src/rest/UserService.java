@@ -50,6 +50,7 @@ public class UserService {
 			}
 		} catch (AuthException e1) {
 			e1.printStackTrace();
+			
 			throw new WebApplicationException(403);
 		}
 		
@@ -242,4 +243,28 @@ public class UserService {
 			return null;
 		}
 	}
+	
+	//Check token
+	@Path("/validate/jwt")
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public boolean validateJWT(){
+		//VAlidate token and role requirement
+				String header = request.getHeader("Authorization");
+				System.out.println("header: " +header);
+
+				try {
+					if(header != null){
+						JWTHandler.validateToken(header.split(" ")[1]);
+						return true;
+					}else{
+						return false;
+					}
+				} catch (AuthException e1) {
+					e1.printStackTrace();
+					return false;
+				}
+				
+	}
+	
 }

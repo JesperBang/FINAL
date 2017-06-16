@@ -14,7 +14,7 @@ $(document).ready(function() {
 			var idu  = document.getElementById("chooseraaid").value;
 			
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/raavareservice/raavare/" + idu,
+				url: "rest2/raavareservice/raavare/" + idu,
 				contentType: "application/json",
 				method: 'GET',
 				success: function(resp){
@@ -49,7 +49,7 @@ $(document).ready(function() {
 	});
 		
 		
-		//Send updated user details to db
+		//Send updated raavare details to db
 		$("#UpdateRaavareForm").submit( function() {
 			
 			event.preventDefault();
@@ -58,7 +58,7 @@ $(document).ready(function() {
 
 			console.log(data);
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/raavareservice/update/raavare",
+				url: "rest2/raavareservice/update/raavare",
 				data: JSON.stringify(data),
 				contentType: "application/json",
 				method: 'POST',

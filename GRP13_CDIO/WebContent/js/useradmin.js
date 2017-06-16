@@ -6,11 +6,16 @@ $(document).ready(function() {
 	
 	// Variable ini
 	var allUsers;
-
+	
 	//Get current logged in users rights fom their JWT
-	function getRole(){
-		var rights = $.parseJSON(window.atob(localStorage.getItem("user").split(".")[1])).UserDTO.roles;
-		return rights;
+	function getRole(fun){
+		try{
+			var rights = $.parseJSON(window.atob(localStorage.getItem("user").split(".")[1])).UserDTO.roles;
+		}catch(Exception){
+			console.log("Header is null");
+			$("#"+fun).hide();
+		}
+			return rights;
 	}
 	
 	//Load User table on request
@@ -196,12 +201,18 @@ $(document).ready(function() {
 			
 			//error function
 			error: function(error){
-				alert("Error, sorry! :(");
+				localStorage.clear();
+				
+				$("#login").show();
+				$("#table").hide();
+				$("#usradmin").hide();
+				
+				alert("Error, timed out or invalid security token");
 			},
 	
 		});
 	}else{
-		alert("You do not meet the required role to create a user!")
+		alert("You do not meet the required role to view users!")
 		rights = "";
 	}
 		
