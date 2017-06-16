@@ -28,13 +28,13 @@ public class MySQLRaavareDAO implements IRaavareDAO {
 		try {
 			if (!rs.first()) throw new DALException("User " + raavareId + " findes ikke");
 			raavare.setLeverandoer(rs.getString("leverandoer"));
-			raavare.setRaavareId(rs.getInt("raavareId"));
-			raavare.setRaavareNavn(rs.getString("raavareNavn"));
+			raavare.setRaavareId(rs.getInt("raavare_id"));
+			raavare.setRaavareNavn(rs.getString("raavare_navn"));
 		}
 		catch (SQLException e) {
 			throw new DALException(e); 
 		}
-		
+		System.out.println(raavare.getRaavareId());
 		return raavare;
 	}
 
@@ -89,6 +89,7 @@ public class MySQLRaavareDAO implements IRaavareDAO {
 			stmt.setInt(1, raavare.getRaavareId());
 			stmt.setString(2, raavare.getRaavareNavn());
 			stmt.setString(3, raavare.getLeverandoer());
+			stmt.executeQuery();
 		} catch (Exception e) {
 			throw new DALException(e.getMessage());
 

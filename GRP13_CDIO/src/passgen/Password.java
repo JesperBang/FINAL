@@ -1,6 +1,5 @@
 package passgen;
 
-import java.util.Arrays;
 
 public class Password {
 	public String generatePassword(){
@@ -47,6 +46,11 @@ public class Password {
 			all[i] = all[a];
 			all[a] = temp;
 		}
-		return Arrays.toString(all);
+		String out = "";
+		for (int i = 0; i < all.length; i++) {
+			out += all[i];
+
+		}
+		return out;
 	}
 }

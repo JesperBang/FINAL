@@ -15,7 +15,7 @@ public class MySQLReceptDAO implements IReceptDAO {
 
 	private Connector connector = new Connector();
 	public ReceptDTO getRecept(int receptId) throws DALException{
-		ResultSet rs = null;
+		ResultSet rs, rs2 = null;
 		try { //Files.readAllLines(Paths.get("/UserCommands.txt")).get(0)
 			PreparedStatement stmt = connector.getConnection().prepareStatement("select * from getrecept where recept_id = ?;");
 			stmt.setInt(1, receptId);
@@ -28,7 +28,19 @@ public class MySQLReceptDAO implements IReceptDAO {
 	    	ReceptDTO recept = new ReceptDTO ();
 	    	recept.setReceptId(rs.getInt("recept_id"));
 	    	recept.setReceptNavn(rs.getString("recept_navn"));
-	    	
+	    	PreparedStatement stmt2 = connector.getConnection().prepareStatement("select * from getreceptkomponent where recept_id = ?");
+			stmt2.setInt(1, recept.getReceptId());
+			rs2 = stmt2.executeQuery();
+			ReceptKompDTO komp;
+			while(rs2.next()){
+				komp = new ReceptKompDTO();
+				komp.setReceptId(rs2.getInt("recept_id"));
+				komp.setNomNetto(rs2.getDouble("nom_netto"));
+				komp.setRaavareId(rs2.getInt("raavare_id"));
+				komp.setTolerance(rs2.getDouble("tolerance"));
+				recept.addKomp(komp);
+				
+			}
 	    	return recept;
 	    }
 	    catch (SQLException e) {
@@ -82,6 +94,16 @@ public class MySQLReceptDAO implements IReceptDAO {
 			stmt.setInt(1, recept.getReceptId());
 			stmt.setString(2, recept.getReceptNavn());
 			stmt.executeQuery();
+			List<ReceptKompDTO> komps = recept.getKomp();
+			for (ReceptKompDTO komp : komps) {
+				komp.setReceptId(recept.getReceptId());
+				stmt = connector.getConnection().prepareStatement("call add_receptkomponent(?,?,?,?);");
+				stmt.setInt(1, komp.getReceptId());
+				stmt.setInt(2, komp.getRaavareId());
+				stmt.setDouble(3, komp.getNomNetto());
+				stmt.setDouble(4, komp.getTolerance());
+				stmt.executeQuery();
+			}
 		} catch (Exception e) {
 			throw new DALException(e.getMessage());
 		}

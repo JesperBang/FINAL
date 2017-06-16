@@ -19,7 +19,7 @@ public class MySQLProduktBatchDAO implements IProduktBatchDAO {
 	public ProduktBatchDTO getProduktBatch(int pbId) throws DALException {
 		// TODO Auto-generated method stub
 		
-		ResultSet rs = null;
+		ResultSet rs, rs2;
 		try { //Files.readAllLines(Paths.get("/UserCommands.txt")).get(0)
 			PreparedStatement stmt = connector.getConnection().prepareStatement("select * from getproduktbatch where pb_id = ?;");
 			stmt.setInt(1, pbId);
@@ -33,6 +33,19 @@ public class MySQLProduktBatchDAO implements IProduktBatchDAO {
 	    	produkt.setPbId(rs.getInt("pb_id"));
 	    	produkt.setStatus(rs.getInt("status"));
 	    	produkt.setReceptId(rs.getInt("recept_id"));
+	    	PreparedStatement stmt = connector.getConnection().prepareStatement("select * from getproduktbatchkomponent where pb_id = ?;");
+			stmt.setInt(1, produkt.getPbId());
+			rs2 = stmt.executeQuery();
+			ProduktBatchKompDTO komp;
+			while(rs2.next()){
+				komp = new ProduktBatchKompDTO();
+				komp.setPbId(rs2.getInt("pb_id"));
+				komp.setNetto(rs2.getDouble("netto"));
+				komp.setTara(rs2.getDouble("tara"));
+				komp.setOprId(rs2.getInt("opr_id"));
+				komp.setRbId(rs2.getInt("rb_id"));
+				produkt.addKomp(komp);
+			}
 	    	return produkt;
 	    }
 	    catch (SQLException e) {
@@ -90,18 +103,19 @@ public class MySQLProduktBatchDAO implements IProduktBatchDAO {
 		try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(2)
 			PreparedStatement stmt = connector.getConnection().prepareStatement("call add_produktbatch(?,?,?);");
 			stmt.setInt(1, produktbatch.getPbId());
-			stmt.setInt(2, produktbatch.getStatus());
+			stmt.setInt(2, 0);
 			stmt.setInt(3, produktbatch.getReceptId());
 			stmt.executeQuery();
 			List<ProduktBatchKompDTO> komp = produktbatch.getKomp();
 			PreparedStatement stmt2;
 			for (ProduktBatchKompDTO kompDTO : komp) {
+				kompDTO.setPbId(produktbatch.getPbId());
 				stmt2 = connector.getConnection().prepareStatement("call add_produktbatchkomponent(?,?,?,?,?);");
 				stmt2.setInt(1, kompDTO.getPbId());
 				stmt2.setInt(2, kompDTO.getRbId());
-				stmt2.setDouble(3, kompDTO.getTara());
-				stmt2.setDouble(4, kompDTO.getNetto());
-				stmt2.setInt(5, kompDTO.getOprId());
+				stmt2.setDouble(3, 0);
+				stmt2.setDouble(4, 0);
+				stmt2.setInt(5, 1);
 				stmt2.executeQuery();
 				
 			}
@@ -119,10 +133,34 @@ public class MySQLProduktBatchDAO implements IProduktBatchDAO {
 			stmt.setInt(1, produktbatch.getPbId());
 			stmt.setInt(2, produktbatch.getStatus());
 			stmt.executeQuery();
+			List<ProduktBatchKompDTO> komp = produktbatch.getKomp();
+			PreparedStatement stmt2;
+			for (ProduktBatchKompDTO kompDTO : komp) {
+				stmt2 = connector.getConnection().prepareStatement("call update_produktbatchkomponent(?,?,?,?,?);");
+				stmt2.setInt(1, kompDTO.getPbId());
+				stmt2.setInt(2, kompDTO.getRbId());
+				stmt2.setDouble(3, kompDTO.getTara());
+				stmt2.setDouble(4, kompDTO.getNetto());
+				stmt2.setInt(5, kompDTO.getOprId());
+				stmt2.executeQuery();
+				
+			}
 		} catch (Exception e) {
 			throw new DALException(e.getMessage());
 		}
 
+	}
+
+	@Override
+	public void updateStatus(ProduktBatchDTO produktbatch) throws DALException {
+		try { //Files.readAllLines(Paths.get("UserCommands.txt")).get(2)
+			PreparedStatement stmt = connector.getConnection().prepareStatement("call update_produktbatch(?,?);");
+			stmt.setInt(1, produktbatch.getPbId());
+			stmt.setInt(2, produktbatch.getStatus());
+			stmt.executeQuery();
+		} catch (Exception e) {
+			throw new DALException(e.getMessage());
+		}
 	}
 
 }

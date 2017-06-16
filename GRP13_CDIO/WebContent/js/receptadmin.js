@@ -3,53 +3,86 @@
  */
 
 $(document).ready(function() {
-
+	$( document ).ajaxSend(function( event, jqxhr, settings ) {
+	    jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
+	});
 
 	var allPrescriptions;
 	
+	//Get current logged in users rights fom their JWT
+	function getRole(){
+		var rights = $.parseJSON(window.atob(localStorage.getItem("user").split(".")[1])).UserDTO.roles;
+		return rights;
+	}
+	
 	document.getElementById("OpretReceptSM").addEventListener("click",function() {
-		$("#table").hide();
-		$("#createuser").hide();
-		$("#updateuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#pbtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#SPtable").hide();
-		$("#popupID").hide();
 
-		$("#createprescript").show();
+
+		var rights = getRole();
+
+		if(rights.includes('Farmaceut')){
+			$("#table").hide();
+			$("#createuser").hide();
+			$("#updateuser").hide();
+			$("#deactivateuser").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#rtable").hide();
+			$("#createprescript").hide();
+			$("#SPtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#pbtable").hide();
+			$("#popupID").hide();
+			$("#createproduktbatch").hide();
+			$("#createprescript").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to create recept!")
+			rights = "";
+		}
+
 		return false;
-		
+	});
+	
+	document.getElementById("addKomp").addEventListener("click",function() {
+		$( ".komponenter" ).append( "<input type=\"number\" name=\"komp[][raavareId]\" placeholder=\"Raavare ID\" min =\"1\" max=\"99\">"
+    			+" <input type=\"number\" name=\"komp[][nomNetto]\" placeholder=\"Maengde\" min =\"1\" max=\"99\">"
+    			+" <input type=\"number\" name=\"komp[][tolerance]\" placeholder=\"Tolerance (0,1-10,0%)\" maxlength=\"50\">" );
+		return false;
 	});
 
 	// Load prescriptions on Vis Recepter page
 	document.getElementById("VisReceptSM").addEventListener("click",function() {
 
-		//visuals
 
-		$("#table").hide();
-		$("#createuser").hide();
-		$("#createuser").hide();
-		$("#createprescript").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#pbtable").hide();
-		$("#createprescript").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#SPtable").show();
-		$("#popupID").hide();
-	
+		var rights = getRole();
+
+		if(rights.includes('Farmaceut')){
+			//visuals
+			$("#table").hide();
+			$("#createuser").hide();
+			$("#updateuser").hide();
+			$("#deactivateuser").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#rtable").hide();
+			$("#createprescript").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#pbtable").hide();
+			$("#popupID").hide();
+			$("#createproduktbatch").hide();
+			$("#SPtable").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to view recepts!")
+			rights = "";
+		}
 
 		//ajax request
 		$.ajax({
-			url: "http://localhost:8080/GRP13_CDIO/rest2/receptservice/recept",
+			url: "rest2/receptservice/recept",
 			method: "GET",
 
 			//success function
@@ -117,6 +150,8 @@ $(document).ready(function() {
 	});
 	
 	
+	
+	
 
 	//Create Prescription Button
 	$("#CreatePrescription").submit( function() {               
@@ -130,7 +165,7 @@ $(document).ready(function() {
 
 
 		$.ajax({
-			url: "http://localhost:8080/GRP13_CDIO/rest2/receptservice/create/recept",
+			url: "rest2/receptservice/create/recept",
 			data: JSON.stringify(data),
 			contentType: "application/json",
 			method: 'POST',
@@ -141,9 +176,13 @@ $(document).ready(function() {
 				document.getElementById("CreatePrescription").reset();
 				console.log("CPForm has been cleared")
 
+				document.getElementById('createPSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#createPSuccess').fadeOut('slow').empty()}, 5000)
+						
 				//Goes back to menu
 				$('#usradmin').show();
-				$('#SPtable').hide();
+				$("#createprescript").hide();
 
 			},
 			error: function(resp){

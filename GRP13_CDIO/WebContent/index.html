@@ -8,39 +8,34 @@
 <title>Index</title>
 
 <!-- CSS -->
+<link rel="stylesheet" type="text/css" href="css/successMessage.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 <link rel="stylesheet" type="text/css" href="css/popupcss.css">
+
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
-
 <!-- Script -->
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/useradmin.js"></script>
 <script type="text/javascript" src="js/produktbatchadmin.js"></script>
+<script type="text/javascript" src="js/updateraavare.js"></script>
 <script type="text/javascript" src="js/raavareadmin.js"></script>
 <script type="text/javascript" src="js/jquery.serialize-object.js"></script>
 <script type="text/javascript" src="js/receptadmin.js"></script>
 <script type="text/javascript" src="js/updateusr.js"></script>
-
 <script type="text/javascript" src="js/raavarebatchadmin.js"></script>
-
-
-
 
 </head>
 
 <!-- Main HTML -->
 <body>
-
-
 		<!-- Login page called form -->
 		<div class="form" id="login">
-			<form>
+			<form id="loginform">
 
 				<!-- DTU Image Container -->
 				<div class="imgcontainer" >
@@ -49,15 +44,18 @@
 
 				<!-- Login fields -->
 				<div class="container">
-					<label><b>Username</b></label> <input type="text"
-						placeholder="Enter Username" name="uname" id="uname"> <label><b>Password</b></label>
-					<input type="password" placeholder="Enter Password" name="psw">
+					<label><b>Username</b></label> 
+					<input type="text" placeholder="Enter Username" name="uname" id="uname"> 
+					
+					<label><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="psw" id="pasid">
 				</div>
 
-				<!-- Container for login btn -->
-				<div id="btn" class="container" style="background-color: #f1f1f1">
-					<button class="loginbtn">Login</button>
-				</div>
+
+				
+				<div id="btn" class="container" style="background-color: #f1f1f1">			
+    				<input id="loginbtnid" class="loginbtn" type="submit"  value="Login" style="overflow: hidden; cursor: pointer;">
+    			</div>
 
 			</form>
 			
@@ -66,8 +64,6 @@
 	<!-- Menu page -->
 	<div id="usradmin" style="display: none">
 	
-
-		
 		<!-- div for fixing menu bar glitch -->
 		<div id="usrmenu" style="min-width:1300px; ">
 			<ul class="mm">
@@ -76,24 +72,25 @@
 			<!-- Menu "Btns" -->	
 				
 				<!-- User Admin -->
-				<li><a id="usradminmm" href="#Brugeradministration">Bruger Administration</a>
+				<li><a id="usradminmm" href="#">Bruger Administration</a>
 					
 					<!-- Sub Menu of usradminmenu -->
 					<ul id="smid" class="sm">
-						<li><a id="usradminmenu" href="#">Vis brugere</a></li>
-                		<li><a id="createusermenu" href="#">Opret ny bruger</a></li>
-                		<li><a id="updateusermenu" href="#">Opdater brugere</a></li>
+						<li><a id="usradminmenu" href="#VisBrugere">Vis brugere</a></li>
+                		<li><a id="createusermenu" href="#OpretBruger">Opret ny bruger</a></li>
+                		<li><a id="updateusermenu" href="#OpdaterBruger">Opdater brugere</a></li>
+                		<li><a id="updatestatususermenu" href="#OpdaterStatus">Opdater status</a></li>
          		    </ul>
          		    
          		    
          		<!-- Raavare Admin -->
-				<li><a id="Raavareadmin" href="#RaavareAdministration">Raavare Administration</a>
+				<li><a id="Raavareadmin" href="#">Raavare Administration</a>
 					
 					<!-- Sub Menu of Raavareadmin -->
 					<ul class="sm">
-						<li><a id="VisRaavareSM" href="#">Vis Raavare</a></li>
-                		<li><a id="OpretRaavareSM" href="#">Opret Raavare</a></li>
-                		<li><a id="OpdaterRaavareSM" href="#">Opdater Raavare</a></li>
+						<li><a id="VisRaavareSM" href="#VisRaavare">Vis Raavare</a></li>
+                		<li><a id="OpretRaavareSM" href="#OpretRaavare">Opret Raavare</a></li>
+                		<li><a id="OpdaterRaavareSM" href="#OpdaterRaavare">Opdater Raavare</a></li>
          		    </ul>
          		   
          		   
@@ -135,13 +132,46 @@
 				<li id="Forfattere" ><a href="#Forfattere">Forfattere</a>
 				
 				<!-- Logout -->
-				<li><a id="logoutmenu" href="#" >Log ud</a></li>
+
+				<li style="float:right;"><a id="logoutmenu" href="#">Log ud</a>
 				
 
 			</ul>
 		</div>
 		
-		
+		<!--  Succes alerts -->
+				<div id="createUsrSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> The user has been created!
+  				</div>
+  				
+  				<div id="updateUsrSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> The user has been updated!
+  				</div>
+  				
+  				<div id="statusUsrSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> The user status has been changed!
+  				</div>
+  				
+  				<div id="createRaavareSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> Raavare has been created!
+  				</div>
+  				
+  				<div id="updateRSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> Raavare has been updated!
+  				</div>
+  				
+  				<div id="createPSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> The prescription has been created!
+  				</div>
+  				
+  				<div id="createRBSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> Raavarebatch has been created!
+  				</div>
+  				
+  				<div id="createPBSuccess" class="success" style="display:none" >
+    				<img src="img/success.png" class="successImg" alt="successImg"> <strong>Success!</strong> Productbatch has been created!
+  				</div>
+  				
 	<!-- Table for Raavareadmin -->
 		<div id="rtable" style="display: none">
 			<h2>Raavarer:</h2>
@@ -152,19 +182,13 @@
 		</div>
 	</div>
 	
-	<!-- Update raavare page -->
-		<div id="updateraavare" style="display: none">
-   					
-		</div>
-
-
 		<!-- popop -->
 		<div id="popupID" class="popup" style="display:none" >
   			<span class="popuptext" id="myPopup" >
   				<img src="img/popup.png" class="popfor" alt="forfattere">
  			 </span>
 		</div>
-
+		
 		<!-- Table for user admin -->
 		<div id="table" style="display: none">
 			<h2>Brugere:</h2>
@@ -172,7 +196,6 @@
 			<table id="usertable">
 			
 			</table>
-
 
 		</div>
 		<!-- Table for product admin -->
@@ -220,7 +243,7 @@
     			<input type="text" name="firstname" placeholder="Firstname" maxlength="30" pattern="[a-z A-Z]*" required>
 		    	<input type="text" name="lastname" placeholder="Lastname" maxlength="30" pattern="[a-zA-Z]*" required>
     			<input type="text" name="cpr" placeholder="CPR   Fx. 123456-7890" maxlength="11" required>
-    			<input type="password" name="password" placeholder="Password" maxlength="8" required>
+    		
     			
     			<!-- Roles -->
     			<b>Roles</b><br>
@@ -231,7 +254,7 @@
     			<input type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
 
-    			<input type="checkbox" name="roles[]" value="Værkfører">
+    			<input type="checkbox" name="roles[]" value="Varkforer">
 
     			Operatoer
     			<input type="checkbox" name="roles[]" value="Laborant">
@@ -241,13 +264,75 @@
     			<!-- Create User Btn -->
     			<div id="CUbtn" class="CUcontainer" style="background-color: #f1f1f1">			
     				<input id="cubtnid" class="cubtn" type="submit"  value="Create user" style="overflow: hidden;">
+    			
     			</div>
 			</form>
 			</div>
 	
 		</div>
 
+	<!-- Deactivate user page -->
+		<div id="deactivateuser" style="display: none">
+   					
+			
+			<!-- Usr Deactivation Form -->
+			<div class="DeactivateUserForm">
+				<h2>Status opdatering for brugere</h2>
+
+			<form id="DeactivateUserForm">
+			
+			
+				<!-- User input -->
+				<div id="DUContainer">
+				
+				<div style="width:100%">
+    			<input type="number" name="userId" placeholder="User Id" min ="11" max="99" style="width:59%" required>
+    			<input type="number" name="aktiv" placeholder="Status" min = "0" max="1" style="width:59%" required>
+    			</div>
+    			
+    		</div>
+    				
+    			<!-- Deactivate User Btn -->
+    			<div id="DUbtn" class="DUcontainer" style="background-color: #f1f1f1">			
+    				<input id="dubtnid" class="dubtn" type="submit"  value="Deactivate user" style="overflow: hidden;">
+    			</div>
+			</form>
+			</div>
 	
+		</div>
+
+
+		<!-- Create raavare page -->
+		<div id="createraavare" style="display: none">
+   					
+			
+			<!-- raavare Creation Form -->
+			<div class="CreateRaavareForm">
+				<h2>Create Raavare Form</h2>
+
+			<form id="CreateRaavareForm">
+			
+			
+				<!-- User input -->
+				<div id="CRContainer">
+				
+				<div style="width:100%">
+    			<input type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" required>
+    			
+    			<input type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
+    			<input type="text" name="leverandoer" placeholder="Leverandoer" maxlength="30" pattern="[a-z A-Z]*" required>
+    			</div>
+    			</div>
+    				
+    			<!-- Create raavare Btn -->
+    			<div id="CRbtn" class="CRcontainer" style="background-color: #f1f1f1">			
+    				<input id="crbtnid" class="crbtn" type="submit"  value="Create Raavare">
+    			</div>
+			</form>
+			</div>
+	
+		</div>
+
 	
 	
 	<!-- Update user page -->
@@ -299,7 +384,7 @@
     			<input id="updaterfarm" type="checkbox" name="roles[]" value="Farmaceut">
     			Foreman
 
-    			<input id="updatervaerk" type="checkbox" name="roles[]" value="Værkfører">
+    			<input id="updatervaerk" type="checkbox" name="roles[]" value="Varkforer">
 
     			Operatoer
     			<input id="updaterLab" type="checkbox" name="roles[]" value="Laborant">
@@ -315,6 +400,54 @@
 			</div>
 	
 		</div>
+	
+	<!-- Update raavare page -->
+		<div id="updateraavare" style="display: none">
+   					
+   					
+			<!-- Raavare update Form -->
+			<div class="UpdateRaavareForm">
+				<h2>Update Raavare Form</h2>
+			
+			<!-- Form for chosing user by id to update -->
+			<form id="FUpdateRaavareForm">
+				<div id="ChooseraaContainer">
+					<input id="chooseraaid" type="number" name="raavareId" placeholder="Enter the id of the raavare you wish to update" min ="1" style="width:59%">
+				
+					<div id="FRbtn" class="FUcontainer" style="background-color: #f1f1f1">			
+    					<input class="fubtn" type="submit"  value="Fetch user">
+    				</div>
+				</div>
+			</form>
+			
+			<!-- Seperation of forms -->
+			<br>
+			
+			<form id="UpdateRaavareForm">
+			
+			
+				<!-- Raavare input -->
+				<div id="UUContainer">
+				
+				<div style="width:100%">
+				<input id= "updateraaid" type="number" name="raavareId" placeholder="Raavare Id" min ="1" style="width:59%" readonly>
+    			</div>
+
+    			<input id= "updateraan" type="text" name="raavareNavn" placeholder="Raavare navn" maxlength="30" pattern="[a-z A-Z]*" style="width:40%" required>
+    			<input id= "updateraal" type="text" name="leverandoer" placeholder="Levarandoer" maxlength="30" pattern="[a-z A-Z /]*" required>
+
+    			</div>
+    			
+    				
+    			<!-- Update raavare Btn -->
+    			<div id="UUbtn" class="UUcontainer" style="background-color: #f1f1f1">			
+    				<input class="uubtn" type="submit"  value="Update raavare">
+    			</div>
+			</form>
+			</div>
+	
+		</div>
+	
 
 	<!-- Table for prescription admin -->
 		<div id="SPtable" style="display: none">
@@ -327,6 +460,37 @@
 
 		</div>
 	
+	<!-- Create produktBatch page -->
+		<div id="createproduktbatch" style="display: none">
+   					
+			
+			<!-- Prescription Creation Form -->
+			<div class="Createproduktbatch">
+				<h2>Opret Produkt</h2>
+
+			<form id="Createproduktbatch">
+			
+				<!-- User input -->
+				<div id="CPBContainer">
+				
+				<div style="width:100%">
+    			<input type="number" name="pbId" placeholder="Produktbatch ID" min ="1" max="99" required>
+    			<input type="number" name="receptId" placeholder="Recept ID" min ="1" max="99" required>
+    			</div>
+    			<div class="pbkomponenter">
+    			<input type="number" name="komp[][rbId]" placeholder="Raavarebatch ID" min ="1" max="99">
+    			</div>
+    			<input type="button" id="addpbKomp" value="+">
+    			</div>
+    				
+    			<!-- Create Prescription Btn -->
+    			<div id="CPBbtn" class="CPBcontainer" style="background-color: #f1f1f1">			
+    				<input class="cpbbtn" type="submit"  value="Opret produktbatch">
+    			</div>
+			</form>
+			</div>
+				
+		</div>
 	
 	<!-- Create prescription page -->
 		<div id="createprescript" style="display: none">
@@ -345,10 +509,12 @@
     			<input type="number" name="receptId" placeholder="Recept ID" min ="1" max="99" required>
     			</div>
     			<input type="text" name="receptNavn" placeholder="Recept Navn" maxlength="30" pattern="[a-z A-Z]*" required>
-    			<input type="number" name="raavareId" placeholder="Raavare ID" min ="1" max="99">
-    			<input type="number" name="nomNetto" placeholder="Maengde" min ="1" max="99">
-    			<input type="number" name="tolerance" placeholder="Tolerance (0,1-10,0%)" maxlength="50">
-    			
+    			<div class="komponenter">
+    			<input type="number" name="komp[][raavareId]" placeholder="Raavare ID" min ="1" max="99">
+    			<input type="number" name="komp[][nomNetto]" placeholder="Maengde" min ="1" max="99">
+    			<input type="number" name="komp[][tolerance]" placeholder="Tolerance (0,1-10,0%)" maxlength="50" pattern="[0-9 .]*">
+    			</div>
+    			<input type="button" id="addKomp" value="+">
     			</div>
     				
     			<!-- Create Prescription Btn -->

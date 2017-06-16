@@ -1,4 +1,4 @@
-package database;
+package dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;

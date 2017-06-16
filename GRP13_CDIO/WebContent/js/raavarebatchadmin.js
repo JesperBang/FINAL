@@ -3,25 +3,45 @@
  */
 
 $(document).ready(function() {
-
+	$( document ).ajaxSend(function( event, jqxhr, settings ) {
+		jqxhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("user"))
+	});
 
 	var allRaavareBatches;
 	
+	//Get current logged in users rights fom their JWT
+	function getRole(){
+		var rights = $.parseJSON(window.atob(localStorage.getItem("user").split(".")[1])).UserDTO.roles;
+		return rights;
+	}
+	
 	document.getElementById("OpretRaavarebatchSM").addEventListener("click",function() {
-		$("#table").hide();
-		$("#createuser").hide();
-		$("#createuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#pbtable").hide();
-		$("#createRB").hide();
-		$("#RBtable").hide();
-		$("#popupID").hide();
-		$("#createRB").show();
-		$("#SPtable").hide();
+
+
+		var rights = getRole();
+		
+		if(rights.includes('Farmaceut') || rights.includes('Varkforer')){
+			$("#table").hide();
+			$("#createuser").hide();
+			$("#createuser").hide();
+			$("#createprescript").hide();
+			$("#receptable").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#rtable").hide();
+			$("#pbtable").hide();
+			$("#createRB").hide();
+			$("#RBtable").hide();
+			$("#popupID").hide();
+			$("#createRB").show();
+			$("#SPtable").hide();
+			$("#createproduktbatch").hide();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to create a Raavarebatches!")
+			rights = "";
+		}
+
 		return false;
 		
 	});
@@ -29,24 +49,34 @@ $(document).ready(function() {
 	// Load prescriptions on Vis Raavarebatch page
 	document.getElementById("VisRaavarebatchSM").addEventListener("click",function() {
 
-		//visuals
-		$("#table").hide();
-		$("#createuser").hide();
-		$("#createuser").hide();
-		$("#createprescript").hide();
-		$("#receptable").hide();
-		$("#updateraavare").hide();
-		$("#createraavare").hide();
-		$("#rtable").hide();
-		$("#pbtable").hide();
-		$("#createRB").hide();
-		$("#popupID").hide();
-		$("#RBtable").show();
-		$("#SPtable").hide();
+
+		var rights = getRole();
+		
+		if(rights.includes('Farmaceut') || rights.includes('Varkforer')){
+			//visuals
+			$("#table").hide();
+			$("#createuser").hide();
+			$("#updateuser").hide();
+			$("#deactivateuser").hide();
+			$("#updateraavare").hide();
+			$("#createraavare").hide();
+			$("#rtable").hide();
+			$("#createprescript").hide();
+			$("#SPtable").hide();
+			$("#createRB").hide();
+			$("#pbtable").hide();
+			$("#popupID").hide();
+			$("#createproduktbatch").hide();
+			$("#RBtable").show();
+			rights = "";
+		}else{
+			alert("You do not meet the required role to view Raavarebatches!")
+			rights = "";
+		}
 
 		//ajax request
 		$.ajax({
-			url: "http://localhost:8080/GRP13_CDIO/rest2/raavarebatchservice/raavarebatch",
+			url: "rest2/raavarebatchservice/raavarebatch",
 			method: "GET",
 
 			//success function
@@ -82,7 +112,6 @@ $(document).ready(function() {
 
 	});
 	
-	
 	//Create Raavarebatch Button
 	$("#CreateRaavarebatch").submit( function() {               
 
@@ -94,7 +123,7 @@ $(document).ready(function() {
 		console.log(data);
 		
 		$.ajax({
-			url: "http://localhost:8080/GRP13_CDIO/rest2/raavarebatchservice/create/raavarebatch",
+			url: "rest2/raavarebatchservice/create/raavarebatch",
 			data: JSON.stringify(data),
 			contentType: "application/json",
 			method: 'POST',
@@ -105,9 +134,13 @@ $(document).ready(function() {
 				document.getElementById("CreateRaavarebatch").reset();
 				console.log("RBForm has been cleared")
 
+				document.getElementById('createRBSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#createRBSuccess').fadeOut('slow').empty()}, 5000)
+						
 				//Goes back to menu
 				$('#usradmin').show();
-				$('#RBtable').hide();
+				$("#createRB").hide();
 
 			},
 			error: function(resp){

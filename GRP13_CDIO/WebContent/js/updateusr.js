@@ -1,7 +1,7 @@
 /**
  *  Yas
  */
-$(document).ready(function() {
+$(document).ready(function() {	
 		//Fetch Update User Submit Button
 		$("#ChooseUserToUpdate").submit( function() {               
 		 
@@ -15,7 +15,7 @@ $(document).ready(function() {
 			var idu  = document.getElementById("chooseid").value;
 			
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/user/" + idu,
+				url: "rest2/userservice/user/" + idu,
 				contentType: "application/json",
 				method: 'GET',
 				success: function(resp){
@@ -34,23 +34,15 @@ $(document).ready(function() {
 						$("#updateiniin").val(resp.ini);
 						$("#updatecprin").val(resp.cpr);
 						$("#updatepassin").val(resp.password);
+
 					
 						//role filling
 						if(resp.roles.length == 1){
-							//prevent update to no role
-							labor.disabled = true;
 							//current role chosen
 							labor.checked = true;
 							vaerk.checked = false;
 							farma.checked = false;
 							admin.checked = false;
-							
-							
-							//non allowed roles to gain
-							vaerk.disabled = true;
-							farma.disabled = true;
-							admin.disabled = true;
-							
 							
 						}if(resp.roles.length == 2){
 							//current role chosen
@@ -59,23 +51,14 @@ $(document).ready(function() {
 							farma.checked = false;
 							admin.checked = false;
 							
-							//non allowed roles to gain
-							farma.disabled = true;
-							admin.disabled = true;
-							vaerk.disabled = false;
-							labor.diasbled = false;
+
 						}if(resp.roles.length == 3){
 							//current role chosen
 							labor.checked = true;
 							vaerk.checked = true;
 							farma.checked = true;
 							admin.checked = false;
-							
-							//non allowed roles to gain
-							farma.disabled = false;
-							admin.disabled = true;
-							vaerk.disabled = false;
-							labor.diasbled = false;
+
 						}if(resp.roles.length == 4){
 							//current role chosen
 							labor.checked = true;
@@ -83,12 +66,8 @@ $(document).ready(function() {
 							farma.checked = true;
 							admin.checked = true;
 							
-							//non allowed roles to gain
-							farma.disabled = false;
-							admin.disabled = false;
-							vaerk.disabled = false;
-							labor.diasbled = false;
 						}
+
 					}catch(err){
 						alert("User doesn't excist! make sure to type a valid id.");
 					}
@@ -115,7 +94,7 @@ $(document).ready(function() {
 
 			console.log(data);
 			$.ajax({
-				url: "http://localhost:8080/GRP13_CDIO/rest2/userservice/update/user",
+				url: "rest2/userservice/update/user",
 				data: JSON.stringify(data),
 				contentType: "application/json",
 				method: 'POST',
@@ -126,6 +105,9 @@ $(document).ready(function() {
 					document.getElementById("UpdateUserForm").reset();
 					console.log("CUForm has been cleared")
 					
+					document.getElementById('updateUsrSuccess').style.display = 'block';
+					setTimeout(function() {
+						$('#updateUsrSuccess').fadeOut('slow').empty()}, 5000)
 					//Goes back to menu
 					$('#usradmin').show();
 					$('#createuser').hide();
