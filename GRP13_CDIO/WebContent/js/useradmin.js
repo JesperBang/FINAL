@@ -62,6 +62,7 @@ $(document).ready(function() {
 			$("#RBtable").hide();
 			$("#popupID").hide();
 			$("#createproduktbatch").hide();
+			$("#deactivateuser").hide();
 			$("#updateuser").show();
 			rights = "";
 		}else{
